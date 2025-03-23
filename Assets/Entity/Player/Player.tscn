@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://dddqybys2u2rb"]
+[gd_scene load_steps=35 format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
 [ext_resource type="Resource" uid="uid://dbj026c88u1df" path="res://Scripts/Inventory/Weapons/Gold Weapon.tres" id="2_bxcuo"]
 [ext_resource type="Texture2D" uid="uid://o34q7t3js56i" path="res://Assets/Entity/Player/Player3.png" id="3_3gu1i"]
+[ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="3_koen5"]
 [ext_resource type="Texture2D" uid="uid://cxijnx31iisgc" path="res://Assets/Sword.png" id="3_o1amb"]
 [ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Scripts/Attack/Attack.gd" id="4_58md0"]
 [ext_resource type="PackedScene" uid="uid://5nj2083ine2r" path="res://Scripts/Notifications/notification_panel.tscn" id="5_pq0o2"]
@@ -690,6 +691,18 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Shadow:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.375, 0.375)]
+}
 
 [sub_resource type="Animation" id="Animation_63xve"]
 resource_name = "Run"
@@ -837,6 +850,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Shadow:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.09, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.345184, 0.375), Vector2(0.465183, 0.375), Vector2(0.345184, 0.375)]
 }
 
 [sub_resource type="Animation" id="Animation_58md0"]
@@ -986,6 +1011,18 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Shadow:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.43, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.375, 0.375), Vector2(0.334999, 0.375), Vector2(0.375, 0.375)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pq0o2"]
 _data = {
@@ -1039,6 +1076,11 @@ shape = SubResource("RectangleShape2D_jh2bb")
 [node name="Skin" type="Node2D" parent="."]
 position = Vector2(0, -5)
 
+[node name="Shadow" type="Sprite2D" parent="Skin"]
+position = Vector2(-1, 1)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("3_koen5")
+
 [node name="Body" type="Sprite2D" parent="Skin"]
 texture = ExtResource("3_3gu1i")
 offset = Vector2(-2, -3)
@@ -1071,7 +1113,6 @@ region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
 
 [node name="RightHand" type="Sprite2D" parent="Skin/Body/Hands"]
-modulate = Color(0.625597, 0.625597, 0.625597, 1)
 z_index = -2
 position = Vector2(3, -6)
 texture = ExtResource("3_3gu1i")

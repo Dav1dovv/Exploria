@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://kxl21wor8gcg"]
+[gd_scene load_steps=60 format=4 uid="uid://kxl21wor8gcg"]
 
 [ext_resource type="Script" uid="uid://bsxhijsyipl34" path="res://Assets/Locations/world.gd" id="1_1hdpv"]
 [ext_resource type="PackedScene" uid="uid://ddpby8w0mul84" path="res://Assets/Locations/simple_location.tscn" id="2_qin47"]
@@ -26,9 +26,10 @@
 [ext_resource type="Script" uid="uid://b20yonmnvj5p" path="res://Scripts/WorldGeneration/WorldGeneration.gd" id="29_je22b"]
 [ext_resource type="Script" uid="uid://dnsjqti8uikrc" path="res://addons/rmsmartshape/shapes/shape_render.gd" id="29_lm3la"]
 [ext_resource type="Script" uid="uid://c6g5fnbka8cm8" path="res://Scripts/WorldGeneration/WorldResource.gd" id="30_5ex8s"]
-[ext_resource type="PackedScene" uid="uid://bjaeg0ojtx7bu" path="res://Assets/Entity/Grindable/Bush/Bush.tscn" id="31_iqc5d"]
+[ext_resource type="PackedScene" uid="uid://cpo14lf8d3sbj" path="res://Assets/Entity/Grindable/Cactus/Cactus.tscn" id="31_ff6a8"]
+[ext_resource type="Texture2D" uid="uid://lhv5o6xli6o5" path="res://Assets/Sprites/Capsule.png" id="32_63nxx"]
 [ext_resource type="PackedScene" uid="uid://b13lyodynary4" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.tscn" id="32_wygtn"]
-[ext_resource type="PackedScene" uid="uid://dqdaavkbyewy2" path="res://Assets/Entity/Grindable/Quarts/Quarts.tscn" id="33_lm3la"]
+[ext_resource type="PackedScene" uid="uid://cu0mowstbdnxm" path="res://Scripts/DayNightCycle/canvas_modulate.tscn" id="33_8805c"]
 [ext_resource type="PackedScene" uid="uid://ciqexqa26codm" path="res://Assets/Entity/Grindable/Stone/Stone.tscn" id="34_b45wj"]
 [ext_resource type="PackedScene" uid="uid://cfw6apb1ldhr2" path="res://Assets/Entity/Grindable/Tree/tree.tscn" id="35_gaeuy"]
 [ext_resource type="PackedScene" uid="uid://bhcw3lw12mn07" path="res://Assets/Chest/chest.tscn" id="36_83hn2"]
@@ -44,8 +45,8 @@ shader_parameter/large_stars_far_size = 0.3
 shader_parameter/large_stars_near_size = 1.0
 shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
 shader_parameter/near_stars_color = Color(1, 1, 1, 1)
-shader_parameter/base_scroll_speed = 0.03
-shader_parameter/additional_scroll_speed = 0.15
+shader_parameter/base_scroll_speed = 0.01
+shader_parameter/additional_scroll_speed = 0.01
 
 [sub_resource type="Resource" id="Resource_7i08t"]
 script = ExtResource("9_cinf0")
@@ -191,22 +192,10 @@ fill_texture_angle_offset = 0.0
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
-[sub_resource type="Resource" id="Resource_cdwdd"]
-script = ExtResource("30_5ex8s")
-object_scene = ExtResource("31_iqc5d")
-spawn_probability = 1.0
-metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
-
 [sub_resource type="Resource" id="Resource_3x120"]
 script = ExtResource("30_5ex8s")
 object_scene = ExtResource("32_wygtn")
 spawn_probability = 0.3
-metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
-
-[sub_resource type="Resource" id="Resource_s6sok"]
-script = ExtResource("30_5ex8s")
-object_scene = ExtResource("33_lm3la")
-spawn_probability = 0.5
 metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
 
 [sub_resource type="Resource" id="Resource_l4wh0"]
@@ -226,6 +215,24 @@ script = ExtResource("30_5ex8s")
 object_scene = ExtResource("36_83hn2")
 spawn_probability = 0.1
 metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
+
+[sub_resource type="Resource" id="Resource_4eoj7"]
+script = ExtResource("30_5ex8s")
+object_scene = ExtResource("31_ff6a8")
+spawn_probability = 0.4
+metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
+
+[sub_resource type="Curve" id="Curve_8805c"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c3cer"]
+_data = [Vector2(0, 0.231087), 0.0, 0.0, 0, 0, Vector2(0.716216, 1), -0.0682477, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_w0fr3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="World" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -254,17 +261,17 @@ color = Color(0.00531513, 0.00981366, 0.0358364, 1)
 [node name="ColorRect2" type="ColorRect" parent="ParallaxBackground/Sky"]
 material = SubResource("ShaderMaterial_8805c")
 offset_left = -259.5
-offset_top = -243.5
+offset_top = -235.0
 offset_right = 258.5
-offset_bottom = 57.5
+offset_bottom = 66.0
 color = Color(0.00531513, 0.00981366, 0.0358364, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="ParallaxBackground/Sky"]
 material = SubResource("ShaderMaterial_8805c")
 offset_left = -259.5
-offset_top = -526.0
+offset_top = -531.0
 offset_right = 258.5
-offset_bottom = -225.0
+offset_bottom = -230.0
 color = Color(0.00531513, 0.00981366, 0.0358364, 1)
 
 [node name="Sun" type="Sprite2D" parent="ParallaxBackground"]
@@ -388,14 +395,133 @@ script = ExtResource("29_lm3la")
 [node name="GenerateEnvironment" type="Node2D" parent="SimpleLocation"]
 y_sort_enabled = true
 script = ExtResource("29_je22b")
-objects_to_spawn = Array[ExtResource("30_5ex8s")]([SubResource("Resource_cdwdd"), SubResource("Resource_3x120"), SubResource("Resource_s6sok"), SubResource("Resource_l4wh0"), SubResource("Resource_nvus3"), SubResource("Resource_m1cas")])
+objects_to_spawn = Array[ExtResource("30_5ex8s")]([SubResource("Resource_3x120"), SubResource("Resource_l4wh0"), SubResource("Resource_nvus3"), SubResource("Resource_m1cas"), SubResource("Resource_4eoj7")])
 object_spawn_chance = 0.3
 spawn_area_size = Vector2(1029, 860)
 grid_size = Vector2(32, 32)
 metadata/_custom_type_script = "uid://b20yonmnvj5p"
+
+[node name="Sprite2D" type="Sprite2D" parent="SimpleLocation"]
+position = Vector2(-4, -62)
+texture = ExtResource("32_63nxx")
+hframes = 2
+frame = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SimpleLocation/Sprite2D"]
+position = Vector2(-2, -13)
+lifetime = 0.5
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 104.65
+gravity = Vector2(0, -980)
+initial_velocity_min = 44.03
+initial_velocity_max = 44.03
+angular_velocity_min = -688.25
+angular_velocity_max = 679.24
+linear_accel_min = -81.2
+linear_accel_max = 18.85
+damping_curve = SubResource("Curve_8805c")
+angle_min = -489.1
+angle_max = 470.9
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3cer")
+color_ramp = SubResource("Gradient_w0fr3")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SimpleLocation/Sprite2D"]
+position = Vector2(6, -7)
+lifetime = 0.5
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 104.65
+gravity = Vector2(0, -980)
+initial_velocity_min = 44.03
+initial_velocity_max = 44.03
+angular_velocity_min = -688.25
+angular_velocity_max = 679.24
+linear_accel_min = -81.2
+linear_accel_max = 18.85
+damping_curve = SubResource("Curve_8805c")
+angle_min = -489.1
+angle_max = 470.9
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3cer")
+color_ramp = SubResource("Gradient_w0fr3")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="SimpleLocation/Sprite2D"]
+position = Vector2(12, -2)
+lifetime = 0.5
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 104.65
+gravity = Vector2(0, -980)
+initial_velocity_min = 44.03
+initial_velocity_max = 44.03
+angular_velocity_min = -688.25
+angular_velocity_max = 679.24
+linear_accel_min = -81.2
+linear_accel_max = 18.85
+damping_curve = SubResource("Curve_8805c")
+angle_min = -489.1
+angle_max = 470.9
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3cer")
+color_ramp = SubResource("Gradient_w0fr3")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="SimpleLocation/Sprite2D"]
+position = Vector2(9, -12)
+lifetime = 0.5
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 104.65
+gravity = Vector2(0, -980)
+initial_velocity_min = 44.03
+initial_velocity_max = 44.03
+angular_velocity_min = -688.25
+angular_velocity_max = 679.24
+linear_accel_min = -81.2
+linear_accel_max = 18.85
+damping_curve = SubResource("Curve_8805c")
+angle_min = -489.1
+angle_max = 470.9
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3cer")
+color_ramp = SubResource("Gradient_w0fr3")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="SimpleLocation/Sprite2D"]
+position = Vector2(9, -12)
+lifetime = 0.5
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 104.65
+gravity = Vector2(0, -980)
+initial_velocity_min = 44.03
+initial_velocity_max = 44.03
+angular_velocity_min = -688.25
+angular_velocity_max = 679.24
+linear_accel_min = -81.2
+linear_accel_max = 18.85
+damping_curve = SubResource("Curve_8805c")
+angle_min = -489.1
+angle_max = 470.9
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3cer")
+color_ramp = SubResource("Gradient_w0fr3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="DayNight" parent="." instance=ExtResource("33_8805c")]
+INGAME_SPEED = 12.0

@@ -9,3 +9,8 @@ func _input(event: InputEvent) -> void:
 		$Panel/AnimationPlayer.play("TurnON")
 		start = true
 		
+
+
+func _on_button_pressed() -> void:
+	Scene.load_scene("res://Assets/Locations/world.tscn",true)
+	pass # Replace with function body.

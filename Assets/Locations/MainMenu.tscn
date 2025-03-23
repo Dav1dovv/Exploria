@@ -245,3 +245,5 @@ text = "Exit"
 libraries = {
 &"": SubResource("AnimationLibrary_6gwhn")
 }
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

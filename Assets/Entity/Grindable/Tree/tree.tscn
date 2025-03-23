@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfw6apb1ldhr2"]
+[gd_scene load_steps=11 format=3 uid="uid://cfw6apb1ldhr2"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_8jff8"]
 [ext_resource type="Texture2D" uid="uid://b4bxr48q2eddn" path="res://Assets/Entity/Grindable/Tree/Tree.png" id="2_02n64"]
@@ -17,6 +17,8 @@ description = ""
 max_count = 10
 icon = SubResource("AtlasTexture_iuyaa")
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j7qv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]
 shader = ExtResource("3_tga1f")
@@ -37,20 +39,21 @@ drop = SubResource("Resource_7mh7m")
 variations = 6
 hp = 10
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="0"]
+position = Vector2(-2, -24)
+scale = Vector2(1.8, 2.6)
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_3j7qv")
+
+[node name="Sprite2D" parent="." index="3"]
 material = SubResource("ShaderMaterial_b4w4i")
 position = Vector2(0, -5)
 texture = ExtResource("2_02n64")
 offset = Vector2(0, -22)
 hframes = 7
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_tga1f")
-
-[node name="HealthBar" parent="." index="3"]
-physics_interpolation_mode = 0
-
-[node name="VisibleOnScreenEnabler2D" parent="." index="4"]
-position = Vector2(-2, -24)
-scale = Vector2(1.8, 2.6)

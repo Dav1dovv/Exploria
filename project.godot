@@ -10,16 +10,18 @@ config_version=5
 
 [application]
 
-config/name="Loopy"
+config/name="Exploria"
 run/main_scene="uid://cugcbkyhuyq3x"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Loopy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://b04bf24wjnnha"
 config/icon="res://icon.svg"
 
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Scene="*res://loading/loading.tscn"
 
 [display]
 
