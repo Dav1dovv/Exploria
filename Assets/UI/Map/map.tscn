@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4y6qv6iimku1"]
+
+[sub_resource type="GDScript" id="GDScript_1n48l"]
+script/source = "extends Control
+
+@export var map_size: int = 5  # Размер карты в кусках
+@export var chunk_size: Vector2 = Vector2(512, 512)  # Размер острова
+@export var mini_chunk_size: Vector2 = Vector2(20, 20)  # Размер острова на мини-карте
+@export var main_map: Node2D  # Ссылка на генератор карты
+@export var player: Node2D  # Ссылка на игрока
+
+var used_positions = []
+
+func _ready():
+	queue_redraw()
+
+func _process(delta):
+	# Проверяем, изменилась ли карта
+	if main_map.used_positions != used_positions:
+		used_positions = main_map.used_positions
+		queue_redraw()  # Перерисовываем мини-карту
+
+func _draw():
+	var offset = (map_size * mini_chunk_size) * 0.5
+
+	# Рисуем острова
+	for pos in used_positions:
+		var mini_pos = pos * mini_chunk_size - offset
+		draw_rect(Rect2(mini_pos, mini_chunk_size), Color(0.2, 0.8, 0.2))  # Зелёные квадраты для островов
+
+	# Рисуем игрока
+	if player:
+		var player_pos = player.position / chunk_size * mini_chunk_size - offset
+		draw_circle(player_pos, 5, Color(1, 0, 0))  # Красный кружок для игрока
+"
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_1n48l")

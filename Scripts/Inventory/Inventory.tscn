@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://xi525y36l0mn"]
+
+[ext_resource type="Script" uid="uid://cjhhb5fkpoexf" path="res://Scripts/Inventory/Inventory.gd" id="1_smraw"]
+[ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="2_smraw"]
+[ext_resource type="Shader" uid="uid://byfq4to3i1kfx" path="res://Shaders/Blur.gdshader" id="2_uegqv"]
+[ext_resource type="Script" uid="uid://bxguvf402r2aw" path="res://Scripts/Inventory/TrashSlot.gd" id="3_08cpt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xr2d"]
+shader = ExtResource("2_uegqv")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.105
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08cpt"]
+atlas = ExtResource("2_smraw")
+region = Rect2(16, 16, 16, 16)
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smraw")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_6xr2d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -30.0
+offset_right = 49.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="TrashSlot" type="TextureRect" parent="Panel"]
+layout_mode = 2
+offset_left = 292.0
+offset_top = 141.0
+offset_right = 308.0
+offset_bottom = 157.0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_08cpt")
+expand_mode = 1
+script = ExtResource("3_08cpt")
+
+[node name="HotbarContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1

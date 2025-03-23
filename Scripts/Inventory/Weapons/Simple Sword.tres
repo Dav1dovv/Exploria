@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://ebko6adpxqvk"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Scripts/Effects/Effects.gd" id="1_sw081"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Scripts/Inventory/WeaponResource.gd" id="2_0b87e"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_7ih71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uadnr"]
+atlas = ExtResource("2_7ih71")
+region = Rect2(16, 0, 15, 16)
+
+[resource]
+script = ExtResource("2_0b87e")
+damage_strength = 3
+hit_effect = Array[ExtResource("1_sw081")]([])
+resource = "Simple Sword"
+description = "a sword for every adventurer"
+max_count = 1
+icon = SubResource("AtlasTexture_uadnr")
+metadata/_custom_type_script = "uid://ciow47xd5e58f"

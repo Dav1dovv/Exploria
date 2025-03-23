@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://kxl21wor8gcg"]
+
+[ext_resource type="Script" uid="uid://bsxhijsyipl34" path="res://Assets/Locations/world.gd" id="1_1hdpv"]
+[ext_resource type="PackedScene" uid="uid://ddpby8w0mul84" path="res://Assets/Locations/simple_location.tscn" id="2_qin47"]
+[ext_resource type="PackedScene" uid="uid://dddqybys2u2rb" path="res://Assets/Entity/Player/Player.tscn" id="6_gd1bx"]
+[ext_resource type="Script" uid="uid://cyk4kqn8ektc7" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ilcnd"]
+[ext_resource type="Script" uid="uid://ddaaayfvloopj" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_rsiau"]
+[ext_resource type="Script" uid="uid://bck0u14sis6t6" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_cinf0"]
+[ext_resource type="PackedScene" uid="uid://bvwyjon2dcdyi" path="res://Assets/Locations/dark_lands.tscn" id="20_r888f"]
+[ext_resource type="PackedScene" uid="uid://bhftilbub6dxg" path="res://Assets/Locations/far_lands.tscn" id="20_wsp0v"]
+[ext_resource type="PackedScene" uid="uid://esqdyagj8grm" path="res://Assets/Locations/SnowLands.tscn" id="21_6qtty"]
+
+[sub_resource type="Resource" id="Resource_7i08t"]
+script = ExtResource("9_cinf0")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1hdpv")
+location_chunks = Array[PackedScene]([ExtResource("2_qin47"), ExtResource("20_wsp0v"), ExtResource("21_6qtty"), ExtResource("20_r888f")])
+start_location = ExtResource("2_qin47")
+chunk_size = Vector2(1067, 890)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(0.3, 0.3)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("6_ilcnd")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_gd1bx")]
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(0.3, 0.3)
+script = ExtResource("8_rsiau")
+follow_mode = 2
+follow_target = NodePath("../CharacterBody2D")
+tween_resource = SubResource("Resource_7i08t")
+follow_offset = Vector2(0.3, 0.3)

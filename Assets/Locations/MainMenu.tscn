@@ -1,0 +1,247 @@
+[gd_scene load_steps=17 format=3 uid="uid://cugcbkyhuyq3x"]
+
+[ext_resource type="Script" uid="uid://5vf2mq2yki2p" path="res://Scripts/main_menu.gd" id="1_013bl"]
+[ext_resource type="Texture2D" uid="uid://bbro2ieawssnk" path="res://Assets/Sprites/Bg/Sun.png" id="1_jqfs7"]
+[ext_resource type="Shader" uid="uid://b6miyurlav2v7" path="res://Shaders/StarField.gdshader" id="1_liv48"]
+[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Light.png" id="2_2vvdn"]
+[ext_resource type="Script" uid="uid://oninsnp0yoa6" path="res://Assets/Sprites/Planets/PlanetLogic.gd" id="2_liv48"]
+[ext_resource type="Texture2D" uid="uid://dkjgbtx7rqrur" path="res://Assets/Sprites/Planets/planet-Sheet.png" id="2_xduke"]
+[ext_resource type="Texture2D" uid="uid://h802ii3tw21g" path="res://Assets/UI/Title/slice1.png" id="5_ia1n1"]
+[ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="8_mw2t0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ia1n1"]
+shader = ExtResource("1_liv48")
+shader_parameter/dimensions = Vector2(1024, 600)
+shader_parameter/small_stars = 100.0
+shader_parameter/small_stars_far_size = 0.6
+shader_parameter/small_stars_near_size = 1.0
+shader_parameter/large_stars = 26.425
+shader_parameter/large_stars_far_size = 0.3
+shader_parameter/large_stars_near_size = 1.0
+shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.03
+shader_parameter/additional_scroll_speed = 0.15
+
+[sub_resource type="Animation" id="Animation_8kipj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2vvdn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.254902), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_013bl"]
+_data = {
+&"RESET": SubResource("Animation_8kipj"),
+&"idle": SubResource("Animation_2vvdn")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rib0"]
+
+[sub_resource type="Animation" id="Animation_eyqou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r5ded"]
+resource_name = "TurnON"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6gwhn"]
+_data = {
+&"RESET": SubResource("Animation_eyqou"),
+&"TurnON": SubResource("Animation_r5ded")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_013bl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ia1n1")
+layout_mode = 0
+offset_left = -25.0
+offset_top = -16.0
+offset_right = 493.0
+offset_bottom = 285.0
+color = Color(0.00531513, 0.00981366, 0.0358364, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(241, 111)
+
+[node name="Light" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 0.713726, 0.239216, 0.403922)
+position = Vector2(-2, 19)
+scale = Vector2(3.13381, 3.13381)
+texture = ExtResource("2_2vvdn")
+
+[node name="Sun" type="Sprite2D" parent="Node2D"]
+position = Vector2(-4, 16)
+scale = Vector2(2.09995, 2.09995)
+texture = ExtResource("1_jqfs7")
+region_enabled = true
+region_rect = Rect2(76, 36, 39, 39)
+script = ExtResource("2_liv48")
+rotation_speed = 0.2
+
+[node name="Planet" type="Sprite2D" parent="Node2D/Sun"]
+position = Vector2(-37.6199, 44.2867)
+scale = Vector2(0.476201, 0.476201)
+texture = ExtResource("2_xduke")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("2_liv48")
+rotation_speed = 0.5
+
+[node name="Planet2" type="Sprite2D" parent="Node2D/Sun"]
+position = Vector2(41.9057, 19.5242)
+scale = Vector2(0.620558, 0.620558)
+texture = ExtResource("2_xduke")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+script = ExtResource("2_liv48")
+
+[node name="Planet3" type="Sprite2D" parent="Node2D/Sun"]
+position = Vector2(-61.9061, -5.23821)
+scale = Vector2(0.396364, 0.396364)
+texture = ExtResource("2_xduke")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+script = ExtResource("2_liv48")
+rotation_speed = 0.3
+
+[node name="Planet4" type="Sprite2D" parent="Node2D/Sun"]
+position = Vector2(18.5718, -41.9057)
+scale = Vector2(0.293035, 0.293035)
+texture = ExtResource("2_xduke")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+script = ExtResource("2_liv48")
+rotation_speed = 0.2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.5
+offset_top = 22.0
+offset_right = 158.5
+offset_bottom = 74.0
+grow_horizontal = 2
+texture = ExtResource("5_ia1n1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -34.0
+offset_right = 100.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "press any button to start"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_013bl")
+}
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 165.0
+offset_top = 118.0
+offset_right = 307.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6rib0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_mw2t0")
+text = "New Game"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_mw2t0")
+text = "Load Game"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_mw2t0")
+text = "Options"
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_mw2t0")
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+&"": SubResource("AnimationLibrary_6gwhn")
+}

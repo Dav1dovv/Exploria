@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwaixuiwrerk5"]
+
+[ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="2_bu6t6"]
+[ext_resource type="Script" uid="uid://dcevoc0tu2o6n" path="res://Scripts/Inventory/inventory_slot.gd" id="2_nthsc"]
+[ext_resource type="FontFile" uid="uid://cb03qdh67fmky" path="res://Assets/UI/Fonts/fixedsys-ligatures.ttf" id="3_nthsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nthsc"]
+atlas = ExtResource("2_bu6t6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnow5"]
+font = ExtResource("3_nthsc")
+font_size = 8
+
+[node name="InventorySlot" type="TextureButton"]
+offset_right = 20.0
+offset_bottom = 19.0
+texture_normal = SubResource("AtlasTexture_nthsc")
+script = ExtResource("2_nthsc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 19.0
+label_settings = SubResource("LabelSettings_rnow5")
+horizontal_alignment = 2
+vertical_alignment = 2

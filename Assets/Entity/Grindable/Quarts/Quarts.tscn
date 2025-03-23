@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqdaavkbyewy2"]
+
+[ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_uacc7"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="2_1lxcu"]
+[ext_resource type="Texture2D" uid="uid://8f3bvqh1pi5b" path="res://Assets/Entity/Grindable/Quarts/Quarts.png" id="2_ux3uc"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Scripts/Inventory/ItemResource.gd" id="3_la2xt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mutu1"]
+atlas = ExtResource("2_1lxcu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_fv6o2"]
+script = ExtResource("3_la2xt")
+resource = "Quarts"
+description = ""
+max_count = 10
+icon = SubResource("AtlasTexture_mutu1")
+metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q8dj"]
+size = Vector2(25, 13)
+
+[node name="Grindable" instance=ExtResource("1_uacc7")]
+drop = SubResource("Resource_fv6o2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ux3uc")
+offset = Vector2(0, -9)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, -6.5)
+shape = SubResource("RectangleShape2D_3q8dj")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="4"]
+position = Vector2(-0.5, -7.5)
+scale = Vector2(1.25, 0.75)

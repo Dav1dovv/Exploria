@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhcw3lw12mn07"]
+
+[ext_resource type="Script" uid="uid://js54upus6r1n" path="res://Assets/Chest/Chest.gd" id="1_f35kg"]
+[ext_resource type="Texture2D" uid="uid://cl0atcxb6ubd4" path="res://Assets/Chest/Simple Chest.png" id="2_ra6yt"]
+[ext_resource type="PackedScene" uid="uid://dkrjpgw4guoq0" path="res://Scripts/Interaction/interaction_area.tscn" id="3_vrsdh"]
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_f35kg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ra6yt")
+hframes = 2
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_vrsdh")]
+position = Vector2(0, 1)
+scale = Vector2(0.323179, 0.323179)
+toDo = "open"

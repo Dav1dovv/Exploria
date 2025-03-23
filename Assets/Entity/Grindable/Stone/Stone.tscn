@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciqexqa26codm"]
+
+[ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_c51n6"]
+[ext_resource type="Texture2D" uid="uid://cn628jf4np781" path="res://Assets/Entity/Grindable/Stone/Stone.png" id="2_6wp8p"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="2_t42j4"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Scripts/Inventory/ItemResource.gd" id="3_6tuht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlamf"]
+atlas = ExtResource("2_t42j4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_8fyln"]
+script = ExtResource("3_6tuht")
+resource = "Stone"
+description = ""
+max_count = 10
+icon = SubResource("AtlasTexture_mlamf")
+metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c51n6"]
+size = Vector2(29, 14)
+
+[node name="Grindable" instance=ExtResource("1_c51n6")]
+drop = SubResource("Resource_8fyln")
+variations = 2
+hp = 15
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6wp8p")
+hframes = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, -7)
+shape = SubResource("RectangleShape2D_c51n6")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="4"]
+position = Vector2(1, -9.5)
+scale = Vector2(1.4, 1.05)

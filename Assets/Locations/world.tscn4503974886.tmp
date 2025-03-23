@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://kxl21wor8gcg"]
+
+[ext_resource type="Script" uid="uid://bsxhijsyipl34" path="res://Assets/Locations/world.gd" id="1_1hdpv"]
+[ext_resource type="PackedScene" uid="uid://ddpby8w0mul84" path="res://Assets/Locations/simple_location.tscn" id="2_qin47"]
+[ext_resource type="PackedScene" uid="uid://dddqybys2u2rb" path="res://Assets/Entity/Player/Player.tscn" id="6_gd1bx"]
+[ext_resource type="Script" uid="uid://cyk4kqn8ektc7" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ilcnd"]
+[ext_resource type="Script" uid="uid://ddaaayfvloopj" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_rsiau"]
+[ext_resource type="Script" uid="uid://bck0u14sis6t6" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_cinf0"]
+[ext_resource type="Script" uid="uid://cqgkwq3ag1sh0" path="res://Assets/UI/Map/map.tres.gd" id="10_cinf0"]
+[ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="10_rsiau"]
+[ext_resource type="PackedScene" uid="uid://bvwyjon2dcdyi" path="res://Assets/Locations/dark_lands.tscn" id="20_r888f"]
+[ext_resource type="PackedScene" uid="uid://bhftilbub6dxg" path="res://Assets/Locations/far_lands.tscn" id="20_wsp0v"]
+[ext_resource type="PackedScene" uid="uid://esqdyagj8grm" path="res://Assets/Locations/SnowLands.tscn" id="21_6qtty"]
+
+[sub_resource type="Resource" id="Resource_7i08t"]
+script = ExtResource("9_cinf0")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cinf0"]
+atlas = ExtResource("10_rsiau")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7i08t"]
+texture = SubResource("AtlasTexture_cinf0")
+
+[node name="World" type="Node2D" groups=["World"]]
+y_sort_enabled = true
+script = ExtResource("1_1hdpv")
+location_chunks = Array[PackedScene]([ExtResource("2_qin47"), ExtResource("20_wsp0v"), ExtResource("21_6qtty"), ExtResource("20_r888f")])
+map_size = 2
+chunk_size = Vector2(1067, 890)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(0.3, 0.3)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("6_ilcnd")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_gd1bx")]
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(0.3, 0.3)
+script = ExtResource("8_rsiau")
+follow_mode = 2
+follow_target = NodePath("../CharacterBody2D")
+tween_resource = SubResource("Resource_7i08t")
+follow_offset = Vector2(0.3, 0.3)
+
+[node name="SimpleLocation" parent="." instance=ExtResource("2_qin47")]
+
+[node name="MiniMap" type="CanvasLayer" parent="." node_paths=PackedStringArray("main_map", "player")]
+script = ExtResource("10_cinf0")
+main_map = NodePath("..")
+player = NodePath("../CharacterBody2D")
+
+[node name="Background" type="Panel" parent="MiniMap"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7i08t")
+
+[node name="MapContainer" type="Control" parent="MiniMap/Background"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

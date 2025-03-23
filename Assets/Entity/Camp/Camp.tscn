@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsl5ki4olhwa"]
+
+[ext_resource type="Texture2D" uid="uid://cqn50d4oilyav" path="res://Assets/Entity/Camp/Camp.png" id="1_sd5kj"]
+[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Light.png" id="2_6244d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63nxx"]
+atlas = ExtResource("1_sd5kj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8805c"]
+atlas = ExtResource("1_sd5kj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3cer"]
+atlas = ExtResource("1_sd5kj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0fr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63nxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8805c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3cer")
+}],
+"loop": true,
+"name": &"Camp",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(1.9405, 1.9405)
+sprite_frames = SubResource("SpriteFrames_w0fr3")
+animation = &"Camp"
+frame = 1
+frame_progress = 0.258439
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.13
+texture = ExtResource("2_6244d")

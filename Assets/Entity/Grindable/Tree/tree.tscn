@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfw6apb1ldhr2"]
+
+[ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_8jff8"]
+[ext_resource type="Texture2D" uid="uid://b4bxr48q2eddn" path="res://Assets/Entity/Grindable/Tree/Tree.png" id="2_02n64"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="2_3j7qv"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Scripts/Inventory/ItemResource.gd" id="3_2sk1b"]
+[ext_resource type="Shader" uid="uid://bgod07nxakjop" path="res://Assets/Entity/Grindable/Shaders/Wind.gdshader" id="3_tga1f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuyaa"]
+atlas = ExtResource("2_3j7qv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_7mh7m"]
+script = ExtResource("3_2sk1b")
+resource = "Wood"
+description = ""
+max_count = 10
+icon = SubResource("AtlasTexture_iuyaa")
+metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]
+shader = ExtResource("3_tga1f")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tga1f"]
+
+[node name="Tree" instance=ExtResource("1_8jff8")]
+drop = SubResource("Resource_7mh7m")
+variations = 6
+hp = 10
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_b4w4i")
+position = Vector2(0, -5)
+texture = ExtResource("2_02n64")
+offset = Vector2(0, -22)
+hframes = 7
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_tga1f")
+
+[node name="HealthBar" parent="." index="3"]
+physics_interpolation_mode = 0
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="4"]
+position = Vector2(-2, -24)
+scale = Vector2(1.8, 2.6)
