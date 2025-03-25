@@ -17,12 +17,12 @@ max_count = 10
 icon = SubResource("AtlasTexture_mutu1")
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q8dj"]
+size = Vector2(25, 13)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1lxcu"]
 radius = 6.0
 height = 20.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q8dj"]
-size = Vector2(25, 13)
 
 [node name="Grindable" instance=ExtResource("1_uacc7")]
 drop = SubResource("Resource_fv6o2")
@@ -31,18 +31,18 @@ drop = SubResource("Resource_fv6o2")
 position = Vector2(-0.5, -7.5)
 scale = Vector2(1.25, 0.75)
 
+[node name="Shadow" parent="." index="1"]
+position = Vector2(0, -11)
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_ux3uc")
+offset = Vector2(0, -9)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-0.5, -6.5)
+shape = SubResource("RectangleShape2D_3q8dj")
+
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -6)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_1lxcu")
-
-[node name="Shadow" parent="." index="2"]
-position = Vector2(0, -11)
-
-[node name="Sprite2D" parent="." index="3"]
-texture = ExtResource("2_ux3uc")
-offset = Vector2(0, -9)
-
-[node name="CollisionShape2D" parent="." index="4"]
-position = Vector2(-0.5, -6.5)
-shape = SubResource("RectangleShape2D_3q8dj")

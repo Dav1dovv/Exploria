@@ -17,10 +17,12 @@ max_count = 5
 icon = SubResource("AtlasTexture_ixte4")
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fr3f4"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fr3f4"]
 size = Vector2(31, 51)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fr3f4"]
+radius = 8.0
+height = 24.0
 
 [node name="Mushroom" instance=ExtResource("1_6tk43")]
 drop = SubResource("Resource_l17pr")
@@ -30,17 +32,17 @@ hp = 10
 position = Vector2(-5.5, -27)
 scale = Vector2(1.55, 2.6)
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, -16)
-shape = SubResource("CapsuleShape2D_fr3f4")
-
-[node name="Shadow" parent="." index="2"]
+[node name="Shadow" parent="." index="1"]
 position = Vector2(0, -13)
 
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 position = Vector2(-3, -17)
 texture = ExtResource("3_6mjsd")
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(-5.5, -26.5)
 shape = SubResource("RectangleShape2D_fr3f4")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_fr3f4")

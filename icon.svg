@@ -592,7 +592,6 @@
 <rect x="140" y="110" width="5" height="5" fill="#578EC5" />
 <rect x="145" y="110" width="5" height="5" fill="#2D2D2D" />
 <rect x="150" y="110" width="5" height="5" fill="#2E2E2E" />
-<rect x="0" y="115" width="5" height="5" fill="#FFFFFF" opacity="0.176471" />
 <rect x="10" y="115" width="5" height="5" fill="#0D0D0D" />
 <rect x="15" y="115" width="5" height="5" fill="#697628" />
 <rect x="20" y="115" width="5" height="5" fill="#6B7829" />
@@ -773,7 +772,6 @@
 <rect x="100" y="150" width="5" height="5" fill="#121212" />
 <rect x="105" y="150" width="5" height="5" fill="#121212" />
 <rect x="110" y="150" width="5" height="5" fill="#121212" />
-<rect x="40" y="155" width="5" height="5" fill="#FFFFFF" opacity="0.176471" />
 <rect x="60" y="155" width="5" height="5" fill="#101010" />
 <rect x="65" y="155" width="5" height="5" fill="#101010" />
 <rect x="70" y="155" width="5" height="5" fill="#111111" />

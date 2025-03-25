@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cugcbkyhuyq3x"]
+[gd_scene load_steps=18 format=3 uid="uid://cugcbkyhuyq3x"]
 
 [ext_resource type="Script" uid="uid://5vf2mq2yki2p" path="res://Scripts/main_menu.gd" id="1_013bl"]
 [ext_resource type="Texture2D" uid="uid://bbro2ieawssnk" path="res://Assets/Sprites/Bg/Sun.png" id="1_jqfs7"]
@@ -8,20 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://dkjgbtx7rqrur" path="res://Assets/Sprites/Planets/planet-Sheet.png" id="2_xduke"]
 [ext_resource type="Texture2D" uid="uid://h802ii3tw21g" path="res://Assets/UI/Title/slice1.png" id="5_ia1n1"]
 [ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="8_mw2t0"]
+[ext_resource type="AudioStream" uid="uid://cf1u7g6md6x0l" path="res://Audio/BGM/Green_heaven.wav" id="9_mw2t0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ia1n1"]
 shader = ExtResource("1_liv48")
 shader_parameter/dimensions = Vector2(1024, 600)
 shader_parameter/small_stars = 100.0
 shader_parameter/small_stars_far_size = 0.6
-shader_parameter/small_stars_near_size = 1.0
-shader_parameter/large_stars = 26.425
-shader_parameter/large_stars_far_size = 0.3
-shader_parameter/large_stars_near_size = 1.0
+shader_parameter/small_stars_near_size = 0.4
+shader_parameter/large_stars = 34.355
+shader_parameter/large_stars_far_size = 0.2
+shader_parameter/large_stars_near_size = 0.3
 shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
 shader_parameter/near_stars_color = Color(1, 1, 1, 1)
-shader_parameter/base_scroll_speed = 0.03
-shader_parameter/additional_scroll_speed = 0.15
+shader_parameter/base_scroll_speed = 0.0
+shader_parameter/additional_scroll_speed = 0.03
 
 [sub_resource type="Animation" id="Animation_8kipj"]
 length = 0.001
@@ -116,7 +117,7 @@ offset_left = -25.0
 offset_top = -16.0
 offset_right = 493.0
 offset_bottom = 285.0
-color = Color(0.00531513, 0.00981366, 0.0358364, 1)
+color = Color(0.00168666, 0.00311461, 0.0113769, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(241, 111)
@@ -137,8 +138,8 @@ script = ExtResource("2_liv48")
 rotation_speed = 0.2
 
 [node name="Planet" type="Sprite2D" parent="Node2D/Sun"]
-position = Vector2(-37.6199, 44.2867)
-scale = Vector2(0.476201, 0.476201)
+position = Vector2(-31.4293, 36.6675)
+scale = Vector2(0.377713, 0.377713)
 texture = ExtResource("2_xduke")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
@@ -146,15 +147,15 @@ script = ExtResource("2_liv48")
 rotation_speed = 0.5
 
 [node name="Planet2" type="Sprite2D" parent="Node2D/Sun"]
-position = Vector2(41.9057, 19.5242)
-scale = Vector2(0.620558, 0.620558)
+position = Vector2(32.8579, 14.7623)
+scale = Vector2(0.515371, 0.515371)
 texture = ExtResource("2_xduke")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 script = ExtResource("2_liv48")
 
 [node name="Planet3" type="Sprite2D" parent="Node2D/Sun"]
-position = Vector2(-61.9061, -5.23821)
+position = Vector2(-66.6683, -5.23821)
 scale = Vector2(0.396364, 0.396364)
 texture = ExtResource("2_xduke")
 region_enabled = true
@@ -163,7 +164,7 @@ script = ExtResource("2_liv48")
 rotation_speed = 0.3
 
 [node name="Planet4" type="Sprite2D" parent="Node2D/Sun"]
-position = Vector2(18.5718, -41.9057)
+position = Vector2(32.8579, -54.287)
 scale = Vector2(0.293035, 0.293035)
 texture = ExtResource("2_xduke")
 region_enabled = true
@@ -245,5 +246,9 @@ text = "Exit"
 libraries = {
 &"": SubResource("AnimationLibrary_6gwhn")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mw2t0")
+autoplay = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

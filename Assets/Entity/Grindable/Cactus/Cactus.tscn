@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bxglpy0al00v0" path="res://Assets/Entity/Grindable/Cactus/Cactus.png" id="2_uakie"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs76o"]
+radius = 7.0
+height = 16.0
 
 [node name="Grindable" instance=ExtResource("1_hs76o")]
 variations = 5
@@ -12,10 +14,10 @@ variations = 5
 position = Vector2(-0.500001, -10.5)
 scale = Vector2(1.55, 1.45)
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, -11)
-shape = SubResource("CapsuleShape2D_hs76o")
-
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_uakie")
 hframes = 5
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_hs76o")

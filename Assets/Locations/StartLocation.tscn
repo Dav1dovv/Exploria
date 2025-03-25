@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=4 uid="uid://c4xpdbp4ug4br"]
 
-[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles.tres" id="2_5dp7v"]
+[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles/Oktavia.tres" id="2_5dp7v"]
 [ext_resource type="Script" uid="uid://d22chlprph5qx" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="11_b5x5t"]
 [ext_resource type="Script" uid="uid://di7tl2ksddb8x" path="res://addons/rmsmartshape/vertex_properties.gd" id="12_fpur0"]
 [ext_resource type="PackedScene" uid="uid://dddqybys2u2rb" path="res://Assets/Entity/Player/Player.tscn" id="12_l01hu"]

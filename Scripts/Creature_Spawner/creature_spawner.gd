@@ -2,7 +2,10 @@
 extends Node2D
 
 @export var player : CharacterBody2D
-@export var enemy: PackedScene
+@export var enemy: Array[PackedScene]
+
+func _ready() -> void:
+	print("monster spawner size: " + str(enemy.size()))
 
 var distance = 200
 var can_spawn : bool = true
@@ -28,8 +31,9 @@ func _physics_process(_delta):
 func spawn(pos : Vector2, elite : bool = false):
 	if not can_spawn and not elite:
 		return
- 
-	var enemy_instance = enemy.instantiate()
+	
+	var variation = randi_range(0,enemy.size()-1)
+	var enemy_instance = enemy[variation].instantiate()
 	#enemy_instance.position = get_random_position()
 	enemy_instance.position = pos
 	#enemy_instance.player_reference = player

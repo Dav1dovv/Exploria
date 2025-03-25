@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=4 uid="uid://esqdyagj8grm"]
 
-[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles.tres" id="1_aypp5"]
+[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles/Oktavia.tres" id="1_aypp5"]
 [ext_resource type="Script" uid="uid://3dixc2hiwc4b" path="res://Scripts/Optimization.gd" id="1_xsof0"]
 [ext_resource type="Script" uid="uid://b20yonmnvj5p" path="res://Scripts/WorldGeneration/WorldGeneration.gd" id="2_xsof0"]
 [ext_resource type="Script" uid="uid://c6g5fnbka8cm8" path="res://Scripts/WorldGeneration/WorldResource.gd" id="3_yt1id"]

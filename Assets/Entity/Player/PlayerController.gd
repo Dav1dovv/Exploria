@@ -12,11 +12,15 @@ var max_stamina = 100
 var stamina
 
 func _ready() -> void:
+	print(max_hp)
+	hp = max_hp
 	stamina = max_stamina
 	$CanvasLayer/Inventory.add_item(start_wep,1)
 	$CanvasLayer/HUD/HealthBar.init_bar(max_hp)
 	$CanvasLayer/HUD/StaminaBar.init_bar(max_stamina)
 	$CanvasLayer/HUD/StaminaBar.init_bar(stamina)
+	stamina_update()
+	
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -70,3 +74,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	
 func stamina_update():
 	$CanvasLayer/HUD/StaminaBar.update_bar(stamina)
+
+
+func _on_timer_timeout() -> void:
+	stamina -= 1
+	stamina_update()
+	$Timer.start()

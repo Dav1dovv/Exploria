@@ -1,4 +1,5 @@
 extends BaseEntity
+class_name Slime
 
 var player
 var motion : Vector2
@@ -8,6 +9,7 @@ var COIN = preload("res://Scripts/Inventory/Items/Coin.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
+	hp = max_hp
 	player = get_tree().get_first_node_in_group("Player")
 	Level = randi_range(1,6)
 	match  Level:

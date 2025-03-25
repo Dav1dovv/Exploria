@@ -12,7 +12,7 @@ var multipiler := 100
 @export_category("Stats")
 @export_range(1,100,1) var LVL := 1
 @export_range(1,100,1) var max_hp := 20
-var hp := max_hp
+var hp : int
 @export_range(1,100,1) var max_exp := 20
 var exp : int
 @export_range(1,20,1) var defence := 1
@@ -23,6 +23,7 @@ var exp : int
 @export var knockback_modifier:= 5
 
 func take_damage(enemyVelocity: Vector2, received_damage: int,attack_effect :Effect):
+	print(hp)
 	_receive_knockback(enemyVelocity)
 	print("damaged " + str(received_damage))
 	hp -= received_damage

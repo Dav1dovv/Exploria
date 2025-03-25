@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://m1beso1osc0i"]
 
-[ext_resource type="Texture2D" uid="uid://5tm3lsu65yyr" path="res://Assets/Tiles.png" id="1_d6axy"]
+[ext_resource type="Texture2D" uid="uid://5tm3lsu65yyr" path="res://Assets/Tiles/Oktavia.png" id="1_d6axy"]
 [ext_resource type="Texture2D" uid="uid://bcu5cqsx66u7a" path="res://Assets/Sprites/plains.png" id="2_7rq22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hsrfn"]

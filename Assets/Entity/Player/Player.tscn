@@ -17,15 +17,11 @@
 [ext_resource type="Script" uid="uid://cx016k2vkc7mq" path="res://Assets/Entity/Player/Gold.gd" id="10_3gu1i"]
 [ext_resource type="PackedScene" uid="uid://b0mf3l56dvooj" path="res://Assets/UI/PauseMenu/pause_menu.tscn" id="10_ob8aw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbefx"]
-radius = 6.0
-height = 22.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh2bb"]
 size = Vector2(12, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72cvu"]
-size = Vector2(13, 7)
+size = Vector2(14, 9)
 
 [sub_resource type="Animation" id="Animation_gfwb7"]
 resource_name = "Attack"
@@ -1032,6 +1028,10 @@ _data = {
 &"Walk": SubResource("Animation_58md0")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbefx"]
+radius = 5.0
+height = 10.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jh2bb"]
 atlas = ExtResource("8_3gu1i")
 region = Rect2(97, 17, 30, 30)
@@ -1057,13 +1057,9 @@ y_sort_enabled = true
 collision_layer = 16
 script = ExtResource("1_jbefx")
 start_wep = ExtResource("2_bxcuo")
+max_hp = 100
+max_exp = 100
 knockback_modifier = 10
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = -1
-position = Vector2(-1, -11)
-shape = SubResource("CapsuleShape2D_jbefx")
-debug_color = Color(0.996052, 0, 0.194091, 0.42)
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 16
@@ -1136,7 +1132,7 @@ attack_node = NodePath("../../../../../../../weapon")
 player = NodePath("../../../../../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/Body/Hands/RightHand/Weapon/AttackPoint/HitBox"]
-position = Vector2(14.5, -5.5)
+position = Vector2(15, -5.5)
 shape = SubResource("RectangleShape2D_72cvu")
 disabled = true
 
@@ -1156,6 +1152,12 @@ region_rect = Rect2(7, 6, 15, 13)
 libraries = {
 &"": SubResource("AnimationLibrary_pq0o2")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
+position = Vector2(-1, -5)
+shape = SubResource("CapsuleShape2D_jbefx")
+debug_color = Color(0.996052, 0, 0.194091, 0.42)
 
 [node name="weapon" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]
 unique_name_in_owner = true
@@ -1205,7 +1207,7 @@ offset_top = -34.0
 offset_right = 185.0
 offset_bottom = -4.0
 grow_vertical = 0
-value = 50.0
+value = 100.0
 fill_mode = 3
 texture_under = SubResource("AtlasTexture_jh2bb")
 texture_over = SubResource("AtlasTexture_1aajc")
@@ -1310,4 +1312,9 @@ columns = 5
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

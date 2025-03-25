@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://kxl21wor8gcg"]
+[gd_scene load_steps=63 format=4 uid="uid://kxl21wor8gcg"]
 
 [ext_resource type="Script" uid="uid://bsxhijsyipl34" path="res://Assets/Locations/world.gd" id="1_1hdpv"]
 [ext_resource type="PackedScene" uid="uid://ddpby8w0mul84" path="res://Assets/Locations/simple_location.tscn" id="2_qin47"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bbro2ieawssnk" path="res://Assets/Sprites/Bg/Sun.png" id="7_rremp"]
 [ext_resource type="Script" uid="uid://ddaaayfvloopj" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_rsiau"]
 [ext_resource type="Script" uid="uid://bck0u14sis6t6" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_cinf0"]
-[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles.tres" id="19_wsp0v"]
+[ext_resource type="PackedScene" uid="uid://d08j2bg0mrf0d" path="res://Assets/Entity/Alien/Alien.tscn" id="10_c3cer"]
+[ext_resource type="PackedScene" uid="uid://dlb3vgrxce2tx" path="res://Assets/Entity/SimpleEnnemy/Meduza.tscn" id="11_w0fr3"]
+[ext_resource type="Script" path="res://Scripts/BetterCam.gd" id="12_je22b"]
+[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles/Oktavia.tres" id="19_wsp0v"]
 [ext_resource type="Script" uid="uid://d22chlprph5qx" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="20_ff6a8"]
 [ext_resource type="PackedScene" uid="uid://bvwyjon2dcdyi" path="res://Assets/Locations/dark_lands.tscn" id="20_r888f"]
 [ext_resource type="PackedScene" uid="uid://bhftilbub6dxg" path="res://Assets/Locations/far_lands.tscn" id="20_wsp0v"]
@@ -54,7 +57,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="Resource" id="Resource_8805c"]
+[sub_resource type="Resource" id="Resource_5ex8s"]
 script = ExtResource("21_63nxx")
 texture_idx = 0
 flip = false
@@ -65,9 +68,9 @@ script = ExtResource("22_8805c")
 position = Vector2(-529.703, -486.142)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_8805c")
+properties = SubResource("Resource_5ex8s")
 
-[sub_resource type="Resource" id="Resource_5ex8s"]
+[sub_resource type="Resource" id="Resource_wygtn"]
 script = ExtResource("21_63nxx")
 texture_idx = 0
 flip = false
@@ -78,7 +81,7 @@ script = ExtResource("22_8805c")
 position = Vector2(-532.877, 419.989)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_5ex8s")
+properties = SubResource("Resource_wygtn")
 
 [sub_resource type="Resource" id="Resource_w0fr3"]
 script = ExtResource("21_63nxx")
@@ -93,7 +96,7 @@ point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_w0fr3")
 
-[sub_resource type="Resource" id="Resource_wygtn"]
+[sub_resource type="Resource" id="Resource_83hn2"]
 script = ExtResource("21_63nxx")
 texture_idx = 0
 flip = false
@@ -104,9 +107,9 @@ script = ExtResource("22_8805c")
 position = Vector2(564.375, -485.975)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_wygtn")
+properties = SubResource("Resource_83hn2")
 
-[sub_resource type="Resource" id="Resource_83hn2"]
+[sub_resource type="Resource" id="Resource_5wxj2"]
 script = ExtResource("21_63nxx")
 texture_idx = 0
 flip = false
@@ -117,7 +120,7 @@ script = ExtResource("22_8805c")
 position = Vector2(-529.703, -486.142)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
-properties = SubResource("Resource_83hn2")
+properties = SubResource("Resource_5wxj2")
 
 [sub_resource type="Resource" id="Resource_b45wj"]
 script = ExtResource("23_c3cer")
@@ -316,31 +319,32 @@ texture = ExtResource("7_rremp")
 
 [node name="CreatureSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_cinf0")]
 position = Vector2(0.3, 0.3)
-player = NodePath("../CharacterBody2D")
-enemy = ExtResource("7_7i08t")
+player = NodePath("../Player")
+enemy = Array[PackedScene]([ExtResource("7_7i08t"), ExtResource("10_c3cer"), ExtResource("11_w0fr3")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-2.7, -5.7)
+position = Vector2(31.4, -58.6)
 process_callback = 0
+script = ExtResource("12_je22b")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("6_ilcnd")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("6_gd1bx")]
-position = Vector2(-3, -6)
+[node name="Player" parent="." instance=ExtResource("6_gd1bx")]
+position = Vector2(31, -59)
 speed = 5
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-2.7, -5.7)
+position = Vector2(31.4, -58.6)
 script = ExtResource("8_rsiau")
 follow_mode = 2
-follow_target = NodePath("../CharacterBody2D")
+follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_7i08t")
-follow_offset = Vector2(0.3, 0.3)
+follow_offset = Vector2(0.4, 0.4)
 
 [node name="SimpleLocation" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -403,6 +407,7 @@ metadata/_custom_type_script = "uid://b20yonmnvj5p"
 
 [node name="Sprite2D" type="Sprite2D" parent="SimpleLocation"]
 position = Vector2(-4, -62)
+rotation = -0.703882
 texture = ExtResource("32_63nxx")
 hframes = 2
 frame = 1
@@ -524,4 +529,4 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="DayNight" parent="." instance=ExtResource("33_8805c")]
-INGAME_SPEED = 12.0
+INGAME_SPEED = 4.0

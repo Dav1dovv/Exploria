@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=4 uid="uid://bvwyjon2dcdyi"]
 
 [ext_resource type="Script" uid="uid://3dixc2hiwc4b" path="res://Scripts/Optimization.gd" id="1_bt6ur"]
-[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles.tres" id="1_flbph"]
+[ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Tiles/Oktavia.tres" id="1_flbph"]
 [ext_resource type="Script" uid="uid://b20yonmnvj5p" path="res://Scripts/WorldGeneration/WorldGeneration.gd" id="2_bt6ur"]
 [ext_resource type="Script" uid="uid://c6g5fnbka8cm8" path="res://Scripts/WorldGeneration/WorldResource.gd" id="3_4smfj"]
 [ext_resource type="PackedScene" uid="uid://bjaeg0ojtx7bu" path="res://Assets/Entity/Grindable/Bush/Bush.tscn" id="4_3shb6"]

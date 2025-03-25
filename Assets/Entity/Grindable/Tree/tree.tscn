@@ -18,8 +18,6 @@ max_count = 10
 icon = SubResource("AtlasTexture_iuyaa")
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j7qv"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]
 shader = ExtResource("3_tga1f")
 shader_parameter/speed = 1.0
@@ -34,6 +32,9 @@ shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tga1f"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j7qv"]
+radius = 6.08276
+
 [node name="Tree" instance=ExtResource("1_8jff8")]
 drop = SubResource("Resource_7mh7m")
 variations = 6
@@ -43,17 +44,16 @@ hp = 10
 position = Vector2(-2, -24)
 scale = Vector2(1.8, 2.6)
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, -10)
-shape = SubResource("CapsuleShape2D_3j7qv")
-
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_b4w4i")
 position = Vector2(0, -5)
 texture = ExtResource("2_02n64")
 offset = Vector2(0, -22)
 hframes = 7
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(1, -10)
 shape = SubResource("RectangleShape2D_tga1f")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("CircleShape2D_3j7qv")
