@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://x3hl5t5dedbm"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_dj0mk"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_bb0ml"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="3_1cggv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uadnr"]
+atlas = ExtResource("2_bb0ml")
+region = Rect2(48, 0, 15, 16)
+
+[resource]
+script = ExtResource("3_1cggv")
+damage_strength = 8
+hit_effect = Array[ExtResource("1_dj0mk")]([])
+is_weapon = true
+hit_distance = 20.0
+resource = "Big Laser Sword"
+description = "a sword for every adventurer
+DMG : 8
+Distance : 20.0"
+max_count = 1
+icon = SubResource("AtlasTexture_uadnr")
+item_path = "res://Assets/Scripts/Inventory/Weapons/Big Laser Sword.tres"
+metadata/_custom_type_script = "uid://ciow47xd5e58f"

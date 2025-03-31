@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://ebko6adpxqvk"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_lh1et"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_2li1n"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="3_3vxt4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uadnr"]
+atlas = ExtResource("2_2li1n")
+region = Rect2(16, 0, 15, 16)
+
+[resource]
+script = ExtResource("3_3vxt4")
+damage_strength = 3
+hit_effect = Array[ExtResource("1_lh1et")]([])
+is_weapon = true
+hit_distance = 14.0
+resource = "Laser Sword"
+description = "a sword for every adventurer
+DMG: 3
+Distance : 14.0"
+max_count = 1
+icon = SubResource("AtlasTexture_uadnr")
+item_path = "res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres"
+metadata/_custom_type_script = "uid://ciow47xd5e58f"

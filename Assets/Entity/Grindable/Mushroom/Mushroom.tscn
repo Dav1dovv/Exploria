@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b13lyodynary4"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_6tk43"]
-[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="2_fr3f4"]
-[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Scripts/Inventory/ItemResource.gd" id="3_4av1p"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_fr3f4"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="3_4av1p"]
 [ext_resource type="Texture2D" uid="uid://bxq5peroy32so" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.png" id="3_6mjsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixte4"]

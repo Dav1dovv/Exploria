@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Food" load_steps=7 format=3 uid="uid://b3tjvjywvicrp"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_7v8sf"]
+[ext_resource type="Script" uid="uid://ba74vmx5ciy0l" path="res://Assets/Scripts/Effects/Heal.gd" id="2_4x5tx"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_nm46c"]
+[ext_resource type="Script" uid="uid://cmviptt7oir8l" path="res://Assets/Scripts/Inventory/FoodResource.gd" id="2_vnsra"]
+
+[sub_resource type="Resource" id="Resource_ktf5p"]
+script = ExtResource("2_4x5tx")
+name = "Heal"
+effect_value = 10
+duration = 60.0
+metadata/_custom_type_script = "uid://ba74vmx5ciy0l"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5tx"]
+atlas = ExtResource("2_nm46c")
+region = Rect2(34, 51, 14, 12)
+
+[resource]
+script = ExtResource("2_vnsra")
+effects = Array[ExtResource("1_7v8sf")]([SubResource("Resource_ktf5p")])
+resource = "Meat"
+description = "this is look's strange!"
+max_count = 0
+icon = SubResource("AtlasTexture_4x5tx")
+item_path = "res://Assets/Scripts/Inventory/Items/Meat.tres"
+metadata/_custom_type_script = "uid://cmviptt7oir8l"

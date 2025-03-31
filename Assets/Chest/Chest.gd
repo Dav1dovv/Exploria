@@ -1,7 +1,9 @@
 @icon("res://IconGodotNode/node_2D/icon_chest.png")
 extends Node2D
 
+@export var drop_weapons : Array[Weapon]
 @onready var interaction = $InteractionArea
+@onready var particles: GPUParticles2D = $GPUParticles2D
 var is_opened = false
 
 func _ready():
@@ -11,9 +13,10 @@ func _ready():
 
 func open():
 	if !is_opened:
-		get_tree().get_first_node_in_group("World").generate_new_islands()
-		get_tree().get_first_node_in_group("NotificationManager").show_notification("Unlocked new Island", 2.0, null)
-		
-		print("open")
+		particles.restart()
+		particles.emitting
+		var rand_drop = randi_range(0,drop_weapons.size()-1)
+		get_tree().get_first_node_in_group("NotificationManager").show_notification("you finded " + drop_weapons[rand_drop].resource, 2.0, drop_weapons[rand_drop].icon)
+		get_tree().get_first_node_in_group("Inventory").add_item(drop_weapons[rand_drop],1)
 		$Sprite2D.frame = 1
 		is_opened = true

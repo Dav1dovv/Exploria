@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpo14lf8d3sbj"]
+[gd_scene load_steps=6 format=3 uid="uid://cpo14lf8d3sbj"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_hs76o"]
+[ext_resource type="Script" uid="uid://7y8pem5ic3l0" path="res://Assets/Entity/Grindable/Cactus/cactus.gd" id="2_7lwf2"]
 [ext_resource type="Texture2D" uid="uid://bxglpy0al00v0" path="res://Assets/Entity/Grindable/Cactus/Cactus.png" id="2_uakie"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs76o"]
 radius = 7.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uakie"]
+size = Vector2(31, 23)
+
 [node name="Grindable" instance=ExtResource("1_hs76o")]
-variations = 5
+script = ExtResource("2_7lwf2")
+variations = 4
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="0"]
 position = Vector2(-0.500001, -10.5)
@@ -21,3 +26,12 @@ hframes = 5
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_hs76o")
+
+[node name="Area2D" type="Area2D" parent="." index="6"]
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_uakie")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

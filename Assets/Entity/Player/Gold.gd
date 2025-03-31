@@ -1,5 +1,5 @@
 extends TextureRect
-var COIN = preload("res://Scripts/Inventory/Items/Coin.tres")
+var COIN = preload("res://Assets/Scripts/Inventory/Items/Coin.tres")
 
 func _ready() -> void:
 	COIN.count = 50

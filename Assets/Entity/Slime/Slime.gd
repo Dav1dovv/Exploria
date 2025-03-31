@@ -5,7 +5,7 @@ var player
 var motion : Vector2
 @export var Level :int
 @export var damage_strenght : int
-var COIN = preload("res://Scripts/Inventory/Items/Coin.tres")
+var COIN = preload("res://Assets/Scripts/Inventory/Items/Coin.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 
 	pass # Replace with function body.
 func damage(knnockback,damage):
-	var FLOAT_TEXT = preload("res://Scripts/FloatText/FloatText.tscn")
+	var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")
 	var object = FLOAT_TEXT.instantiate()
 	object.text =str(damage)
 	object.position += Vector2(randf_range(-500,500),randf_range(-500,500))

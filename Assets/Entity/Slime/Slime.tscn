@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bruy23m30yewu"]
+[gd_scene load_steps=11 format=3 uid="uid://bruy23m30yewu"]
 
 [ext_resource type="Script" uid="uid://dvtft7hg2c28s" path="res://Assets/Entity/Slime/Slime.gd" id="1_rxcwq"]
 [ext_resource type="Texture2D" uid="uid://cf8y7a4uxljkv" path="res://Assets/Entity/Slime/Slime.png" id="2_l85ng"]
@@ -252,6 +252,27 @@ _data = {
 &"Walk": SubResource("Animation_fdc3i")
 }
 
+[sub_resource type="Gradient" id="Gradient_ux4bc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfd17"]
+gradient = SubResource("Gradient_ux4bc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dm0p7"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 26.06
+direction = Vector3(0.5, -0.5, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 700, 0)
+damping_min = 100.0
+damping_max = 800.0
+scale_max = 3.0
+color = Color(0.286275, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_mfd17")
+
 [node name="SLime" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 16
@@ -289,6 +310,15 @@ libraries = {
 wait_time = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, -4)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dm0p7")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

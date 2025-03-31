@@ -1,12 +1,14 @@
 @icon("res://IconGodotNode/node_2D/icon_human_controller.png")
 extends BaseEntity
+class_name Player
+
+@onready var attack_point: Node2D = $Skin/Body/Hands/AttackPoint
 
 var dir :Vector2
 var mouse_look
 var is_attack :bool = false
 enum hand {Idle,Attack,Walk}
 var hand_state = hand.Idle
-@export var start_wep :Weapon
 
 var max_stamina = 100
 var stamina
@@ -15,7 +17,6 @@ func _ready() -> void:
 	print(max_hp)
 	hp = max_hp
 	stamina = max_stamina
-	$CanvasLayer/Inventory.add_item(start_wep,1)
 	$CanvasLayer/HUD/HealthBar.init_bar(max_hp)
 	$CanvasLayer/HUD/StaminaBar.init_bar(max_stamina)
 	$CanvasLayer/HUD/StaminaBar.init_bar(stamina)
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	mouse_look = get_global_mouse_position()
 	dir = Input.get_vector("Left","Right","Up","Down")
 	
+	attack_point.look_at(mouse_look)
 	move_and_slide()
 	#flip
 	if mouse_look.x > position.x:
@@ -66,7 +68,8 @@ func _physics_process(delta: float) -> void:
 		is_attack = false
 	if $CanvasLayer/HUD/DebugUI.visible:
 		$CanvasLayer/HUD/DebugUI/Label.text = "FPS: " + str(Engine.get_frames_per_second())
-
+	
+	update_health()
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	var e = area.get_parent()
 	take_damage(e.global_position,e.damage_strenght,null)
@@ -75,6 +78,9 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 func stamina_update():
 	$CanvasLayer/HUD/StaminaBar.update_bar(stamina)
 
+func update_health():
+	$CanvasLayer/HUD/HealthBar.update_bar(hp)
+	
 
 func _on_timer_timeout() -> void:
 	stamina -= 1

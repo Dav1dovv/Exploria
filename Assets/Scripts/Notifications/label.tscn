@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmndtvu2rll26"]
+
+[ext_resource type="FontFile" uid="uid://cb03qdh67fmky" path="res://Assets/UI/Fonts/fixedsys-ligatures.ttf" id="1_dv6vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve7px"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.211765)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7skvd"]
+font = ExtResource("1_dv6vs")
+font_size = 66
+
+[node name="Label" type="Label"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_ve7px")
+text = "Wood +1"
+label_settings = SubResource("LabelSettings_7skvd")

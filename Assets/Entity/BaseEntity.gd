@@ -21,8 +21,11 @@ var exp : int
 @export_group("KnockBack")
 @export var receive_knockback := true
 @export var knockback_modifier:= 5
+@onready var particles: GPUParticles2D = $GPUParticles2D
 
 func take_damage(enemyVelocity: Vector2, received_damage: int,attack_effect :Effect):
+	particles.restart()
+	particles.emitting
 	print(hp)
 	_receive_knockback(enemyVelocity)
 	print("damaged " + str(received_damage))
@@ -42,5 +45,13 @@ func _receive_knockback(damage_pos: Vector2):
 
 	#_damage_effect()
 
+##effects
+func Heal(value):
+	hp += value
 
-#func take_effect():
+func Take_life(value):
+	max_hp = max_hp + 10
+	hp += value
+	var delay = Timer.new()
+	await delay.timeout
+	max_hp = max_hp - 10

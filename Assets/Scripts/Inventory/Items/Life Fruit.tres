@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Food" load_steps=7 format=3 uid="uid://npoln7sqncff"]
+
+[ext_resource type="Script" uid="uid://cmviptt7oir8l" path="res://Assets/Scripts/Inventory/FoodResource.gd" id="1_2l5av"]
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_65oti"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_1hafs"]
+[ext_resource type="Script" uid="uid://bc3gs4opetygy" path="res://Assets/Scripts/Effects/Heal_Life.gd" id="2_8o63j"]
+
+[sub_resource type="Resource" id="Resource_gk7b7"]
+script = ExtResource("2_8o63j")
+name = "heal life"
+effect_value = 10
+duration = 15.0
+metadata/_custom_type_script = "uid://bc3gs4opetygy"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o63j"]
+atlas = ExtResource("2_1hafs")
+region = Rect2(51, 17, 11, 12)
+
+[resource]
+script = ExtResource("1_2l5av")
+effects = Array[ExtResource("1_65oti")]([SubResource("Resource_gk7b7")])
+resource = "Life Fruit"
+description = "Delicious fruit give godnes life."
+max_count = 5
+icon = SubResource("AtlasTexture_8o63j")
+item_path = "res://Assets/Scripts/Inventory/Items/Life Fruit.tres"
+metadata/_custom_type_script = "uid://cmviptt7oir8l"

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6cq8e8oxpptd"]
+
+[ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_4lso6"]
+[ext_resource type="Resource" uid="uid://npoln7sqncff" path="res://Assets/Scripts/Inventory/Items/Life Fruit.tres" id="2_lp8un"]
+[ext_resource type="Shader" uid="uid://bgod07nxakjop" path="res://Assets/Entity/Grindable/Shaders/Wind.gdshader" id="4_e27s1"]
+[ext_resource type="Texture2D" uid="uid://b4bxr48q2eddn" path="res://Assets/Entity/Grindable/Tree/Tree.png" id="5_tj2ba"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]
+shader = ExtResource("4_e27s1")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tga1f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j7qv"]
+radius = 6.08276
+
+[node name="Tree" instance=ExtResource("1_4lso6")]
+drop = ExtResource("2_lp8un")
+random_sprite = false
+hp = 10
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="0"]
+position = Vector2(-2, -24)
+scale = Vector2(1.8, 2.6)
+
+[node name="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_b4w4i")
+position = Vector2(0, -5)
+texture = ExtResource("5_tj2ba")
+offset = Vector2(0, -22)
+hframes = 7
+frame = 2
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_tga1f")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("CircleShape2D_3j7qv")

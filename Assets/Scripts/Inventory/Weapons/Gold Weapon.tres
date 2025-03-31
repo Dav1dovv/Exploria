@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dbj026c88u1df"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_ipwqq"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_i646x"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="3_ptkdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lc2d"]
+atlas = ExtResource("2_i646x")
+region = Rect2(31, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_ptkdu")
+damage_strength = 5
+hit_effect = Array[ExtResource("1_ipwqq")]([])
+is_weapon = true
+hit_distance = 16.0
+resource = "Yellow slayer"
+description = "you're YEllOW?
+DMG : 5
+Distance : 16.0"
+max_count = 1
+icon = SubResource("AtlasTexture_2lc2d")
+item_path = "res://Assets/Scripts/Inventory/Weapons/Gold Weapon.tres"
+metadata/_custom_type_script = "uid://ciow47xd5e58f"

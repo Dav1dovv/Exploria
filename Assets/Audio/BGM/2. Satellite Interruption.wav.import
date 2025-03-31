@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7uucm4ce3xu4"
+path="res://.godot/imported/2. Satellite Interruption.wav-a44336cc269e4befd69245650b9ec3cc.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BGM/2. Satellite Interruption.wav"
+dest_files=["res://.godot/imported/2. Satellite Interruption.wav-a44336cc269e4befd69245650b9ec3cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

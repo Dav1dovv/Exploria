@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RSC" load_steps=4 format=3 uid="uid://dhfoor6bb7dnn"]
+
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="1_qimpp"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="1_rg62j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aban0"]
+atlas = ExtResource("1_rg62j")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_qimpp")
+resource = "Coin"
+description = ""
+max_count = 999
+icon = SubResource("AtlasTexture_aban0")
+item_path = "res://Assets/Scripts/Inventory/Items/Coin.tres"
+metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

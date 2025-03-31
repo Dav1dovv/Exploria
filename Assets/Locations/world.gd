@@ -9,9 +9,9 @@ var used_positions = []
 var save_path = "user://map_save.json"
 
 func _ready():
-	load_map()
-	if used_positions.is_empty():
-		generate_map()
+	#load_map()
+	#if used_positions.is_empty():
+		#generate_map()
 	pass
 
 func generate_map():

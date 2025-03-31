@@ -5,7 +5,7 @@ var player
 var motion : Vector2
 @export var Level :int
 @export var damage_strenght : int
-var COIN = preload("res://Scripts/Inventory/Items/Coin.tres")
+@export var drop: Array[RSC]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 	pass # Replace with function body.
 func damage(knnockback,damage):
-	var FLOAT_TEXT = preload("res://Scripts/FloatText/FloatText.tscn")
+	var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")
 	var object = FLOAT_TEXT.instantiate()
 	object.text =str(damage)
 	object.position += Vector2(randf_range(-500,500),randf_range(-500,500))
@@ -37,7 +37,9 @@ func damage(knnockback,damage):
 	call_deferred("add_child",object)
 	take_damage(knnockback,damage,null)
 	if hp<= 0:
-		var drop = randi_range(1,10)
-		get_tree().get_first_node_in_group("NotificationManager").show_notification(COIN.resource + " +" + str(drop), 1.0,COIN.icon)
-		COIN.count += 5
+		var drop_itm = randi_range(0, randi() % drop.size())
+		var drop_cnt = randi() % 10
+		Notification.show_notification(drop[drop_itm].resource + " +" + str(drop_cnt), 1.0,drop[drop_itm].icon)
+		if drop_itm == 0:drop[drop_itm].count += drop_cnt
+		else: get_tree().get_first_node_in_group("Inventory").add_item(drop[drop_itm],drop_cnt)
 		queue_free()

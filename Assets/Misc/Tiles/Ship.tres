@@ -1,0 +1,84 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d3wwtp1krxihj"]
+
+[ext_resource type="Texture2D" uid="uid://bxmd36b0u3o7x" path="res://Assets/Misc/Tiles/Ship_sheet.png" id="1_xpgmv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_um4o0"]
+texture = ExtResource("1_xpgmv")
+1:0/0 = 0
+1:0/0/z_index = 10
+1:0/0/y_sort_origin = 7
+2:0/0 = 0
+2:0/0/z_index = 10
+2:0/0/y_sort_origin = 7
+3:0/0 = 0
+3:0/0/z_index = 10
+3:0/0/y_sort_origin = 7
+1:1/0 = 0
+1:1/0/z_index = 10
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/z_index = 10
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/z_index = 10
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+1:2/size_in_atlas = Vector2i(1, 2)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 8)
+1:2/0/z_index = -5
+1:2/0/y_sort_origin = -8
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.82385, -15.8276, 8.00371, -16.0074, 8, 8, -8, 8)
+2:2/size_in_atlas = Vector2i(1, 2)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, 8)
+2:2/0/z_index = -5
+2:2/0/y_sort_origin = 7
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.82385, -15.8276, 8.00371, -16.0074, 8, 8, -8, 8)
+3:2/size_in_atlas = Vector2i(1, 2)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 8)
+3:2/0/z_index = -5
+3:2/0/y_sort_origin = -8
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.82385, -15.8276, 8.00371, -16.0074, 8, 8, -8, 8)
+4:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+6:1/0 = 0
+7:2/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+8:2/0 = 0
+8:1/0 = 0
+7:1/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+8:0/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+0:5/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+5:3/0 = 0
+4:4/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+0:3/0 = 0
+2:7/0 = 0
+3:6/size_in_atlas = Vector2i(2, 2)
+3:6/0 = 0
+3:6/0/texture_origin = Vector2i(0, 8)
+
+[resource]
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_um4o0")

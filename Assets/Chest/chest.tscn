@@ -1,11 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhcw3lw12mn07"]
+[gd_scene load_steps=16 format=3 uid="uid://bhcw3lw12mn07"]
 
 [ext_resource type="Script" uid="uid://js54upus6r1n" path="res://Assets/Chest/Chest.gd" id="1_f35kg"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="2_5vlhq"]
 [ext_resource type="Texture2D" uid="uid://cl0atcxb6ubd4" path="res://Assets/Chest/Simple Chest.png" id="2_ra6yt"]
-[ext_resource type="PackedScene" uid="uid://dkrjpgw4guoq0" path="res://Scripts/Interaction/interaction_area.tscn" id="3_vrsdh"]
+[ext_resource type="Resource" uid="uid://dbj026c88u1df" path="res://Assets/Scripts/Inventory/Weapons/Gold Weapon.tres" id="3_l1dnu"]
+[ext_resource type="PackedScene" uid="uid://dkrjpgw4guoq0" path="res://Assets/Scripts/Interaction/interaction_area.tscn" id="3_vrsdh"]
+[ext_resource type="Resource" uid="uid://x3hl5t5dedbm" path="res://Assets/Scripts/Inventory/Weapons/Big Laser Sword.tres" id="4_5ltu2"]
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="5_tb80t"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="6_mokxy"]
+[ext_resource type="Texture2D" uid="uid://c1gqv4wqqt5o7" path="res://Assets/Chest/Open.png" id="9_l1dnu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4aai"]
+atlas = ExtResource("6_mokxy")
+region = Rect2(79, 0, 17, 16)
+
+[sub_resource type="Resource" id="Resource_kphk4"]
+script = ExtResource("2_5vlhq")
+damage_strength = 10
+hit_effect = Array[ExtResource("5_tb80t")]([])
+is_weapon = false
+hit_distance = 0.0
+resource = "Slayer"
+description = "amazing power in your hand"
+max_count = 1
+icon = SubResource("AtlasTexture_g4aai")
+metadata/_custom_type_script = "uid://ciow47xd5e58f"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5ltu2"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_tb80t"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5jfng"]
+gradient = SubResource("Gradient_tb80t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mokxy"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 26.06
+direction = Vector3(0.5, -0.5, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 700, 0)
+damping_min = 100.0
+damping_max = 800.0
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_5jfng")
+anim_speed_max = 1.0
 
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_f35kg")
+drop_weapons = Array[ExtResource("2_5vlhq")]([ExtResource("3_l1dnu"), ExtResource("4_5ltu2"), SubResource("Resource_kphk4")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ra6yt")
@@ -15,3 +65,15 @@ hframes = 2
 position = Vector2(0, 1)
 scale = Vector2(0.323179, 0.323179)
 toDo = "open"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_5ltu2")
+position = Vector2(2, -4)
+rotation = -1.0472
+emitting = false
+amount = 20
+texture = ExtResource("9_l1dnu")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mokxy")

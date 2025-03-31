@@ -1,14 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://cugcbkyhuyq3x"]
+[gd_scene load_steps=33 format=3 uid="uid://cugcbkyhuyq3x"]
 
-[ext_resource type="Script" uid="uid://5vf2mq2yki2p" path="res://Scripts/main_menu.gd" id="1_013bl"]
-[ext_resource type="Texture2D" uid="uid://bbro2ieawssnk" path="res://Assets/Sprites/Bg/Sun.png" id="1_jqfs7"]
-[ext_resource type="Shader" uid="uid://b6miyurlav2v7" path="res://Shaders/StarField.gdshader" id="1_liv48"]
-[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Light.png" id="2_2vvdn"]
+[ext_resource type="Script" uid="uid://5vf2mq2yki2p" path="res://Assets/Scripts/main_menu.gd" id="1_013bl"]
+[ext_resource type="Shader" uid="uid://b6miyurlav2v7" path="res://Assets/Shaders/StarField.gdshader" id="1_liv48"]
+[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="2_2vvdn"]
 [ext_resource type="Script" uid="uid://oninsnp0yoa6" path="res://Assets/Sprites/Planets/PlanetLogic.gd" id="2_liv48"]
 [ext_resource type="Texture2D" uid="uid://dkjgbtx7rqrur" path="res://Assets/Sprites/Planets/planet-Sheet.png" id="2_xduke"]
+[ext_resource type="Texture2D" uid="uid://bb4jcjc6dviwr" path="res://Assets/Sprites/PlanetX-Sheet.png" id="3_eyqou"]
+[ext_resource type="Texture2D" uid="uid://bjm2jspox4fff" path="res://Assets/Sprites/Ships/ship-Sheet.png" id="4_eyqou"]
 [ext_resource type="Texture2D" uid="uid://h802ii3tw21g" path="res://Assets/UI/Title/slice1.png" id="5_ia1n1"]
+[ext_resource type="Texture2D" uid="uid://87lfgkq3ow3j" path="res://Assets/Sprites/Planets/Orbit.png" id="7_6rib0"]
 [ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="8_mw2t0"]
-[ext_resource type="AudioStream" uid="uid://cf1u7g6md6x0l" path="res://Audio/BGM/Green_heaven.wav" id="9_mw2t0"]
+[ext_resource type="AudioStream" uid="uid://dhehv5q1oj3np" path="res://Assets/Audio/BGM/3. Goodbye Sweet Alien.wav" id="10_6rib0"]
+[ext_resource type="Texture2D" uid="uid://cwcmiu7u2eghn" path="res://Assets/Sprites/Ships/ship-0.png" id="12_6gwhn"]
+[ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="12_8g5d0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ia1n1"]
 shader = ExtResource("1_liv48")
@@ -23,6 +27,59 @@ shader_parameter/far_stars_color = Color(0.5, 0, 1, 1)
 shader_parameter/near_stars_color = Color(1, 1, 1, 1)
 shader_parameter/base_scroll_speed = 0.0
 shader_parameter/additional_scroll_speed = 0.03
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8g5d0"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_7pq8h"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, 500), 0.0, 0.0, 0, 0, Vector2(1, -500), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_api1x"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 28.3356), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jf2rj"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.503378, 46.2173), 270.53, 270.53, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_csjuw"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.510135, -200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_vglor"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_v7ipn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n7oqv"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6gwhn"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_eyqou"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.912162, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.186382), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r5ded"]
+load_path = "res://.godot/imported/Sun.png-d61feba2185ee02881140b5e5b996715.ctex"
 
 [sub_resource type="Animation" id="Animation_8kipj"]
 length = 0.001
@@ -119,19 +176,186 @@ offset_right = 493.0
 offset_bottom = 285.0
 color = Color(0.00168666, 0.00311461, 0.0113769, 1)
 
+[node name="GPUParticles2D6" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8g5d0")
+position = Vector2(-4, -3)
+texture = ExtResource("3_eyqou")
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 162.74
+gravity = Vector2(0, 10)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_curve = SubResource("Curve_vglor")
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D10" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_6gwhn")
+position = Vector2(394, 286)
+amount = 12
+texture = ExtResource("4_eyqou")
+lifetime = 2.0
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 55.74
+spread = 162.74
+gravity = Vector2(0, 50)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_min = -425.7
+angle_max = 190.2
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D11" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_6gwhn")
+position = Vector2(141, -13)
+amount = 12
+texture = ExtResource("4_eyqou")
+lifetime = 2.0
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(200, 100)
+spread = 162.74
+gravity = Vector2(0, 50)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_min = -425.7
+angle_max = 190.2
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D12" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_6gwhn")
+position = Vector2(14, 255)
+amount = 12
+texture = ExtResource("4_eyqou")
+lifetime = 2.0
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 19.52
+spread = 162.74
+gravity = Vector2(0, 50)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_min = -425.7
+angle_max = 190.2
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D7" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8g5d0")
+position = Vector2(483, -6)
+texture = ExtResource("3_eyqou")
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 162.74
+gravity = Vector2(0, 10)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_curve = SubResource("Curve_vglor")
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D8" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8g5d0")
+position = Vector2(-9, 277)
+texture = ExtResource("3_eyqou")
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 162.74
+gravity = Vector2(0, 10)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_curve = SubResource("Curve_vglor")
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+
+[node name="GPUParticles2D9" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_8g5d0")
+position = Vector2(502, 270)
+texture = ExtResource("3_eyqou")
+speed_scale = 0.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 162.74
+gravity = Vector2(0, 10)
+initial_velocity_max = 1000.0
+orbit_velocity_curve = SubResource("Curve_7pq8h")
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_api1x")
+radial_accel_curve = SubResource("Curve_jf2rj")
+tangential_accel_curve = SubResource("Curve_csjuw")
+angle_curve = SubResource("Curve_vglor")
+scale_amount_curve = SubResource("Curve_v7ipn")
+color = Color(1, 1, 1, 0.262745)
+hue_variation_curve = SubResource("Curve_n7oqv")
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("Curve_eyqou")
+
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(241, 111)
 
 [node name="Light" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 0.713726, 0.239216, 0.403922)
-position = Vector2(-2, 19)
-scale = Vector2(3.13381, 3.13381)
+position = Vector2(-231.361, 146.639)
+scale = Vector2(6.20748, 6.20748)
 texture = ExtResource("2_2vvdn")
 
 [node name="Sun" type="Sprite2D" parent="Node2D"]
-position = Vector2(-4, 16)
-scale = Vector2(2.09995, 2.09995)
-texture = ExtResource("1_jqfs7")
+position = Vector2(-233.361, 143.639)
+scale = Vector2(4.1596, 4.1596)
+texture = SubResource("CompressedTexture2D_r5ded")
 region_enabled = true
 region_rect = Rect2(76, 36, 39, 39)
 script = ExtResource("2_liv48")
@@ -146,6 +370,10 @@ region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("2_liv48")
 rotation_speed = 0.5
 
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Sun/Planet"]
+position = Vector2(-30.4914, 20.901)
+texture = ExtResource("7_6rib0")
+
 [node name="Planet2" type="Sprite2D" parent="Node2D/Sun"]
 position = Vector2(32.8579, 14.7623)
 scale = Vector2(0.515371, 0.515371)
@@ -153,6 +381,17 @@ texture = ExtResource("2_xduke")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 script = ExtResource("2_liv48")
+rotation_speed = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Sun/Planet2"]
+position = Vector2(-18.3396, -13.0822)
+scale = Vector2(0.215602, 0.215602)
+texture = ExtResource("7_6rib0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Sun/Planet2"]
+position = Vector2(-6.21126, -17.2804)
+scale = Vector2(0.200438, 0.153183)
+texture = ExtResource("7_6rib0")
 
 [node name="Planet3" type="Sprite2D" parent="Node2D/Sun"]
 position = Vector2(-66.6683, -5.23821)
@@ -161,7 +400,7 @@ texture = ExtResource("2_xduke")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 32)
 script = ExtResource("2_liv48")
-rotation_speed = 0.3
+rotation_speed = 0.8
 
 [node name="Planet4" type="Sprite2D" parent="Node2D/Sun"]
 position = Vector2(32.8579, -54.287)
@@ -170,7 +409,18 @@ texture = ExtResource("2_xduke")
 region_enabled = true
 region_rect = Rect2(96, 0, 32, 32)
 script = ExtResource("2_liv48")
-rotation_speed = 0.2
+rotation_speed = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Sun/Planet4"]
+position = Vector2(-26.885, -7.18777)
+scale = Vector2(0.593, 0.593)
+texture = ExtResource("7_6rib0")
+
+[node name="Ship-0" type="Sprite2D" parent="."]
+position = Vector2(291, 126)
+rotation = -0.323489
+scale = Vector2(1.56951, 1.56951)
+texture = ExtResource("12_6gwhn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -247,8 +497,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_6gwhn")
 }
 
+[node name="MasterOptionsMenu" parent="." instance=ExtResource("12_8g5d0")]
+visible = false
+layout_mode = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_mw2t0")
+stream = ExtResource("10_6rib0")
 autoplay = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

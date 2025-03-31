@@ -1,24 +1,33 @@
 @icon("res://IconGodotNode/node_2D/icon_shovel.png")
 extends Grindable
 
+@onready var particlces: GPUParticles2D = $GPUParticles2D
+
+
 @export var drop : RSC
 @export var variations : int
+@export var random_sprite : bool = true
+
 func _ready() -> void:
+	particlces.texture = drop.icon
 	$Sprite2D.visible = false
 	randomize()
-	$Sprite2D.frame = randi_range(0,variations)
+	if random_sprite:$Sprite2D.frame = randi_range(0,variations)
 func VFX():
 	$AnimationPlayer.play("Grind")
 
 
 func grind(damage) -> void:
 	if drop != null:
+		particlces.restart()
+		particlces.emitting
 		get_tree().get_first_node_in_group("NotificationManager").show_notification(drop.resource + " +1", 1.0,drop.icon)
 		var inv = get_tree().get_first_node_in_group("Inventory")
 		inv.add_item(drop,1)
-		var FLOAT_TEXT = preload("res://Scripts/FloatText/FloatText.tscn")
+		var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")
 		var object = FLOAT_TEXT.instantiate()
-		object.position += Vector2(randf_range(-500,500),randf_range(-500,500))
+		object.position += Vector2(randf_range(-100,100),randf_range(-100,100))
+		object.text = str(damage)
 		object.get_child(0).play("splash")
 		call_deferred("add_child",object)
 	take_damage(damage)

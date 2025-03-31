@@ -1,27 +1,33 @@
-[gd_scene load_steps=35 format=3 uid="uid://dddqybys2u2rb"]
+[gd_scene load_steps=41 format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
-[ext_resource type="Resource" uid="uid://dbj026c88u1df" path="res://Scripts/Inventory/Weapons/Gold Weapon.tres" id="2_bxcuo"]
-[ext_resource type="Texture2D" uid="uid://o34q7t3js56i" path="res://Assets/Entity/Player/Player3.png" id="3_3gu1i"]
 [ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="3_koen5"]
-[ext_resource type="Texture2D" uid="uid://cxijnx31iisgc" path="res://Assets/Sword.png" id="3_o1amb"]
-[ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Scripts/Attack/Attack.gd" id="4_58md0"]
-[ext_resource type="PackedScene" uid="uid://5nj2083ine2r" path="res://Scripts/Notifications/notification_panel.tscn" id="5_pq0o2"]
-[ext_resource type="PackedScene" uid="uid://dtm5g07vkfg56" path="res://Scripts/DevConsole/developer_console.tscn" id="6_gfwb7"]
-[ext_resource type="PackedScene" uid="uid://xi525y36l0mn" path="res://Scripts/Inventory/Inventory.tscn" id="7_72cvu"]
-[ext_resource type="PackedScene" uid="uid://dgqb6xkd37twx" path="res://Scripts/Boxes/hit_box.tscn" id="7_gfwb7"]
+[ext_resource type="Texture2D" uid="uid://bh8kfsdh8piqe" path="res://Assets/Entity/Player/Skins/Skin1.png" id="4_3gu1i"]
+[ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Assets/Scripts/Attack/Attack.gd" id="4_58md0"]
+[ext_resource type="Texture2D" uid="uid://cek74bm8i14fc" path="res://Assets/Scripts/Inventory/Weapons/Pickaxe-Sheet.png" id="4_xwwyn"]
+[ext_resource type="PackedScene" uid="uid://xi525y36l0mn" path="res://Assets/Scripts/Inventory/Inventory.tscn" id="7_72cvu"]
+[ext_resource type="PackedScene" uid="uid://dgqb6xkd37twx" path="res://Assets/Scripts/Boxes/hit_box.tscn" id="7_gfwb7"]
 [ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="7_nk4x0"]
+[ext_resource type="Script" uid="uid://cy3moylw6naix" path="res://Assets/UI/DebugUI/debug.gd" id="7_xwwyn"]
 [ext_resource type="Script" uid="uid://bo4t1xslqeb3d" path="res://Assets/UI/UpdateBar.gd" id="8_1aajc"]
 [ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="8_3gu1i"]
-[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="9_nk4x0"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="9_nk4x0"]
 [ext_resource type="Script" uid="uid://cx016k2vkc7mq" path="res://Assets/Entity/Player/Gold.gd" id="10_3gu1i"]
 [ext_resource type="PackedScene" uid="uid://b0mf3l56dvooj" path="res://Assets/UI/PauseMenu/pause_menu.tscn" id="10_ob8aw"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="15_xwwyn"]
+[ext_resource type="Resource" uid="uid://lyohe5gb0bx7" path="res://Assets/Scripts/Inventory/Weapons/MGM.tres" id="16_3lqb0"]
+[ext_resource type="Resource" uid="uid://ebko6adpxqvk" path="res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres" id="17_4mb3f"]
+[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="18_xwwyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh2bb"]
 size = Vector2(12, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72cvu"]
-size = Vector2(14, 9)
+size = Vector2(1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lqb0"]
+atlas = ExtResource("4_xwwyn")
+region = Rect2(48, 2, 14, 13)
 
 [sub_resource type="Animation" id="Animation_gfwb7"]
 resource_name = "Attack"
@@ -101,7 +107,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("RightHand/Weapon/AttackPoint/HitBox/CollisionShape2D:disabled")
+tracks/6/path = NodePath("AttackPoint/HitBox/HitZone:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -299,7 +305,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("RightHand/Weapon/AttackPoint/HitBox/CollisionShape2D:disabled")
+tracks/9/path = NodePath("AttackPoint/HitBox/HitZone:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1052,11 +1058,32 @@ region = Rect2(131, 51, 26, 26)
 atlas = ExtResource("9_nk4x0")
 region = Rect2(0, 32, 16, 16)
 
+[sub_resource type="Gradient" id="Gradient_xwwyn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xwwyn"]
+gradient = SubResource("Gradient_xwwyn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3lqb0"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 26.06
+direction = Vector3(0.5, -0.5, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 700, 0)
+damping_min = 100.0
+damping_max = 800.0
+scale_max = 3.0
+color = Color(0.942817, 0.126265, 3.85046e-07, 1)
+color_ramp = SubResource("GradientTexture1D_xwwyn")
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 16
 script = ExtResource("1_jbefx")
-start_wep = ExtResource("2_bxcuo")
+speed = 4
 max_hp = 100
 max_exp = 100
 knockback_modifier = 10
@@ -1078,14 +1105,14 @@ scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_koen5")
 
 [node name="Body" type="Sprite2D" parent="Skin"]
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(-2, -3)
 region_enabled = true
 region_rect = Rect2(10, 19, 10, 8)
 
 [node name="Left Leg" type="Sprite2D" parent="Skin/Body"]
 position = Vector2(-3, 1)
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(12, 27, 4, 4)
@@ -1093,7 +1120,7 @@ region_rect = Rect2(12, 27, 4, 4)
 [node name="RightLeg" type="Sprite2D" parent="Skin/Body"]
 z_index = -1
 position = Vector2(1, 1)
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(16, 27, 4, 4)
@@ -1101,9 +1128,25 @@ region_rect = Rect2(16, 27, 4, 4)
 [node name="Hands" type="Node2D" parent="Skin/Body"]
 y_sort_enabled = true
 
+[node name="AttackPoint" type="Node2D" parent="Skin/Body/Hands"]
+position = Vector2(0, -4)
+
+[node name="HitBox" parent="Skin/Body/Hands/AttackPoint" node_paths=PackedStringArray("attack_node", "player") instance=ExtResource("7_gfwb7")]
+collision_layer = 32
+collision_mask = 12
+attack_node = NodePath("../../../../../weapon")
+player = NodePath("../../../../..")
+
+[node name="HitZone" type="CollisionShape2D" parent="Skin/Body/Hands/AttackPoint/HitBox"]
+unique_name_in_owner = true
+position = Vector2(13, 1)
+scale = Vector2(14, 14)
+shape = SubResource("RectangleShape2D_72cvu")
+disabled = true
+
 [node name="LeftHand" type="Sprite2D" parent="Skin/Body/Hands"]
 position = Vector2(-5, -6)
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
@@ -1111,7 +1154,7 @@ region_rect = Rect2(6, 20, 3, 6)
 [node name="RightHand" type="Sprite2D" parent="Skin/Body/Hands"]
 z_index = -2
 position = Vector2(3, -6)
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
@@ -1119,31 +1162,18 @@ region_rect = Rect2(6, 20, 3, 6)
 [node name="Weapon" type="Sprite2D" parent="Skin/Body/Hands/RightHand"]
 position = Vector2(0.400166, 5.44462)
 rotation = 1.57079
-offset = Vector2(0.555397, -6.59983)
-
-[node name="AttackPoint" type="Node2D" parent="Skin/Body/Hands/RightHand/Weapon"]
-position = Vector2(5.55536, 3.4002)
-rotation = -1.57079
-
-[node name="HitBox" parent="Skin/Body/Hands/RightHand/Weapon/AttackPoint" node_paths=PackedStringArray("attack_node", "player") instance=ExtResource("7_gfwb7")]
-collision_layer = 32
-collision_mask = 12
-attack_node = NodePath("../../../../../../../weapon")
-player = NodePath("../../../../../../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skin/Body/Hands/RightHand/Weapon/AttackPoint/HitBox"]
-position = Vector2(15, -5.5)
-shape = SubResource("RectangleShape2D_72cvu")
-disabled = true
+texture = SubResource("AtlasTexture_3lqb0")
+offset = Vector2(0.00840807, -5.3826)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin/Body/Hands"]
 libraries = {
 &"": SubResource("AnimationLibrary_ob8aw")
 }
+speed_scale = 0.8
 
 [node name="Head" type="Sprite2D" parent="Skin"]
 position = Vector2(0, -7)
-texture = ExtResource("3_3gu1i")
+texture = ExtResource("4_3gu1i")
 offset = Vector2(-2, -6)
 region_enabled = true
 region_rect = Rect2(7, 6, 15, 13)
@@ -1162,7 +1192,7 @@ debug_color = Color(0.996052, 0, 0.194091, 0.42)
 [node name="weapon" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]
 unique_name_in_owner = true
 script = ExtResource("4_58md0")
-weapom_texture = ExtResource("3_o1amb")
+strenght = 3
 weapon_sprite = NodePath("../Skin/Body/Hands/RightHand/Weapon")
 metadata/_custom_type_script = "uid://dohhabx06hqfy"
 
@@ -1185,6 +1215,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_xwwyn")
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/DebugUI"]
 layout_mode = 1
@@ -1301,20 +1332,36 @@ text = "999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="NotificationPanel" parent="CanvasLayer" instance=ExtResource("5_pq0o2")]
-mouse_filter = 2
-
-[node name="DeveloperConsole" parent="CanvasLayer" instance=ExtResource("6_gfwb7")]
-mouse_filter = 2
-
-[node name="Inventory" parent="CanvasLayer" groups=["Inventory"] instance=ExtResource("7_72cvu")]
+[node name="Inventory" parent="CanvasLayer" node_paths=PackedStringArray("player") groups=["Inventory"] instance=ExtResource("7_72cvu")]
 columns = 5
+player = NodePath("../..")
+initial_items = Array[ExtResource("15_xwwyn")]([ExtResource("16_3lqb0"), ExtResource("17_4mb3f")])
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 2.0
 autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, -4)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3lqb0")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="Laser" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.194
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("18_xwwyn")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqdaavkbyewy2"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_uacc7"]
-[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Scripts/Inventory/Items.png" id="2_1lxcu"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_1lxcu"]
 [ext_resource type="Texture2D" uid="uid://8f3bvqh1pi5b" path="res://Assets/Entity/Grindable/Quarts/Quarts.png" id="2_ux3uc"]
-[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Scripts/Inventory/ItemResource.gd" id="3_la2xt"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="3_la2xt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mutu1"]
 atlas = ExtResource("2_1lxcu")

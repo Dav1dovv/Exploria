@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp2ydd2idfalp"
+path="res://.godot/imported/1. Into The Spaceship.wav-9cc407a3e7a66d256ac0f455687654e1.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BGM/1. Into The Spaceship.wav"
+dest_files=["res://.godot/imported/1. Into The Spaceship.wav-9cc407a3e7a66d256ac0f455687654e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
