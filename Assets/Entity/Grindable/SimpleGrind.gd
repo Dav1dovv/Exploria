@@ -4,7 +4,7 @@ extends Grindable
 @onready var particlces: GPUParticles2D = $GPUParticles2D
 
 
-@export var drop : RSC
+@export var drop : ItemResource
 @export var variations : int
 @export var random_sprite : bool = true
 
@@ -21,7 +21,7 @@ func grind(damage) -> void:
 	if drop != null:
 		particlces.restart()
 		particlces.emitting
-		get_tree().get_first_node_in_group("NotificationManager").show_notification(drop.resource + " +1", 1.0,drop.icon)
+		get_tree().get_first_node_in_group("NotificationManager").show_notification(drop.display_name + " +1", 1.0,drop.icon)
 		var inv = get_tree().get_first_node_in_group("Inventory")
 		inv.add_item(drop,1)
 		var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")

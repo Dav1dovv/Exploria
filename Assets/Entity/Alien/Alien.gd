@@ -5,7 +5,7 @@ var player
 var motion : Vector2
 @export var Level :int
 @export var damage_strenght : int
-@export var drop: Array[RSC]
+@export var drop: Array[ItemResource]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -39,7 +39,7 @@ func damage(knnockback,damage):
 	if hp<= 0:
 		var drop_itm = randi_range(0, randi() % drop.size())
 		var drop_cnt = randi() % 10
-		Notification.show_notification(drop[drop_itm].resource + " +" + str(drop_cnt), 1.0,drop[drop_itm].icon)
+		Notification.show_notification(drop[drop_itm].display_name + " +" + str(drop_cnt), 1.0,drop[drop_itm].icon)
 		if drop_itm == 0:drop[drop_itm].count += drop_cnt
 		else: get_tree().get_first_node_in_group("Inventory").add_item(drop[drop_itm],drop_cnt)
 		queue_free()

@@ -1,7 +1,7 @@
 @icon("res://IconGodotNode/node_2D/icon_shovel.png")
 extends Grindable
 
-@export var drop : RSC
+@export var drop : ItemResource
 @export var variations : int
 func _ready() -> void:
 	$Sprite2D.visible = false
@@ -13,7 +13,7 @@ func VFX():
 
 func grind(damage) -> void:
 	if drop != null:
-		Notification.show_notification(drop.resource + " +1", 1.0,drop.icon)
+		Notification.show_notification(drop.display_name + " +1", 1.0,drop.icon)
 		var inv = get_tree().get_first_node_in_group("Inventory")
 		inv.add_item(drop,1)
 		var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")

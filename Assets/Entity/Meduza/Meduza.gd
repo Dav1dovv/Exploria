@@ -32,6 +32,6 @@ func damage(knnockback,damage):
 	take_damage(knnockback,damage,null)
 	if hp<= 0:
 		var drop = randi_range(1,10)
-		Notification.show_notification(COIN.resource + " +" + str(drop), 1.0,COIN.icon)
+		Notification.show_notification(COIN.display_name + " +" + str(drop), 1.0,COIN.icon)
 		COIN.count += 5
 		queue_free()

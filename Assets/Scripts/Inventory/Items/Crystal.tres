@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://nacw0s714xb8"]
+
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="1_3wye3"]
+[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="2_b2hki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m04t"]
+atlas = ExtResource("1_3wye3")
+region = Rect2(17, 32, 15, 14)
+
+[resource]
+script = ExtResource("2_b2hki")
+item_id = "Crystal"
+display_name = "Crystal"
+description = "shining"
+icon = SubResource("AtlasTexture_8m04t")
+max_count = 99
+stackable = true
+metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

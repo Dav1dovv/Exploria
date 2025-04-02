@@ -1,7 +1,7 @@
 @icon("res://IconGodotNode/node_2D/icon_chest.png")
 extends Node2D
 
-@export var drop_weapons : Array[Weapon]
+@export var drop_weapons : Array[WeaponResource]
 @onready var interaction = $InteractionArea
 @onready var particles: GPUParticles2D = $GPUParticles2D
 var is_opened = false

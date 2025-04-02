@@ -11,10 +11,11 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="Resource" id="Resource_fv6o2"]
 script = ExtResource("3_la2xt")
-resource = ""
+item_id = "Quarts"
+display_name = "Quarts"
 description = "Quarts"
-max_count = 10
 icon = SubResource("AtlasTexture_mutu1")
+max_count = 10
 stackable = true
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 

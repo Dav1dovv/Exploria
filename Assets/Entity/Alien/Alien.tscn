@@ -18,13 +18,15 @@ region = Rect2(79, 0, 16, 16)
 script = ExtResource("7_2raol")
 damage_strength = 25
 hit_effect = Array[ExtResource("5_6jgkp")]([])
-is_weapon = true
 hit_distance = 30.0
-resource = "Dark Laser"
+is_wep = true
+item_id = ""
+display_name = "Предмет"
 description = "Dmg: 25
 Distance : 30"
-max_count = 1
 icon = SubResource("AtlasTexture_2g1dq")
+max_count = 1
+stackable = true
 metadata/_custom_type_script = "uid://ciow47xd5e58f"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8pv0"]

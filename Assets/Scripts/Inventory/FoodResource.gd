@@ -1,9 +1,9 @@
 @icon("res://IconGodotNode/node/icon_meat.png")
-extends RSC
-class_name Food
+extends ItemResource
+class_name FoodResource
 
 @export var effects: Array[Effect]
 
 func eat(player):
-	for i in effects.size():
-		effects[i].apply_effect(player)
+	for effect in effects:
+		effect.apply_effect(player)

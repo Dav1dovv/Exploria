@@ -1,23 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b13lyodynary4"]
+[gd_scene load_steps=12 format=3 uid="uid://b13lyodynary4"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_6tk43"]
-[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_fr3f4"]
-[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="3_4av1p"]
+[ext_resource type="Resource" uid="uid://bmtpdoo0ekjf" path="res://Assets/Scripts/Inventory/Items/Mushroom.tres" id="2_fr3f4"]
 [ext_resource type="Texture2D" uid="uid://bxq5peroy32so" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.png" id="3_6mjsd"]
 [ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="5_4av1p"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixte4"]
-atlas = ExtResource("2_fr3f4")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_l17pr"]
-script = ExtResource("3_4av1p")
-resource = ""
-description = "little mushroom from big mushroom"
-max_count = 5
-icon = SubResource("AtlasTexture_ixte4")
-stackable = true
-metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fr3f4"]
 size = Vector2(31, 51)
@@ -97,7 +83,7 @@ nodes/output/position = Vector2(600, 60)
 node_connections = [&"output", 0, &"Animation"]
 
 [node name="Mushroom" instance=ExtResource("1_6tk43")]
-drop = SubResource("Resource_l17pr")
+drop = ExtResource("2_fr3f4")
 hp = 10
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="0"]
