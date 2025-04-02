@@ -12,5 +12,5 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_button_pressed() -> void:
-	Scene.load_scene("res://Assets/Locations/ship.tscn",true)
+	Scene.load_scene("res://Assets/Locations/Planets/Oktavia.tscn",true)
 	pass # Replace with function body.

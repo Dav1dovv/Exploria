@@ -20,5 +20,5 @@ DMG : 5
 Distance : 16.0"
 max_count = 1
 icon = SubResource("AtlasTexture_2lc2d")
-item_path = "res://Assets/Scripts/Inventory/Weapons/Gold Weapon.tres"
+item_path = ""
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

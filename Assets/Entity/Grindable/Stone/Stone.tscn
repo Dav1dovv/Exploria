@@ -11,10 +11,13 @@ region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="Resource" id="Resource_8fyln"]
 script = ExtResource("3_6tuht")
-resource = "Stone"
-description = ""
-max_count = 10
+resource_id = "Stone"
+display_name = "Stone"
+description = "Mineral material"
 icon = SubResource("AtlasTexture_mlamf")
+max_count = 10
+rarity = 0
+tags = Array[String](["Organic", "Mineral"])
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c51n6"]

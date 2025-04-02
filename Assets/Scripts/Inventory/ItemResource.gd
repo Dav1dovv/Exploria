@@ -5,8 +5,18 @@ class_name RSC
 @export_multiline var description: String
 @export var max_count: int
 @export var icon: Texture2D
+@export var stackable: bool = true  # Можно ли стакать предметы
 
 var count: int = 1
-@export var item_path : String = ""
+
 func _add(cnt):
 	count += cnt
+	
+func use():
+	pass
+	
+func can_use() -> bool:
+	return true
+	
+func get_tooltip() -> String:
+	return description

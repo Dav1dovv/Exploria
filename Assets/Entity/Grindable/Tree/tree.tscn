@@ -12,10 +12,11 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="Resource" id="Resource_7mh7m"]
 script = ExtResource("3_2sk1b")
-resource = "Wood"
-description = ""
+resource = ""
+description = "just wood"
 max_count = 10
 icon = SubResource("AtlasTexture_iuyaa")
+stackable = true
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]

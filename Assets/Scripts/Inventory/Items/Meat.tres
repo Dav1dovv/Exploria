@@ -19,9 +19,9 @@ region = Rect2(34, 51, 14, 12)
 [resource]
 script = ExtResource("2_vnsra")
 effects = Array[ExtResource("1_7v8sf")]([SubResource("Resource_ktf5p")])
-resource = "Meat"
+resource = "Strange Meat"
 description = "this is look's strange!"
 max_count = 0
 icon = SubResource("AtlasTexture_4x5tx")
-item_path = "res://Assets/Scripts/Inventory/Items/Meat.tres"
+stackable = true
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

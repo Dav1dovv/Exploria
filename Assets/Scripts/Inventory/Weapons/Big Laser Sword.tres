@@ -20,5 +20,5 @@ DMG : 8
 Distance : 20.0"
 max_count = 1
 icon = SubResource("AtlasTexture_uadnr")
-item_path = "res://Assets/Scripts/Inventory/Weapons/Big Laser Sword.tres"
+item_path = ""
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

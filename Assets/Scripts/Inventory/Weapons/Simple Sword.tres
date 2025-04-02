@@ -20,5 +20,5 @@ DMG: 3
 Distance : 14.0"
 max_count = 1
 icon = SubResource("AtlasTexture_uadnr")
-item_path = "res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres"
+item_path = ""
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

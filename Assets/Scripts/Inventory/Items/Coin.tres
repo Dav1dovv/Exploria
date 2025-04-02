@@ -13,5 +13,5 @@ resource = "Coin"
 description = ""
 max_count = 999
 icon = SubResource("AtlasTexture_aban0")
-item_path = "res://Assets/Scripts/Inventory/Items/Coin.tres"
+item_path = ""
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

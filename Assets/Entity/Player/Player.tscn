@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dddqybys2u2rb"]
+[gd_scene load_steps=43 format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
 [ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="3_koen5"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://b0mf3l56dvooj" path="res://Assets/UI/PauseMenu/pause_menu.tscn" id="10_ob8aw"]
 [ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="15_xwwyn"]
 [ext_resource type="Resource" uid="uid://lyohe5gb0bx7" path="res://Assets/Scripts/Inventory/Weapons/MGM.tres" id="16_3lqb0"]
+[ext_resource type="Resource" uid="uid://npoln7sqncff" path="res://Assets/Scripts/Inventory/Items/Life Fruit.tres" id="17_3lqb0"]
 [ext_resource type="Resource" uid="uid://ebko6adpxqvk" path="res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres" id="17_4mb3f"]
+[ext_resource type="Resource" uid="uid://x3hl5t5dedbm" path="res://Assets/Scripts/Inventory/Weapons/Big Laser Sword.tres" id="18_4mb3f"]
 [ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="18_xwwyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh2bb"]
@@ -1333,9 +1335,8 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Inventory" parent="CanvasLayer" node_paths=PackedStringArray("player") groups=["Inventory"] instance=ExtResource("7_72cvu")]
-columns = 5
 player = NodePath("../..")
-initial_items = Array[ExtResource("15_xwwyn")]([ExtResource("16_3lqb0"), ExtResource("17_4mb3f")])
+initial_items = Array[ExtResource("15_xwwyn")]([ExtResource("16_3lqb0"), ExtResource("17_4mb3f"), ExtResource("17_3lqb0"), ExtResource("18_4mb3f")])
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
 

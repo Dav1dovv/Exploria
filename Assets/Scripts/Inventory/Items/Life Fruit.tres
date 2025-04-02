@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_gk7b7"]
 script = ExtResource("2_8o63j")
 name = "heal life"
-effect_value = 10
+effect_value = 15
 duration = 15.0
 metadata/_custom_type_script = "uid://bc3gs4opetygy"
 
@@ -23,5 +23,5 @@ resource = "Life Fruit"
 description = "Delicious fruit give godnes life."
 max_count = 5
 icon = SubResource("AtlasTexture_8o63j")
-item_path = "res://Assets/Scripts/Inventory/Items/Life Fruit.tres"
+stackable = true
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

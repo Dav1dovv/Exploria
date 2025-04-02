@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_cbwcc"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_k1r3n"]
 [ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Misc/Tiles/Oktavia.tres" id="13_nlmpd"]
+[ext_resource type="AudioStream" uid="uid://cp2ydd2idfalp" path="res://Assets/Audio/BGM/1. Into The Spaceship.wav" id="18_eolhc"]
 [ext_resource type="Script" uid="uid://b20yonmnvj5p" path="res://Assets/Scripts/WorldGeneration/WorldGeneration.gd" id="24_obhyr"]
 [ext_resource type="Script" uid="uid://c6g5fnbka8cm8" path="res://Assets/Scripts/WorldGeneration/WorldResource.gd" id="25_1f7wk"]
 [ext_resource type="PackedScene" uid="uid://b13lyodynary4" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.tscn" id="26_d2tdl"]
-[ext_resource type="AudioStream" uid="uid://d3xmlk7e07a1q" path="res://Assets/Audio/BGM/GroovySpace.wav" id="27_a154x"]
 [ext_resource type="PackedScene" uid="uid://ciqexqa26codm" path="res://Assets/Entity/Grindable/Stone/Stone.tscn" id="27_auyvl"]
 [ext_resource type="Texture2D" uid="uid://dfv1irlne00ga" path="res://Assets/Sprites/CrashedCapsulePart.png" id="27_eob72"]
 [ext_resource type="PackedScene" uid="uid://cfw6apb1ldhr2" path="res://Assets/Entity/Grindable/Tree/tree.tscn" id="28_lfmlq"]
@@ -161,6 +161,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="Environment" instance=ExtResource("10_vlggr")]
 position = Vector2(31, -59)
+speed = 3
 
 [node name="SimpleLocation" type="Node2D" parent="Environment"]
 y_sort_enabled = true
@@ -306,7 +307,7 @@ texture = ExtResource("27_eob72")
 [node name="Components" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Components"]
-stream = ExtResource("27_a154x")
+stream = ExtResource("18_eolhc")
 autoplay = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="Components" node_paths=PackedStringArray("follow_target")]

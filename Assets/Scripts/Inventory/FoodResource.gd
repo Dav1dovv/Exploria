@@ -5,6 +5,5 @@ class_name Food
 @export var effects: Array[Effect]
 
 func eat(player):
-	for effect in effects:
-		effects[effect].apply_effect(player)
-		print("✅ Применён эффект:", effect.effect_type, "на", effect.value)
+	for i in effects.size():
+		effects[i].apply_effect(player)

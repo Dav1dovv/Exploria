@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://xi525y36l0mn"]
+[gd_scene load_steps=9 format=3 uid="uid://xi525y36l0mn"]
 
-[ext_resource type="Script" uid="uid://cjhhb5fkpoexf" path="res://Assets/Scripts/Inventory/Inventory.gd" id="1_smraw"]
+[ext_resource type="Script" uid="uid://nmf4f5vsqrnb" path="res://Assets/Scripts/Inventory/inventory.gd" id="1_w5r8t"]
+[ext_resource type="Resource" uid="uid://lyohe5gb0bx7" path="res://Assets/Scripts/Inventory/Weapons/MGM.tres" id="2_bd0er"]
 [ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="2_smraw"]
 [ext_resource type="Shader" uid="uid://byfq4to3i1kfx" path="res://Assets/Shaders/Blur.gdshader" id="2_uegqv"]
 [ext_resource type="Script" uid="uid://bxguvf402r2aw" path="res://Assets/Scripts/Inventory/TrashSlot.gd" id="3_08cpt"]
+[ext_resource type="Resource" uid="uid://ebko6adpxqvk" path="res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres" id="3_78xkv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xr2d"]
 shader = ExtResource("2_uegqv")
@@ -22,7 +24,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_smraw")
+script = ExtResource("1_w5r8t")
+columns = 5
+initial_items = Array[Object]([ExtResource("2_bd0er"), ExtResource("3_78xkv")])
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -70,3 +74,9 @@ offset_top = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
