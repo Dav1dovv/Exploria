@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bruy23m30yewu"]
 
 [ext_resource type="Script" uid="uid://dvtft7hg2c28s" path="res://Assets/Entity/Slime/Slime.gd" id="1_rxcwq"]
-[ext_resource type="Texture2D" uid="uid://cf8y7a4uxljkv" path="res://Assets/Entity/Slime/Slime.png" id="2_l85ng"]
+[ext_resource type="Texture2D" uid="uid://d2nq7h4ln24v8" path="res://Assets/Entity/Slime/Slime v2.png" id="2_ux4bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dx30o"]
 radius = 8.06226
@@ -294,11 +294,9 @@ shape = SubResource("CircleShape2D_dx30o")
 position = Vector2(0, -12)
 
 [node name="Slime" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.729412)
 position = Vector2(2, -38)
-texture = ExtResource("2_l85ng")
+texture = ExtResource("2_ux4bc")
 offset = Vector2(1.78814e-07, -6.52862)
-hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0

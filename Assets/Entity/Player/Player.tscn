@@ -1,8 +1,8 @@
 [gd_scene load_steps=42 format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
+[ext_resource type="Texture2D" uid="uid://bg5o6d26adavm" path="res://Assets/Entity/Player/astronautv4.png" id="3_3lqb0"]
 [ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="3_koen5"]
-[ext_resource type="Texture2D" uid="uid://bh8kfsdh8piqe" path="res://Assets/Entity/Player/Skins/Skin1.png" id="4_3gu1i"]
 [ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Assets/Scripts/Attack/Attack.gd" id="4_58md0"]
 [ext_resource type="Texture2D" uid="uid://cek74bm8i14fc" path="res://Assets/Scripts/Inventory/Weapons/Pickaxe-Sheet.png" id="4_xwwyn"]
 [ext_resource type="PackedScene" uid="uid://xi525y36l0mn" path="res://Assets/Scripts/Inventory/Inventory.tscn" id="7_72cvu"]
@@ -18,7 +18,7 @@
 [ext_resource type="Resource" uid="uid://lyohe5gb0bx7" path="res://Assets/Scripts/Inventory/Weapons/MGM.tres" id="16_3lqb0"]
 [ext_resource type="Resource" uid="uid://npoln7sqncff" path="res://Assets/Scripts/Inventory/Items/Life Fruit.tres" id="17_3lqb0"]
 [ext_resource type="Resource" uid="uid://ebko6adpxqvk" path="res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres" id="17_4mb3f"]
-[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="18_xwwyn"]
+[ext_resource type="Texture2D" uid="uid://3swem6uur788" path="res://Assets/Sprites/Light_simple.png" id="19_3lqb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh2bb"]
 size = Vector2(12, 20)
@@ -1106,14 +1106,14 @@ scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_koen5")
 
 [node name="Body" type="Sprite2D" parent="Skin"]
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(-2, -3)
 region_enabled = true
 region_rect = Rect2(10, 19, 10, 8)
 
 [node name="Left Leg" type="Sprite2D" parent="Skin/Body"]
 position = Vector2(-3, 1)
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(12, 27, 4, 4)
@@ -1121,7 +1121,7 @@ region_rect = Rect2(12, 27, 4, 4)
 [node name="RightLeg" type="Sprite2D" parent="Skin/Body"]
 z_index = -1
 position = Vector2(1, 1)
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(16, 27, 4, 4)
@@ -1147,7 +1147,7 @@ disabled = true
 
 [node name="LeftHand" type="Sprite2D" parent="Skin/Body/Hands"]
 position = Vector2(-5, -6)
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
@@ -1155,7 +1155,7 @@ region_rect = Rect2(6, 20, 3, 6)
 [node name="RightHand" type="Sprite2D" parent="Skin/Body/Hands"]
 z_index = -2
 position = Vector2(3, -6)
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
@@ -1174,7 +1174,7 @@ speed_scale = 0.8
 
 [node name="Head" type="Sprite2D" parent="Skin"]
 position = Vector2(0, -7)
-texture = ExtResource("4_3gu1i")
+texture = ExtResource("3_3lqb0")
 offset = Vector2(-2, -6)
 region_enabled = true
 region_rect = Rect2(7, 6, 15, 13)
@@ -1361,7 +1361,7 @@ volume_db = -8.194
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -9)
-texture = ExtResource("18_xwwyn")
+texture = ExtResource("19_3lqb0")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://x3hl5t5dedbm"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://x3hl5t5dedbm"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_dj0mk"]
 [ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_bb0ml"]
@@ -12,13 +12,14 @@ region = Rect2(48, 0, 15, 16)
 script = ExtResource("3_1cggv")
 damage_strength = 8
 hit_effect = Array[ExtResource("1_dj0mk")]([])
-is_weapon = true
 hit_distance = 20.0
-resource = "Big Laser Sword"
+is_wep = true
+item_id = ""
+display_name = "Предмет"
 description = "a sword for every adventurer
 DMG : 8
 Distance : 20.0"
-max_count = 1
 icon = SubResource("AtlasTexture_uadnr")
-item_path = ""
+max_count = 1
+stackable = true
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Food" load_steps=7 format=3 uid="uid://npoln7sqncff"]
+[gd_resource type="Resource" script_class="FoodResource" load_steps=7 format=3 uid="uid://npoln7sqncff"]
 
 [ext_resource type="Script" uid="uid://cmviptt7oir8l" path="res://Assets/Scripts/Inventory/FoodResource.gd" id="1_2l5av"]
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_65oti"]
@@ -19,9 +19,10 @@ region = Rect2(51, 17, 11, 12)
 [resource]
 script = ExtResource("1_2l5av")
 effects = Array[ExtResource("1_65oti")]([SubResource("Resource_gk7b7")])
-resource = "Life Fruit"
+item_id = "LifeFruit"
+display_name = "Life Fuit"
 description = "Delicious fruit give godnes life."
-max_count = 5
 icon = SubResource("AtlasTexture_8o63j")
+max_count = 5
 stackable = true
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

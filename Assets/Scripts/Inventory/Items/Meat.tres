@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Food" load_steps=7 format=3 uid="uid://b3tjvjywvicrp"]
+[gd_resource type="Resource" script_class="FoodResource" load_steps=7 format=3 uid="uid://b3tjvjywvicrp"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_7v8sf"]
 [ext_resource type="Script" uid="uid://ba74vmx5ciy0l" path="res://Assets/Scripts/Effects/Heal.gd" id="2_4x5tx"]
@@ -19,9 +19,10 @@ region = Rect2(34, 51, 14, 12)
 [resource]
 script = ExtResource("2_vnsra")
 effects = Array[ExtResource("1_7v8sf")]([SubResource("Resource_ktf5p")])
-resource = "Strange Meat"
+item_id = ""
+display_name = "Предмет"
 description = "this is look's strange!"
-max_count = 0
 icon = SubResource("AtlasTexture_4x5tx")
+max_count = 0
 stackable = true
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

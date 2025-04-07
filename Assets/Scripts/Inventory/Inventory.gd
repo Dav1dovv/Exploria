@@ -32,6 +32,7 @@ func _ready():
 		add_initial_items()
 	
 	set_active_slot(0)
+	_update_hotbar_selection()
 	set_process_input(true)
 
 # Добавление начальных предметов (переименовано)
@@ -43,9 +44,12 @@ func add_initial_items():
 
 # Обновление выделения хотбара (переименовано)
 func _update_hotbar_selection():
+	#for i in range(hotbar_size):
+		#hotbar_items[i].self_modulate = Color(1, 1, 1, 1)
+	#hotbar_items[active_hotbar_slot].self_modulate = Color(1, 1, 0.5, 1)
 	for i in range(hotbar_size):
-		hotbar_items[i].modulate = Color(1, 1, 1, 1)
-	hotbar_items[active_hotbar_slot].modulate = Color(1, 1, 0.5, 1)
+		hotbar_items[i].unactivate()
+	hotbar_items[active_hotbar_slot].activate()
 
 func setup_inventory():
 	# Очищаем и заново создаем инвентарь
@@ -79,6 +83,7 @@ func _input(event):
 				active_hotbar_slot = index
 				_update_hotbar_selection()
 				activate(index)
+
 	if Input.is_action_just_pressed("Inventory"):
 		$Panel.visible = !$Panel.visible
 
@@ -172,18 +177,6 @@ func create_new_item_stack(target_slot: InventorySlot, source_item: ItemResource
 	new_item.count = min(new_item.max_count, max_amount)
 	target_slot.set_item(new_item)
 	return new_item.count
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			change_hotbar_slot(-1)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			change_hotbar_slot(1)
-
-func change_hotbar_slot(direction: int):
-	active_hotbar_slot = (active_hotbar_slot + direction) % hotbar_size
-	if active_hotbar_slot < 0:
-		active_hotbar_slot = hotbar_size - 1
-	set_active_slot(active_hotbar_slot)
 
 func save_inventory():
 	var save_data = {
@@ -289,18 +282,21 @@ func create_item_from_data(data: Dictionary) -> ItemResource:
 	item.load_save_data(data)
 	return item
 func set_active_slot(index: int):
-	if index < 0 or index >= hotbar_items.size():
-		return
+	for i in range(hotbar_size):
+			var slot = hotbar_grid.get_child(i)
+			slot.self_modulate = Color(1, 1, 1, 1) if i == index else Color(0.7, 0.7, 0.7, 1)
+			#slot.self_modulate = Color(1, 1, 1, 1) if i == index else Color(0.7, 0.7, 0.7, 1)
 	
 	# Сбрасываем выделение всех слотов
 	for slot in hotbar_items:
 		if is_instance_valid(slot):
-			slot.modulate = Color.WHITE
+			slot.self_modulate = Color.WHITE
 	
 	# Устанавливаем новый активный слот
 	active_hotbar_slot = index
 	if is_instance_valid(hotbar_items[index]):
-		hotbar_items[index].modulate = Color(1, 1, 0.5)
+		hotbar_items[index].activate()
+		#hotbar_items[index].self_modulate = Color(1, 1, 0.5)
 	
 	print("Активный слот установлен: ", index)
 	if not FileAccess.file_exists(SAVE_PATH):

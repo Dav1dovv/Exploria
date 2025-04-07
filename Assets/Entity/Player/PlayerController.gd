@@ -21,9 +21,14 @@ func _ready() -> void:
 	$CanvasLayer/HUD/StaminaBar.init_bar(max_stamina)
 	$CanvasLayer/HUD/StaminaBar.init_bar(stamina)
 	stamina_update()
+	Console.add_command("set_speed",set_speed,1)
 	
 
+
+func set_speed(new_speed:int):
+	speed = new_speed
 @warning_ignore("unused_parameter")
+
 func _physics_process(delta: float) -> void:
 	#movement
 	mouse_look = get_global_mouse_position()
@@ -43,15 +48,15 @@ func _physics_process(delta: float) -> void:
 	
 	#animation
 	if dir.x != 0 or dir.y != 0:
-		#can walk
-		if Input.is_action_pressed("Dash"):
-			$Skin/AnimationPlayer.play("Run")
-			$Skin/AnimationPlayer.speed_scale = 1.5
-			velocity = dir * speed * 25
-		else:
-			$Skin/AnimationPlayer.play("Walk")
-			$Skin/AnimationPlayer.speed_scale = 1.0
-			velocity = dir * speed * 10
+		##can walk
+		#if Input.is_action_pressed("Dash"):
+			#$Skin/AnimationPlayer.play("Run")
+			#$Skin/AnimationPlayer.speed_scale = 1.5
+			#velocity = dir * speed * 25
+		#else:
+		$Skin/AnimationPlayer.play("Walk")
+		$Skin/AnimationPlayer.speed_scale = 1.0
+		velocity = dir * speed * 10
 		pass
 	else:
 		#cant walk

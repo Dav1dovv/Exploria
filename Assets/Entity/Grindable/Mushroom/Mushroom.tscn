@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_6tk43"]
 [ext_resource type="Resource" uid="uid://bmtpdoo0ekjf" path="res://Assets/Scripts/Inventory/Items/Mushroom.tres" id="2_fr3f4"]
 [ext_resource type="Texture2D" uid="uid://bxq5peroy32so" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.png" id="3_6mjsd"]
-[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="5_4av1p"]
+[ext_resource type="Texture2D" uid="uid://3swem6uur788" path="res://Assets/Sprites/Light_simple.png" id="4_fr3f4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fr3f4"]
 size = Vector2(31, 51)
@@ -108,9 +108,9 @@ shape = SubResource("CapsuleShape2D_fr3f4")
 [node name="PointLight2D" type="PointLight2D" parent="." index="7"]
 position = Vector2(-4, -38)
 rotation = -0.396195
-scale = Vector2(1.0553, 0.889654)
+scale = Vector2(1.47, 0.89)
 color = Color(0.898039, 0.47451, 0.0431373, 1)
-texture = ExtResource("5_4av1p")
+texture = ExtResource("4_fr3f4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D" index="0"]
 libraries = {

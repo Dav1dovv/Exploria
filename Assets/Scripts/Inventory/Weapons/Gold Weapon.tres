@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dbj026c88u1df"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://dbj026c88u1df"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_ipwqq"]
 [ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_i646x"]
@@ -12,13 +12,14 @@ region = Rect2(31, 0, 16, 16)
 script = ExtResource("3_ptkdu")
 damage_strength = 5
 hit_effect = Array[ExtResource("1_ipwqq")]([])
-is_weapon = true
 hit_distance = 16.0
-resource = "Yellow slayer"
+is_wep = true
+item_id = ""
+display_name = "Предмет"
 description = "you're YEllOW?
 DMG : 5
 Distance : 16.0"
-max_count = 1
 icon = SubResource("AtlasTexture_2lc2d")
-item_path = ""
+max_count = 1
+stackable = true
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

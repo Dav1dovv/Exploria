@@ -11,33 +11,33 @@ func _ready() -> void:
 	randomize()
 	hp = max_hp
 	player = get_tree().get_first_node_in_group("Player")
-	Level = randi_range(1,6)
-	match  Level:
-		1:
-			$Slime.frame = 0
-			$MoveTimer.wait_time = 2
-			$MoveTimer.start()
-		2:
-			$Slime.frame = 1
-			hp += 3
-			$MoveTimer.wait_time = 1.5
-			$MoveTimer.start()
-		3:
-			$Slime.frame = 2
-			hp += 4
-			$MoveTimer.wait_time = 2
-			$MoveTimer.start()
-		4:
-			$Slime.frame = 3
-			hp += 5
-			$MoveTimer.wait_time = 2.5
-			$MoveTimer.start()
-		5:
-			$Slime.frame = 4
-			hp += 6
-			$MoveTimer.wait_time = 2
-			$MoveTimer.start()
-	$Slime.frame = Level
+	#Level = randi_range(1,6)
+	#match  Level:
+		#1:
+			#$Slime.frame = 0
+			#$MoveTimer.wait_time = 2
+			#$MoveTimer.start()
+		#2:
+			#$Slime.frame = 1
+			#hp += 3
+			#$MoveTimer.wait_time = 1.5
+			#$MoveTimer.start()
+		#3:
+			#$Slime.frame = 2
+			#hp += 4
+			#$MoveTimer.wait_time = 2
+			#$MoveTimer.start()
+		#4:
+			#$Slime.frame = 3
+			#hp += 5
+			#$MoveTimer.wait_time = 2.5
+			#$MoveTimer.start()
+		#5:
+			#$Slime.frame = 4
+			#hp += 6
+			#$MoveTimer.wait_time = 2
+			#$MoveTimer.start()
+	#$Slime.frame = Level
 	
 func _process(delta: float) -> void:
 	$AnimationPlayer.play("Walk")

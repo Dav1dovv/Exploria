@@ -4,9 +4,18 @@ class_name InventorySlot
 signal slot_updated(slot)
 
 var item: ItemResource = null
+
+@export var using_slot_texture: AtlasTexture
+@export var disabled_slot_texture : AtlasTexture
 @onready var icon: TextureRect = $TextureRect
 @onready var count_label: Label = $Label
 @onready var tooltip: Control = $Tooltip
+
+func activate():
+	texture_normal = using_slot_texture
+
+func unactivate():
+	texture_normal = disabled_slot_texture
 
 func set_item(new_item: ItemResource):
 	item = new_item
@@ -85,6 +94,11 @@ func _on_mouse_entered():
 			item.description,
 			get_global_mouse_position() + Vector2(16, 16)
 		)
+
+func update_item_count(new_count: int):
+	if item:
+		item.count = new_count
+		update_slot()  
 
 func _on_mouse_exited():
 	if is_instance_valid(tooltip):
