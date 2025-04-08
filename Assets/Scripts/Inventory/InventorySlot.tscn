@@ -44,9 +44,10 @@ vertical_alignment = 2
 
 [node name="Tooltip" parent="." instance=ExtResource("4_bu6t6")]
 layout_mode = 1
-offset_top = 2.0
-offset_right = -20.0
-offset_bottom = -17.0
+offset_left = -50.0
+offset_top = 3.0
+offset_right = -70.0
+offset_bottom = -16.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

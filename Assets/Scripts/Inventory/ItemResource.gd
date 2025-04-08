@@ -11,6 +11,9 @@ class_name ItemResource
 var count: int = 1
 
 # Функция для получения данных сохранения
+func _init() -> void:
+	item_id = display_name + str(get_instance_id())
+
 func get_save_data() -> Dictionary:
 	return {
 		"item_id": item_id,

@@ -9,7 +9,7 @@ region = Rect2(0, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_qimpp")
-item_id = ""
+item_id = "Coin"
 display_name = "Предмет"
 description = ""
 icon = SubResource("AtlasTexture_aban0")

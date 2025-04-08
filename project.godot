@@ -41,6 +41,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Console="*res://addons/console/console.gd"
 Scene="*res://Assets/Scripts/loading/loading.tscn"
 Notification="*res://Assets/Scripts/Notifications/notification_panel.tscn"
+Global="*res://Assets/Scripts/Global.gd"
 
 [display]
 

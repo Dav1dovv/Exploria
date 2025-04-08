@@ -16,20 +16,15 @@ var active_hotbar_slot: int = 0
 @export var initial_items: Array[ItemResource] 
 
 const ENCRYPT_KEY = "your-secret-key-12345"  # Замените на свой ключ
-const SAVE_PATH = "user://inventory_save.json"
+const SAVE_PATH = "user://Saves/inventory_save.json"
 
 func _ready():
 	await get_tree().process_frame
-	if not load_inventory():
-		add_initial_items()
+	#if not load_inventory():
+	add_initial_items()
 	# Сначала создаем все слоты
 	setup_inventory()
 	setup_hotbar()
-	
-	# Затем загружаем данные
-	if not load_inventory():
-		# Если загрузка не удалась, добавляем начальные предметы
-		add_initial_items()
 	
 	set_active_slot(0)
 	_update_hotbar_selection()
@@ -212,6 +207,7 @@ func save_inventory():
 		file.store_string(JSON.stringify(save_data))
 		file.close()
 		print("💾 Инвентарь сохранен")
+		Notification.show_notification("inventory saved",3.0,null)
 	else:
 		printerr("⚠ Ошибка при сохранении инвентаря")
 

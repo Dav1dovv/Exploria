@@ -19,10 +19,10 @@ region = Rect2(34, 51, 14, 12)
 [resource]
 script = ExtResource("2_vnsra")
 effects = Array[ExtResource("1_7v8sf")]([SubResource("Resource_ktf5p")])
-item_id = ""
-display_name = "Предмет"
+item_id = "Meat"
+display_name = "Meat"
 description = "this is look's strange!"
 icon = SubResource("AtlasTexture_4x5tx")
-max_count = 0
+max_count = 10
 stackable = true
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

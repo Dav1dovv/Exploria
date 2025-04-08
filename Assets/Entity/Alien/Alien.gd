@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		elif position.x < player.global_position.x:
 			$Skin.scale.x = 1
 	else: $Skin/AnimationPlayer.play("Idle")
-
+	move_and_slide()
 	pass # Replace with function body.
 func damage(knnockback,damage):
 	var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")
