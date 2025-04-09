@@ -11,6 +11,7 @@ extends Grindable
 func _ready() -> void:
 	particlces.texture = drop.icon
 	$Sprite2D.visible = false
+	$Shadow.visible = false
 	randomize()
 	if random_sprite:$Sprite2D.frame = randi_range(0,variations)
 func VFX():
@@ -20,7 +21,7 @@ func VFX():
 func grind(damage) -> void:
 	if drop != null:
 		particlces.restart()
-		particlces.emitting
+		particlces.emitting = true
 		get_tree().get_first_node_in_group("NotificationManager").show_notification(drop.display_name + " +1", 1.0,drop.icon)
 		var inv = get_tree().get_first_node_in_group("Inventory")
 		inv.add_item(drop,1)
@@ -37,9 +38,11 @@ func grind(damage) -> void:
 
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
 	$Sprite2D.visible = true
+	$Shadow.visible = true
 	pass # Replace with function body.
 
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
 	$Sprite2D.visible = false
+	$Shadow.visible = false
 	pass # Replace with function body.

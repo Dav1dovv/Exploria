@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b13lyodynary4"]
+[gd_scene load_steps=13 format=3 uid="uid://b13lyodynary4"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_6tk43"]
+[ext_resource type="Script" uid="uid://clnsgpaeoiv44" path="res://Assets/Entity/Grindable/SimpleGrind.gd" id="2_4av1p"]
 [ext_resource type="Resource" uid="uid://bmtpdoo0ekjf" path="res://Assets/Scripts/Inventory/Items/Mushroom.tres" id="2_fr3f4"]
 [ext_resource type="Texture2D" uid="uid://bxq5peroy32so" path="res://Assets/Entity/Grindable/Mushroom/Mushroom.png" id="3_6mjsd"]
 [ext_resource type="Texture2D" uid="uid://3swem6uur788" path="res://Assets/Sprites/Light_simple.png" id="4_fr3f4"]
@@ -83,7 +84,10 @@ nodes/output/position = Vector2(600, 60)
 node_connections = [&"output", 0, &"Animation"]
 
 [node name="Mushroom" instance=ExtResource("1_6tk43")]
+script = ExtResource("2_4av1p")
 drop = ExtResource("2_fr3f4")
+variations = 0
+random_sprite = true
 hp = 10
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="0"]

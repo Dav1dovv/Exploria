@@ -36,6 +36,7 @@ func show_notification(text: String, duration: float = 3.0, icon: Texture = null
 		remove_notification(hbox)
 
 # Функция удаления уведомления
+@warning_ignore("shadowed_variable_base_class")
 func remove_notification(notification):
 	if notification and is_instance_valid(notification) and notification in vbox.get_children():
 		var tween = get_tree().create_tween()

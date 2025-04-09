@@ -88,11 +88,11 @@ func _drop_data(_position, data):
 	data.update_slot()
 
 func _on_mouse_entered():
-	if item and is_instance_valid(tooltip):
+	if item:
 		tooltip.show_tooltip(
 			item.display_name,
-			item.description,
-			get_global_mouse_position() + Vector2(16, 16)
+			item.description
+			#get_global_mouse_position() + Vector2(16, 16)
 		)
 
 func update_item_count(new_count: int):
@@ -101,5 +101,4 @@ func update_item_count(new_count: int):
 		update_slot()  
 
 func _on_mouse_exited():
-	if is_instance_valid(tooltip):
-		tooltip.hide_tooltip()
+	tooltip.hide_tooltip()

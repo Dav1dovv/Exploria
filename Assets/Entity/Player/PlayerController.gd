@@ -13,6 +13,10 @@ var hand_state = hand.Idle
 var max_stamina = 100
 var stamina
 
+@export_group("SFX")
+const HURT = preload("res://Assets/Entity/Player/SFX/Player Damage.mp3")
+const DEATH = preload("res://Assets/Entity/Player/SFX/Player death.wav")
+
 func _ready() -> void:
 	print(max_hp)
 	hp = max_hp
@@ -78,6 +82,13 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	var e = area.get_parent()
 	take_damage(e.global_position,e.damage_strenght,null)
+	#$SFX.pitch_scale = randf_range(-0.3,0.3)
+	$SFX.stream = HURT
+	$SFX.play()
+	if hp <= 0:
+		$SFX.pitch_scale = 1
+		$SFX.stream = DEATH
+		$SFX.play()
 	$CanvasLayer/HUD/HealthBar.update_bar(hp)
 	
 func stamina_update():

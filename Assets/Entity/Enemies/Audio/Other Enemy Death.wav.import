@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c43use8krfpnq"
+path="res://.godot/imported/Other Enemy Death.wav-2bcf2d8f4ffc904703664b4a1943e65b.sample"
+
+[deps]
+
+source_file="res://Assets/Entity/Enemies/Audio/Other Enemy Death.wav"
+dest_files=["res://.godot/imported/Other Enemy Death.wav-2bcf2d8f4ffc904703664b4a1943e65b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

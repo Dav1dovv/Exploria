@@ -1,16 +1,17 @@
-[gd_scene load_steps=61 format=4 uid="uid://kxl21wor8gcg"]
+[gd_scene load_steps=65 format=4 uid="uid://kxl21wor8gcg"]
 
 [ext_resource type="Shader" uid="uid://b6miyurlav2v7" path="res://Assets/Shaders/StarField.gdshader" id="2_4g4se"]
 [ext_resource type="PackedScene" uid="uid://bs6umdlyqc1mn" path="res://Assets/Scripts/Creature_Spawner/creature_spawner.tscn" id="4_qgsks"]
-[ext_resource type="PackedScene" uid="uid://bruy23m30yewu" path="res://Assets/Entity/Slime/Slime.tscn" id="5_d4xi6"]
-[ext_resource type="PackedScene" uid="uid://d08j2bg0mrf0d" path="res://Assets/Entity/Alien/Alien.tscn" id="6_jhi6k"]
-[ext_resource type="PackedScene" uid="uid://dlb3vgrxce2tx" path="res://Assets/Entity/Meduza/Meduza.tscn" id="7_am7lw"]
 [ext_resource type="Script" uid="uid://dx5xtg56iqy21" path="res://Assets/Scripts/BetterCam.gd" id="8_kxtpq"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_0jwdx"]
 [ext_resource type="PackedScene" uid="uid://dddqybys2u2rb" path="res://Assets/Entity/Player/Player.tscn" id="10_vlggr"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_cbwcc"]
+[ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="12_4u8pm"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_k1r3n"]
 [ext_resource type="TileSet" uid="uid://m1beso1osc0i" path="res://Assets/Misc/Tiles/Oktavia.tres" id="13_nlmpd"]
+[ext_resource type="Resource" uid="uid://npoln7sqncff" path="res://Assets/Scripts/Inventory/Items/Life Fruit.tres" id="13_x1bu5"]
+[ext_resource type="Shader" uid="uid://bgod07nxakjop" path="res://Assets/Entity/Grindable/Shaders/Wind.gdshader" id="14_c0axg"]
+[ext_resource type="Texture2D" uid="uid://b4bxr48q2eddn" path="res://Assets/Entity/Grindable/Tree/Tree.png" id="15_8pkxt"]
 [ext_resource type="Texture2D" uid="uid://c80h44nk4wib" path="res://Assets/Sprites/Environemnt/Base01-Sheet.png" id="16_eolhc"]
 [ext_resource type="Texture2D" uid="uid://dlim1ebq4mpjp" path="res://Assets/Sprites/Environemnt/House01-Sheet.png" id="17_4u8pm"]
 [ext_resource type="Texture2D" uid="uid://cqsdrx2es37v4" path="res://Assets/Sprites/Environemnt/House02-Sheet.png" id="18_4u8pm"]
@@ -22,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://cfw6apb1ldhr2" path="res://Assets/Entity/Grindable/Tree/tree.tscn" id="28_lfmlq"]
 [ext_resource type="PackedScene" uid="uid://bhcw3lw12mn07" path="res://Assets/Chest/chest.tscn" id="29_fpr6s"]
 [ext_resource type="PackedScene" uid="uid://cpo14lf8d3sbj" path="res://Assets/Entity/Grindable/Cactus/Cactus.tscn" id="30_yoool"]
-[ext_resource type="PackedScene" uid="uid://c6cq8e8oxpptd" path="res://Assets/Entity/Grindable/Tree/Life_tree.tscn" id="31_x84io"]
 [ext_resource type="PackedScene" uid="uid://cu0mowstbdnxm" path="res://Assets/Scripts/DayNightCycle/canvas_modulate.tscn" id="33_kqxfp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8805c"]
@@ -69,9 +69,40 @@ object_scene = ExtResource("30_yoool")
 spawn_probability = 0.4
 metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4w4i"]
+shader = ExtResource("14_c0axg")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tga1f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j7qv"]
+radius = 6.08276
+
+[sub_resource type="PackedScene" id="PackedScene_d7x01"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Tree", "drop", "random_sprite", "hp", "VisibleOnScreenEnabler2D", "position", "scale", "Sprite2D", "material", "position", "texture", "offset", "hframes", "frame", "CollisionShape2D", "position", "shape", "CollisionShape2D", "shape"),
+"node_count": 5,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./StaticBody2D")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 3, 3, 0, 1073741824, -1, 2147483647, 262148, -1, 2, 5, 4, 6, 5, 0, 1073741825, -1, 2147483647, 786439, -1, 6, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 0, 1073741826, -1, 2147483647, 1048590, -1, 2, 15, 12, 16, 13, 0, 1073741827, -1, 2147483647, 262161, -1, 1, 18, 14, 0),
+"variants": [ExtResource("12_4u8pm"), ExtResource("13_x1bu5"), false, 10, Vector2(-2, -24), Vector2(1.8, 2.6), SubResource("ShaderMaterial_b4w4i"), Vector2(0, -5), ExtResource("15_8pkxt"), Vector2(0, -22), 7, 2, Vector2(1, -10), SubResource("RectangleShape2D_tga1f"), SubResource("CircleShape2D_3j7qv")],
+"version": 3
+}
+
 [sub_resource type="Resource" id="Resource_13ykc"]
 script = ExtResource("25_1f7wk")
-object_scene = ExtResource("31_x84io")
+object_scene = SubResource("PackedScene_d7x01")
 spawn_probability = 0.03
 metadata/_custom_type_script = "uid://c6g5fnbka8cm8"
 
@@ -270,7 +301,7 @@ ease = 2
 offsets = PackedFloat32Array(0, 0.173913, 0.773913, 1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_eob72"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sxc2m"]
 gradient = SubResource("Gradient_a154x")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4g4se"]
@@ -283,7 +314,7 @@ initial_velocity_max = 80.0
 gravity = Vector3(0, 10, 0)
 scale_max = 1.5
 color = Color(0.701961, 0.439216, 0.278431, 1)
-color_ramp = SubResource("GradientTexture1D_eob72")
+color_ramp = SubResource("GradientTexture1D_sxc2m")
 
 [node name="Oktavia" type="Node2D" groups=["World"]]
 y_sort_enabled = true
@@ -295,7 +326,6 @@ y_sort_enabled = true
 visible = false
 position = Vector2(0.3, 0.3)
 player = NodePath("../Player")
-enemy = Array[PackedScene]([ExtResource("5_d4xi6"), ExtResource("6_jhi6k"), ExtResource("7_am7lw")])
 
 [node name="ParallaxBackground" type="Node2D" parent="Environment"]
 z_index = -340
@@ -350,7 +380,7 @@ y_sort_enabled = true
 position = Vector2(6, -3)
 script = ExtResource("24_obhyr")
 objects_to_spawn = Array[ExtResource("25_1f7wk")]([SubResource("Resource_3x120"), SubResource("Resource_l4wh0"), SubResource("Resource_nvus3"), SubResource("Resource_m1cas"), SubResource("Resource_4eoj7"), SubResource("Resource_13ykc")])
-object_spawn_chance = 0.3
+object_spawn_chance = 1.0
 spawn_area_size = Vector2(1029, 860)
 grid_size = Vector2(32, 32)
 metadata/_custom_type_script = "uid://b20yonmnvj5p"
@@ -462,6 +492,186 @@ position = Vector2(-1.53847, 3.07692)
 shape = SubResource("RectangleShape2D_0jwdx")
 debug_color = Color(0.686645, 0, 0.155192, 0.42)
 
+[node name="House7" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-397.4, 202.07)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House7"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House7/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House8" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-173.4, 202.07)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House8"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House8/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House9" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-280.4, 202.07)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_nlmpd")
+animation = &"open"
+offset = Vector2(0, -13.438)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House9"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House9/StaticBody2D"]
+position = Vector2(-1.53847, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House10" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-397.4, 320.139)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House10"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House10/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House11" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-173.4, 320.139)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House11"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House11/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House12" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-280.4, 321.139)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_nlmpd")
+animation = &"open"
+offset = Vector2(0, -13.438)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House12"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House12/StaticBody2D"]
+position = Vector2(-1.53847, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House13" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-397.4, -277.93)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House13"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House13/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House14" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-173.4, -277.93)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House14"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House14/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House15" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-280.4, -277.93)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_nlmpd")
+animation = &"open"
+offset = Vector2(0, -13.438)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House15"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House15/StaticBody2D"]
+position = Vector2(-1.53847, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House16" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-397.4, -159.861)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House16"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House16/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House17" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-173.4, -159.861)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_kxtpq")
+animation = &"open"
+offset = Vector2(0.769226, -13.4381)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House17"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House17/StaticBody2D"]
+position = Vector2(-0.769227, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
+[node name="House18" type="AnimatedSprite2D" parent="Environment/Base"]
+position = Vector2(-280.4, -158.861)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_nlmpd")
+animation = &"open"
+offset = Vector2(0, -13.438)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Base/House18"]
+position = Vector2(1.53846, 5.38461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Base/House18/StaticBody2D"]
+position = Vector2(-1.53847, 3.07692)
+shape = SubResource("RectangleShape2D_0jwdx")
+debug_color = Color(0.686645, 0, 0.155192, 0.42)
+
 [node name="Components" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Components"]
@@ -476,11 +686,17 @@ follow_mode = 2
 follow_target = NodePath("../../Environment/Player")
 tween_resource = SubResource("Resource_7i08t")
 follow_damping_value = Vector2(0.5, 0.5)
+draw_limits = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(121, 6)
 process_callback = 0
+limit_left = -2065
+limit_top = -1058
+limit_right = 1980
+limit_bottom = 1045
+editor_draw_limits = true
 script = ExtResource("8_kxtpq")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

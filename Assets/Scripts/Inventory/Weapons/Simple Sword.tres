@@ -14,8 +14,8 @@ damage_strength = 3
 hit_effect = Array[ExtResource("1_lh1et")]([])
 hit_distance = 14.0
 is_wep = true
-item_id = ""
-display_name = "Предмет"
+item_id = "Simple_Sword"
+display_name = "Simple_Sword"
 description = "a sword for every adventurer
 DMG: 3
 Distance : 14.0"

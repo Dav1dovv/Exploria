@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d08j2bg0mrf0d"]
+[gd_scene load_steps=26 format=3 uid="uid://d08j2bg0mrf0d"]
 
 [ext_resource type="Script" uid="uid://dmt067asa5v4j" path="res://Assets/Entity/Alien/Alien.gd" id="1_v6hny"]
 [ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="2_p8pv0"]
@@ -7,27 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://w4hg8mpygwfp" path="res://Assets/Entity/Enemy_sheet.png" id="3_k070q"]
 [ext_resource type="Resource" uid="uid://b3tjvjywvicrp" path="res://Assets/Scripts/Inventory/Items/Meat.tres" id="4_cbtua"]
 [ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="4_k070q"]
-[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="5_6jgkp"]
-[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="7_2raol"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2g1dq"]
-atlas = ExtResource("4_k070q")
-region = Rect2(79, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_wkfq0"]
-script = ExtResource("7_2raol")
-damage_strength = 25
-hit_effect = Array[ExtResource("5_6jgkp")]([])
-hit_distance = 30.0
-is_wep = true
-item_id = ""
-display_name = "Предмет"
-description = "Dmg: 25
-Distance : 30"
-icon = SubResource("AtlasTexture_2g1dq")
-max_count = 1
-stackable = true
-metadata/_custom_type_script = "uid://ciow47xd5e58f"
+[ext_resource type="Resource" uid="uid://p7auwku2y88o" path="res://Assets/Scripts/Inventory/Weapons/Dark Saber.tres" id="5_ir2a3"]
+[ext_resource type="AudioStream" uid="uid://bbgmrhw83nl8" path="res://Assets/Entity/Enemies/Audio/Enemy_damage_test.wav" id="9_p8pv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8pv0"]
 size = Vector2(12, 20)
@@ -1069,7 +1050,7 @@ collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_v6hny")
 damage_strenght = 2
-drop = Array[ExtResource("2_p8pv0")]([ExtResource("3_200mo"), ExtResource("4_cbtua"), SubResource("Resource_wkfq0")])
+drop = Array[ExtResource("2_p8pv0")]([ExtResource("3_200mo"), ExtResource("4_cbtua"), ExtResource("5_ir2a3")])
 max_hp = 40
 knockback_modifier = 20
 
@@ -1184,6 +1165,10 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_v6hny")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_p8pv0")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Skin/Body/Hands/RightHand/Weapon/AttackPoint/HitBox" to="Skin/Body/Hands/RightHand/Weapon/AttackPoint/HitBox" method="_on_area_entered"]

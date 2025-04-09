@@ -15,9 +15,6 @@ var occupied_cells : Dictionary = {}
 @export_tool_button("Generate","Callable")
 var regenerate = func(): regenerate_world()
 
-func _ready():
-	clear_existing_objects()
-	spawn_objects()
 
 func is_cell_occupied(cell_position: Vector2) -> bool:
 	var cell_key = cell_position.snapped(grid_size)

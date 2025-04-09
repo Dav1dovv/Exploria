@@ -14,7 +14,7 @@ func _ready():
 func open():
 	if !is_opened:
 		particles.restart()
-		particles.emitting
+		particles.emitting = true
 		var rand_drop = randi_range(0,drop_weapons.size()-1)
 		get_tree().get_first_node_in_group("NotificationManager").show_notification("you finded " + drop_weapons[rand_drop].display_name, 2.0, drop_weapons[rand_drop].icon)
 		get_tree().get_first_node_in_group("Inventory").add_item(drop_weapons[rand_drop],1)

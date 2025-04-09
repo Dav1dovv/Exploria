@@ -11,6 +11,7 @@ func pause():
 	visible = true
 	$AnimationPlayer.play("blur")
 
+@warning_ignore("unused_parameter")
 func _input(event: InputEvent) -> void:
 		if Input.is_key_pressed(KEY_ESCAPE) and !get_tree().paused:
 			pause()

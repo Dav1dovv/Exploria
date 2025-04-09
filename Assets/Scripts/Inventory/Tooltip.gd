@@ -6,7 +6,7 @@ extends Control
 func _ready():
 	hide()  # Скрываем по умолчанию
 
-func show_tooltip(item_name: String, text: String, position: Vector2):
+func show_tooltip(item_name: String, text: String):
 	name_.text = item_name  # Здесь передавайте item.display_name
 	label.text = text
 # ❌ Скрываем описание

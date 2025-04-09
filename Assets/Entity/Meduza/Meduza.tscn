@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlb3vgrxce2tx"]
+[gd_scene load_steps=15 format=3 uid="uid://dlb3vgrxce2tx"]
 
 [ext_resource type="Script" uid="uid://ctdp2yeyr7px6" path="res://Assets/Entity/Meduza/Meduza.gd" id="1_vfote"]
 [ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="2_bwid4"]
 [ext_resource type="Texture2D" uid="uid://w4hg8mpygwfp" path="res://Assets/Entity/Enemy_sheet.png" id="3_lsbmr"]
-[ext_resource type="Texture2D" uid="uid://n1naypysr3j7" path="res://Assets/Sprites/Light.png" id="4_bwid4"]
+[ext_resource type="Texture2D" uid="uid://3swem6uur788" path="res://Assets/Sprites/Light_simple.png" id="4_isyyb"]
+[ext_resource type="AudioStream" uid="uid://bbgmrhw83nl8" path="res://Assets/Entity/Enemies/Audio/Enemy_damage_test.wav" id="5_5xd12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31v20"]
 size = Vector2(10, 44)
@@ -272,9 +273,10 @@ shape = SubResource("CircleShape2D_ry1ek")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -41)
-scale = Vector2(2.8125, 2.8125)
-color = Color(0.521569, 1, 1, 1)
-texture = ExtResource("4_bwid4")
+scale = Vector2(3.4375, 3.4375)
+color = Color(2.69532e-06, 0.817795, 0.821969, 1)
+energy = 1.3
+texture = ExtResource("4_isyyb")
 texture_scale = 0.2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -285,5 +287,9 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_yg2v8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5xd12")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

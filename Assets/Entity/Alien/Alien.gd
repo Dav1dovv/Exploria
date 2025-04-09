@@ -6,6 +6,8 @@ var motion : Vector2
 @export var Level :int
 @export var damage_strenght : int
 @export var drop: Array[ItemResource]
+
+const DEATH  = preload("res://Assets/Entity/Enemies/Audio/Enemy Death.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -17,7 +19,7 @@ func _process(delta: float) -> void:
 	if player != null : 
 		$Skin/AnimationPlayer.play("Walk")
 		position = position.move_toward(player.global_position, delta*speed * 10)
-		if position.distance_to(player.global_position) > 100:
+		if position.distance_to(player.global_position) < 100:
 			$Skin/Body/Hands/AnimationPlayer.play("Attack")
 			
 		
@@ -28,7 +30,10 @@ func _process(delta: float) -> void:
 	else: $Skin/AnimationPlayer.play("Idle")
 	move_and_slide()
 	pass # Replace with function body.
+@warning_ignore("shadowed_variable")
 func damage(knnockback,damage):
+	#$AudioStreamPlayer2D.pitch_scale = randf_range(-0.3,0.3)
+	$AudioStreamPlayer2D.play()
 	var FLOAT_TEXT = preload("res://Assets/Scripts/FloatText/FloatText.tscn")
 	var object = FLOAT_TEXT.instantiate()
 	object.text =str(damage)
@@ -37,9 +42,12 @@ func damage(knnockback,damage):
 	call_deferred("add_child",object)
 	take_damage(knnockback,damage,null)
 	if hp<= 0:
+		$AudioStreamPlayer2D.stream = DEATH
+		$AudioStreamPlayer2D.play()
 		var drop_itm = randi_range(0, randi() % drop.size())
 		var drop_cnt = randi() % 10
 		Notification.show_notification(drop[drop_itm].display_name + " +" + str(drop_cnt), 1.0,drop[drop_itm].icon)
 		if drop_itm == 0:drop[drop_itm].count += drop_cnt
 		else: get_tree().get_first_node_in_group("Inventory").add_item(drop[drop_itm],drop_cnt)
+		await $AudioStreamPlayer2D.finished
 		queue_free()

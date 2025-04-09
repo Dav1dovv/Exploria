@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="FoodResource" load_steps=7 format=3 uid="uid://l84lcbq55sce"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_hryn4"]
+[ext_resource type="Script" uid="uid://cmviptt7oir8l" path="res://Assets/Scripts/Inventory/FoodResource.gd" id="2_lg6rq"]
+[ext_resource type="Script" uid="uid://ba74vmx5ciy0l" path="res://Assets/Scripts/Effects/Heal.gd" id="2_nwb2h"]
+[ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_x5uhg"]
+
+[sub_resource type="Resource" id="Resource_iou1d"]
+script = ExtResource("2_nwb2h")
+name = "Effect"
+effect_value = 10
+duration = 0.0
+metadata/_custom_type_script = "uid://ba74vmx5ciy0l"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwb2h"]
+atlas = ExtResource("2_x5uhg")
+region = Rect2(32, 15, 16, 16)
+
+[resource]
+script = ExtResource("2_lg6rq")
+effects = Array[ExtResource("1_hryn4")]([SubResource("Resource_iou1d")])
+item_id = "Apple"
+display_name = "Apple"
+description = "looks delicious"
+icon = SubResource("AtlasTexture_nwb2h")
+max_count = 20
+stackable = true
+metadata/_custom_type_script = "uid://cmviptt7oir8l"

@@ -1335,7 +1335,7 @@ player = NodePath("../..")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 autostart = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -1348,11 +1348,13 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3lqb0")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [node name="Laser" type="AudioStreamPlayer2D" parent="."]
 volume_db = -8.194
 
-[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -9)
