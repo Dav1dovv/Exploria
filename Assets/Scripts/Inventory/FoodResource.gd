@@ -5,5 +5,6 @@ class_name FoodResource
 @export var effects: Array[Effect]
 
 func eat(player):
+	count-=1
 	for effect in effects:
 		effect.apply_effect(player)

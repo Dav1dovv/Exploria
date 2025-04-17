@@ -15,7 +15,7 @@ transition = 0
 ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7s4qx"]
-size = Vector2(4045, 2103)
+size = Vector2(1585, 1420)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -33,15 +33,16 @@ script = ExtResource("3_qin47")
 metadata/_custom_type_script = "uid://b20yonmnvj5p"
 
 [node name="Player" parent="." instance=ExtResource("4_hyh57")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(0, -10.365)
+position = Vector2(0, -9)
 process_callback = 0
-limit_left = -2065
-limit_top = -1058
-limit_right = 1980
-limit_bottom = 1045
+limit_left = -805
+limit_top = -848
+limit_right = 780
+limit_bottom = 572
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -51,14 +52,14 @@ script = ExtResource("5_7s4qx")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(0, -10.365)
+position = Vector2(0, -9)
 script = ExtResource("6_hmy3y")
 follow_mode = 2
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_rsiau")
-follow_offset = Vector2(0, -10.365)
+follow_offset = Vector2(0, -9)
 follow_damping = true
-follow_damping_value = Vector2(0.5, 0.5)
+follow_damping_value = Vector2(0.7, 0.7)
 draw_limits = true
 
 [node name="MISC" type="Node" parent="."]

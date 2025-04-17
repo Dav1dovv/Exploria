@@ -14,9 +14,6 @@ func _ready() -> void:
 	$Shadow.visible = false
 	randomize()
 	if random_sprite:$Sprite2D.frame = randi_range(0,variations)
-func VFX():
-	$AnimationPlayer.play("Grind")
-
 
 func grind(damage) -> void:
 	if drop != null:
@@ -32,7 +29,7 @@ func grind(damage) -> void:
 		object.get_child(0).play("splash")
 		call_deferred("add_child",object)
 	take_damage(damage)
-	VFX()
+	S_VFX($Sprite2D)
 	pass # Replace with function body.
 
 

@@ -37,9 +37,6 @@ func _ready() -> void:
 				break
 		
 		$Sprite2D.frame = selected_frame
-func VFX():
-	$AnimationPlayer.play("Grind")
-
 
 func grind(damage) -> void:
 	if drop != null:
@@ -65,7 +62,7 @@ func grind(damage) -> void:
 		object.get_child(0).play("splash")
 		call_deferred("add_child",object)
 	take_damage(damage)
-	VFX()
+	S_VFX($Sprite2D)
 	pass # Replace with function body.
 
 

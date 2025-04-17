@@ -1,10 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://dddqybys2u2rb"]
+[gd_scene load_steps=40 format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
 [ext_resource type="Texture2D" uid="uid://bg5o6d26adavm" path="res://Assets/Entity/Player/astronautv4.png" id="3_3lqb0"]
 [ext_resource type="Texture2D" uid="uid://dj47l10jp6qg5" path="res://Assets/Sprites/Shadow.png" id="3_koen5"]
-[ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Assets/Scripts/Attack/Attack.gd" id="4_58md0"]
-[ext_resource type="Texture2D" uid="uid://cek74bm8i14fc" path="res://Assets/Scripts/Inventory/Weapons/Pickaxe-Sheet.png" id="4_xwwyn"]
+[ext_resource type="Script" uid="uid://dohhabx06hqfy" path="res://Assets/Scripts/Attack/Equip.gd" id="4_58md0"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="5_acjqr"]
 [ext_resource type="PackedScene" uid="uid://xi525y36l0mn" path="res://Assets/Scripts/Inventory/Inventory.tscn" id="7_72cvu"]
 [ext_resource type="PackedScene" uid="uid://dgqb6xkd37twx" path="res://Assets/Scripts/Boxes/hit_box.tscn" id="7_gfwb7"]
 [ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="7_nk4x0"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="9_nk4x0"]
 [ext_resource type="Script" uid="uid://cx016k2vkc7mq" path="res://Assets/Entity/Player/Gold.gd" id="10_3gu1i"]
 [ext_resource type="PackedScene" uid="uid://b0mf3l56dvooj" path="res://Assets/UI/PauseMenu/pause_menu.tscn" id="10_ob8aw"]
+[ext_resource type="Script" uid="uid://dqwmb11p1aos" path="res://Assets/Entity/Player/skin_changer.gd" id="16_koen5"]
+[ext_resource type="Texture2D" uid="uid://bd6lb2uhohx3t" path="res://Assets/Entity/Player/Skins/Skin7.png" id="17_qt0y1"]
 [ext_resource type="Texture2D" uid="uid://3swem6uur788" path="res://Assets/Sprites/Light_simple.png" id="19_3lqb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh2bb"]
@@ -23,8 +25,8 @@ size = Vector2(12, 20)
 size = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lqb0"]
-atlas = ExtResource("4_xwwyn")
-region = Rect2(48, 2, 14, 13)
+atlas = ExtResource("5_acjqr")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="Animation" id="Animation_gfwb7"]
 resource_name = "Attack"
@@ -119,70 +121,22 @@ resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightHand:position")
+tracks/0/path = NodePath("LeftHand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(3, -6), Vector2(3, -6)]
+"values": [Vector2(-5, -6), Vector2(-5, -6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightHand:rotation")
+tracks/1/path = NodePath("LeftHand:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightHand:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LeftHand:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-5, -6), Vector2(-5, -6)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LeftHand:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("LeftHand:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -206,106 +160,82 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightHand:rotation")
+tracks/1/path = NodePath("RightHand:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightHand:scale")
+tracks/2/path = NodePath("RightHand/Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.400166, 5.44462)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightHand/Weapon:position")
+tracks/3/path = NodePath("RightHand/Weapon:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.400166, 5.44462)]
+"values": [1.57079]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RightHand/Weapon:rotation")
+tracks/4/path = NodePath("RightHand/Weapon:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.57079]
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RightHand/Weapon:scale")
+tracks/5/path = NodePath("LeftHand:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(-5, -6)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LeftHand:position")
+tracks/6/path = NodePath("LeftHand:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -6)]
+"values": [Vector2(1, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("LeftHand:rotation")
+tracks/7/path = NodePath("AttackPoint/HitBox/HitZone:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("LeftHand:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("AttackPoint/HitBox/HitZone:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -330,58 +260,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftHand:rotation")
+tracks/1/path = NodePath("LeftHand:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.51, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.530629, -0.630842, 0.530629]
+"values": [Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LeftHand:scale")
+tracks/2/path = NodePath("RightHand:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(3, -6), Vector2(3, -6)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightHand:position")
+tracks/3/path = NodePath("RightHand:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3, -6), Vector2(3, -6)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RightHand:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.51, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.43814, 0.337096, -0.43814]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("RightHand:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -1131,7 +1037,7 @@ position = Vector2(0, -4)
 [node name="HitBox" parent="Skin/Body/Hands/AttackPoint" node_paths=PackedStringArray("attack_node", "player") instance=ExtResource("7_gfwb7")]
 collision_layer = 32
 collision_mask = 12
-attack_node = NodePath("../../../../../weapon")
+attack_node = NodePath("../../../../../Equip")
 player = NodePath("../../../../..")
 
 [node name="HitZone" type="CollisionShape2D" parent="Skin/Body/Hands/AttackPoint/HitBox"]
@@ -1160,7 +1066,7 @@ region_rect = Rect2(6, 20, 3, 6)
 position = Vector2(0.400166, 5.44462)
 rotation = 1.57079
 texture = SubResource("AtlasTexture_3lqb0")
-offset = Vector2(0.00840807, -5.3826)
+offset = Vector2(-0.325, -5.593)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin/Body/Hands"]
 libraries = {
@@ -1171,9 +1077,9 @@ speed_scale = 0.8
 [node name="Head" type="Sprite2D" parent="Skin"]
 position = Vector2(0, -7)
 texture = ExtResource("3_3lqb0")
-offset = Vector2(-2, -6)
+offset = Vector2(0, -6)
 region_enabled = true
-region_rect = Rect2(7, 6, 15, 13)
+region_rect = Rect2(7, 6, 18, 13)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
 libraries = {
@@ -1186,7 +1092,7 @@ position = Vector2(-1, -5)
 shape = SubResource("CapsuleShape2D_jbefx")
 debug_color = Color(0.996052, 0, 0.194091, 0.42)
 
-[node name="weapon" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]
+[node name="Equip" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite") groups=["Equip"]]
 unique_name_in_owner = true
 script = ExtResource("4_58md0")
 strenght = 3
@@ -1230,9 +1136,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 155.0
+offset_left = 116.0
 offset_top = -34.0
-offset_right = 185.0
+offset_right = 146.0
 offset_bottom = -4.0
 grow_vertical = 0
 value = 100.0
@@ -1240,7 +1146,7 @@ fill_mode = 3
 texture_under = SubResource("AtlasTexture_jh2bb")
 texture_over = SubResource("AtlasTexture_1aajc")
 texture_progress = SubResource("AtlasTexture_1f3li")
-texture_progress_offset = Vector2(1.99, 2.225)
+texture_progress_offset = Vector2(2, 2)
 script = ExtResource("8_1aajc")
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/HealthBar"]
@@ -1251,9 +1157,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = 2.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
@@ -1266,9 +1172,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 291.0
+offset_left = 333.0
 offset_top = -34.0
-offset_right = 321.0
+offset_right = 363.0
 offset_bottom = -4.0
 grow_vertical = 0
 value = 50.0
@@ -1276,7 +1182,7 @@ fill_mode = 3
 texture_under = SubResource("AtlasTexture_jh2bb")
 texture_over = SubResource("AtlasTexture_1aajc")
 texture_progress = SubResource("AtlasTexture_nk4x0")
-texture_progress_offset = Vector2(1.99, 2.225)
+texture_progress_offset = Vector2(2, 2)
 script = ExtResource("8_1aajc")
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/StaminaBar"]
@@ -1287,9 +1193,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = 2.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
@@ -1329,13 +1235,13 @@ text = "999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Inventory" parent="CanvasLayer" node_paths=PackedStringArray("player") groups=["Inventory"] instance=ExtResource("7_72cvu")]
-player = NodePath("../..")
+[node name="Inventory" parent="CanvasLayer" groups=["Inventory"] instance=ExtResource("7_72cvu")]
+unique_name_in_owner = true
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -1358,7 +1264,13 @@ bus = &"SFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -9)
+shadow_enabled = true
 texture = ExtResource("19_3lqb0")
+
+[node name="SkinChanger" type="Node" parent="." node_paths=PackedStringArray("skin_parts")]
+script = ExtResource("16_koen5")
+skin_parts = [NodePath("../Skin/Body"), NodePath("../Skin/Body/Left Leg"), NodePath("../Skin/Body/RightLeg"), NodePath("../Skin/Body/Hands/LeftHand"), NodePath("../Skin/Body/Hands/RightHand"), NodePath("../Skin/Head")]
+skin = ExtResource("17_qt0y1")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

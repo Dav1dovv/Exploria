@@ -10,16 +10,16 @@ region = Rect2(48, 2, 14, 13)
 
 [resource]
 script = ExtResource("3_wp1bo")
+types = 3
 damage_strength = 3
 hit_effect = Array[ExtResource("1_qq4d6")]([])
 hit_distance = 14.0
-is_wep = false
-item_id = "MGM"
+icon = SubResource("AtlasTexture_veyed")
 display_name = "M.G.M."
 description = "molecular gatherer master
 DMG: 3
 Distance : 14.0"
-icon = SubResource("AtlasTexture_veyed")
 max_count = 1
 stackable = true
+category = 3
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

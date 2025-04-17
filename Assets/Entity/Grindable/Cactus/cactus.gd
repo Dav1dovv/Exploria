@@ -2,14 +2,13 @@
 extends Grindable
 
 @export var drop : ItemResource
-@export var variations : int
+@export var variations : Array[Sprite2D]
+var f
 func _ready() -> void:
-	$Sprite2D.visible = false
 	randomize()
-	$Sprite2D.frame = randi_range(0,variations)
-func VFX():
-	$AnimationPlayer.play("Grind")
-
+	f = randi() % variations.size()
+	$Shadow.visible = false
+	
 
 func grind(damage) -> void:
 	if drop != null:
@@ -22,19 +21,20 @@ func grind(damage) -> void:
 		object.get_child(0).play("splash")
 		call_deferred("add_child",object)
 	take_damage(damage)
-	VFX()
+	S_VFX(variations[f])
 	pass # Replace with function body.
 
 
 func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
-	$Sprite2D.visible = true
+	variations[f].visible = true
+	$Shadow.visible = true
 	pass # Replace with function body.
 
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	$Sprite2D.visible = false
+	variations[f].visible = false
+	$Shadow.visible = false
 	pass # Replace with function body.
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.take_damage(global_position,3,null)

@@ -10,16 +10,16 @@ region = Rect2(31, 0, 16, 16)
 
 [resource]
 script = ExtResource("3_ptkdu")
+types = 0
 damage_strength = 5
 hit_effect = Array[ExtResource("1_ipwqq")]([])
 hit_distance = 16.0
-is_wep = true
-item_id = "GoldenBeach"
+icon = SubResource("AtlasTexture_2lc2d")
 display_name = "Golden Beach"
 description = "you're YEllOW?
 DMG : 5
 Distance : 16.0"
-icon = SubResource("AtlasTexture_2lc2d")
 max_count = 1
 stackable = true
+category = 2
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

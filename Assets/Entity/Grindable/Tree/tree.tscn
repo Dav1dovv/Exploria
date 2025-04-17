@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfw6apb1ldhr2"]
+[gd_scene load_steps=13 format=3 uid="uid://cfw6apb1ldhr2"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_8jff8"]
 [ext_resource type="Texture2D" uid="uid://b4bxr48q2eddn" path="res://Assets/Entity/Grindable/Tree/Tree.png" id="2_02n64"]
@@ -23,6 +23,29 @@ shader_parameter/offset = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_3j7qv"]
 radius = 6.08276
 
+[sub_resource type="Gradient" id="Gradient_uupl7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uupl7"]
+gradient = SubResource("Gradient_uupl7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1nk2r"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 26.06
+direction = Vector3(0.5, -0.5, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 700, 0)
+damping_min = 100.0
+damping_max = 800.0
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_uupl7")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3j7qv"]
+polygon = PackedVector2Array(-9, 5, 9, 5, 5, -4, -4, -5)
+
 [node name="Tree" instance=ExtResource("1_8jff8")]
 script = ExtResource("2_ksygi")
 drop = ExtResource("3_3j7qv")
@@ -46,3 +69,9 @@ shape = SubResource("RectangleShape2D_tga1f")
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 shape = SubResource("CircleShape2D_3j7qv")
+
+[node name="GPUParticles2D" parent="." index="5"]
+process_material = SubResource("ParticleProcessMaterial_1nk2r")
+
+[node name="LightOccluder2D" parent="." index="6"]
+occluder = SubResource("OccluderPolygon2D_3j7qv")

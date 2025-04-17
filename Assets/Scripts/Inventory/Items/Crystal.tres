@@ -9,10 +9,10 @@ region = Rect2(17, 32, 15, 14)
 
 [resource]
 script = ExtResource("2_b2hki")
-item_id = "Crystal"
+icon = SubResource("AtlasTexture_8m04t")
 display_name = "Crystal"
 description = "shining"
-icon = SubResource("AtlasTexture_8m04t")
 max_count = 99
 stackable = true
+category = 4
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

@@ -19,10 +19,10 @@ region = Rect2(51, 17, 11, 12)
 [resource]
 script = ExtResource("1_2l5av")
 effects = Array[ExtResource("1_65oti")]([SubResource("Resource_gk7b7")])
-item_id = "LifeFruit"
+icon = SubResource("AtlasTexture_8o63j")
 display_name = "Life Fuit"
 description = "Delicious fruit give godnes life."
-icon = SubResource("AtlasTexture_8o63j")
 max_count = 5
 stackable = true
+category = 1
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

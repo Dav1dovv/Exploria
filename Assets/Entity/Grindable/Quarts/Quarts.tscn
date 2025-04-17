@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqdaavkbyewy2"]
+[gd_scene load_steps=11 format=3 uid="uid://dqdaavkbyewy2"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_uacc7"]
 [ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="2_1lxcu"]
@@ -27,6 +27,9 @@ size = Vector2(25, 13)
 radius = 6.0
 height = 20.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_la2xt"]
+polygon = PackedVector2Array(-10, -10, -13, -4, -13, 0, 12, 0, 12, -11)
+
 [node name="Grindable" instance=ExtResource("1_uacc7")]
 script = ExtResource("2_la2xt")
 drop = SubResource("Resource_fv6o2")
@@ -52,3 +55,6 @@ shape = SubResource("RectangleShape2D_3q8dj")
 position = Vector2(0, -6)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_1lxcu")
+
+[node name="LightOccluder2D" parent="." index="6"]
+occluder = SubResource("OccluderPolygon2D_la2xt")

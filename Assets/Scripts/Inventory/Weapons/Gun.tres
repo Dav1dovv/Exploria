@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://buryia0lww54l"]
+
+[ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_y2fek"]
+[ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_7wc3o"]
+[ext_resource type="Script" uid="uid://ciow47xd5e58f" path="res://Assets/Scripts/Inventory/WeaponResource.gd" id="2_863ws"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x44bt"]
+atlas = ExtResource("2_7wc3o")
+region = Rect2(96, 49, 16, 16)
+
+[resource]
+script = ExtResource("2_863ws")
+types = 1
+damage_strength = 10
+hit_effect = Array[ExtResource("1_y2fek")]([])
+hit_distance = 1.5
+icon = SubResource("AtlasTexture_x44bt")
+display_name = "Gun"
+description = ""
+max_count = 1
+stackable = true
+category = 2
+metadata/_custom_type_script = "uid://ciow47xd5e58f"

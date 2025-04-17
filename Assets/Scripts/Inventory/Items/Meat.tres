@@ -14,15 +14,15 @@ metadata/_custom_type_script = "uid://ba74vmx5ciy0l"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x5tx"]
 atlas = ExtResource("2_nm46c")
-region = Rect2(34, 51, 14, 12)
+region = Rect2(32, 48, 16, 16)
 
 [resource]
 script = ExtResource("2_vnsra")
 effects = Array[ExtResource("1_7v8sf")]([SubResource("Resource_ktf5p")])
-item_id = "Meat"
+icon = SubResource("AtlasTexture_4x5tx")
 display_name = "Meat"
 description = "this is look's strange!"
-icon = SubResource("AtlasTexture_4x5tx")
 max_count = 10
 stackable = true
+category = 1
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

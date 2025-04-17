@@ -10,16 +10,16 @@ region = Rect2(16, 0, 15, 16)
 
 [resource]
 script = ExtResource("3_3vxt4")
+types = 0
 damage_strength = 3
 hit_effect = Array[ExtResource("1_lh1et")]([])
 hit_distance = 14.0
-is_wep = true
-item_id = "Simple_Sword"
+icon = SubResource("AtlasTexture_uadnr")
 display_name = "Simple_Sword"
 description = "a sword for every adventurer
 DMG: 3
 Distance : 14.0"
-icon = SubResource("AtlasTexture_uadnr")
 max_count = 1
 stackable = true
+category = 2
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

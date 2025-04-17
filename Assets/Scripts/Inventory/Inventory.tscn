@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://xi525y36l0mn"]
+[gd_scene load_steps=9 format=3 uid="uid://xi525y36l0mn"]
 
 [ext_resource type="Script" uid="uid://nmf4f5vsqrnb" path="res://Assets/Scripts/Inventory/inventory.gd" id="1_w5r8t"]
-[ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="2_78xkv"]
-[ext_resource type="Resource" uid="uid://lyohe5gb0bx7" path="res://Assets/Scripts/Inventory/Weapons/MGM.tres" id="2_bd0er"]
 [ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="2_smraw"]
 [ext_resource type="Shader" uid="uid://byfq4to3i1kfx" path="res://Assets/Shaders/Blur.gdshader" id="2_uegqv"]
 [ext_resource type="Script" uid="uid://bxguvf402r2aw" path="res://Assets/Scripts/Inventory/TrashSlot.gd" id="3_08cpt"]
-[ext_resource type="Resource" uid="uid://ebko6adpxqvk" path="res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres" id="3_78xkv"]
+[ext_resource type="PackedScene" uid="uid://bwaixuiwrerk5" path="res://Assets/Scripts/Inventory/InventorySlot.tscn" id="6_81ckb"]
+[ext_resource type="Script" uid="uid://c785sodtl7e0" path="res://Assets/Scripts/Inventory/hot_bar.gd" id="9_tp014"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xr2d"]
 shader = ExtResource("2_uegqv")
@@ -26,8 +25,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w5r8t")
-columns = 5
-initial_items = Array[ExtResource("2_78xkv")]([ExtResource("2_bd0er"), ExtResource("3_78xkv")])
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -47,37 +44,150 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -49.0
-offset_top = -30.0
+offset_top = -38.0
 offset_right = 49.0
-offset_bottom = 30.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
+columns = 9
 
-[node name="TrashSlot" type="TextureRect" parent="Panel"]
+[node name="InventorySlot" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
 layout_mode = 2
-offset_left = 292.0
-offset_top = 141.0
-offset_right = 308.0
-offset_bottom = 157.0
+
+[node name="InventorySlot2" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot25" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot26" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="Panel/GridContainer" instance=ExtResource("6_81ckb")]
+layout_mode = 2
+
+[node name="TrashSlot" type="TextureRect" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_08cpt")
 expand_mode = 1
 script = ExtResource("3_08cpt")
 
-[node name="HotbarContainer" type="HBoxContainer" parent="."]
+[node name="HotBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -24.0
+offset_left = 182.0
+offset_top = -20.0
+offset_right = -182.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+script = ExtResource("9_tp014")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
+[node name="InventorySlot" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="InventorySlot2" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot3" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot4" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot5" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot6" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot7" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot8" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="InventorySlot9" parent="HotBar" instance=ExtResource("6_81ckb")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2

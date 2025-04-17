@@ -9,10 +9,10 @@ region = Rect2(32, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_m04xj")
-item_id = "Mushroom"
+icon = SubResource("AtlasTexture_ixte4")
 display_name = "Mushroom"
 description = "little mushroom from big mushroom"
-icon = SubResource("AtlasTexture_ixte4")
 max_count = 5
 stackable = true
+category = 1
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

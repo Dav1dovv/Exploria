@@ -9,10 +9,10 @@ region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_utmy5")
-item_id = "Wood"
+icon = SubResource("AtlasTexture_iuyaa")
 display_name = "Wood"
 description = "just wood"
-icon = SubResource("AtlasTexture_iuyaa")
 max_count = 10
 stackable = true
+category = 4
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

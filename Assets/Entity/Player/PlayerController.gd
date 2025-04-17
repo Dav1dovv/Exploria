@@ -3,6 +3,7 @@ extends BaseEntity
 class_name Player
 
 @onready var attack_point: Node2D = $Skin/Body/Hands/AttackPoint
+@onready var equip: attack_data = %Equip
 
 var dir :Vector2
 var mouse_look
@@ -70,11 +71,16 @@ func _physics_process(delta: float) -> void:
 	
 	#attack
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and !is_attack and stamina > 0:
-		print("attack")
-		$Skin/Body/Hands/AnimationPlayer.play("Attack")
-		is_attack = true
-		await $Skin/Body/Hands/AnimationPlayer.animation_finished
-		is_attack = false
+		if equip.equiped_type == equip.items_type.Melee:
+			$Skin/Body/Hands/AnimationPlayer.play("Attack")
+			is_attack = true
+			await $Skin/Body/Hands/AnimationPlayer.animation_finished
+			is_attack = false
+		elif equip.equiped_type == equip.items_type.Distance:
+			#distance weapon logic:
+			pass
+		
+
 	if $CanvasLayer/HUD/DebugUI.visible:
 		$CanvasLayer/HUD/DebugUI/Label.text = "FPS: " + str(Engine.get_frames_per_second())
 	

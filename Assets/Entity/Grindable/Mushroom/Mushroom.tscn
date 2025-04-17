@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b13lyodynary4"]
+[gd_scene load_steps=14 format=3 uid="uid://b13lyodynary4"]
 
 [ext_resource type="PackedScene" uid="uid://bakphe3npgm38" path="res://Assets/Entity/Grindable/grindable.tscn" id="1_6tk43"]
 [ext_resource type="Script" uid="uid://clnsgpaeoiv44" path="res://Assets/Entity/Grindable/SimpleGrind.gd" id="2_4av1p"]
@@ -83,10 +83,13 @@ nodes/Animation/position = Vector2(400, 40)
 nodes/output/position = Vector2(600, 60)
 node_connections = [&"output", 0, &"Animation"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4av1p"]
+polygon = PackedVector2Array(-8, -12, -8, -1, 8, -1, 8, -12)
+
 [node name="Mushroom" instance=ExtResource("1_6tk43")]
 script = ExtResource("2_4av1p")
 drop = ExtResource("2_fr3f4")
-variations = 0
+variations = 1
 random_sprite = true
 hp = 10
 
@@ -100,6 +103,7 @@ position = Vector2(0, -13)
 [node name="Sprite2D" parent="." index="2"]
 position = Vector2(-3, -17)
 texture = ExtResource("3_6mjsd")
+hframes = 2
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(-5.5, -26.5)
@@ -109,7 +113,7 @@ shape = SubResource("RectangleShape2D_fr3f4")
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_fr3f4")
 
-[node name="PointLight2D" type="PointLight2D" parent="." index="7"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
 position = Vector2(-4, -38)
 rotation = -0.396195
 scale = Vector2(1.47, 0.89)
@@ -124,3 +128,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="PointLight2D" index="1"]
 tree_root = SubResource("AnimationNodeBlendTree_qnks0")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="LightOccluder2D" parent="." index="7"]
+occluder = SubResource("OccluderPolygon2D_4av1p")

@@ -1,362 +1,220 @@
-@icon("res://IconGodotNode/control/icon_bag.png")
 extends Control
-
 class_name Inventory
 
-@export var columns: int = 9
-@export var rows: int = 3
-@export var hotbar_size: int = 5
-@export var player : Player
-var items: Array
-var hotbar_items: Array
-var active_hotbar_slot: int = 0
+@onready var grid_container: GridContainer = $Panel/GridContainer
+var items: Array[Dictionary] = []  # Stores {item: ItemResource, slot: InventorySlot}
+signal inventory_changed
 
-@onready var grid = $Panel/GridContainer
-@onready var hotbar_grid = $HotbarContainer
-@export var initial_items: Array[ItemResource] 
+# Preload initial tools
+var pickaxe_resource = preload("res://Assets/Scripts/Inventory/Weapons/MGM.tres")
+var sword_resource = preload("res://Assets/Scripts/Inventory/Weapons/Simple Sword.tres")
 
-const ENCRYPT_KEY = "your-secret-key-12345"  # Замените на свой ключ
-const SAVE_PATH = "user://Saves/inventory_save.json"
+const  SAVE_PATH = "user://Saves/inventory_save.json"
 
-func _ready():
-	await get_tree().process_frame
-	#if not load_inventory():
-	add_initial_items()
-	# Сначала создаем все слоты
-	setup_inventory()
-	setup_hotbar()
-	
-	set_active_slot(0)
-	_update_hotbar_selection()
-	set_process_input(true)
+func _ready() -> void:
+	# Initialize items array with existing slots in GridContainer
+	for slot in grid_container.get_children():
+		if slot is TextureButton:  # Ensure the child is an InventorySlot
+			items.append({"item": slot.item, "slot": slot})
+	if items.size() == 0:
+		print("Warning: No inventory slots found in GridContainer")
 
-# Добавление начальных предметов (переименовано)
-func add_initial_items():
-	for i in range(min(initial_items.size(), hotbar_items.size())):
-		if initial_items[i]:
-			var item = initial_items[i].duplicate()
-			hotbar_items[i].set_item(item)
+	# Load inventory or add initial tools for new game
+	if FileAccess.file_exists(SAVE_PATH):
+		load_inventory()
+	else:
+		add_initial_tools()
 
-# Обновление выделения хотбара (переименовано)
-func _update_hotbar_selection():
-	#for i in range(hotbar_size):
-		#hotbar_items[i].self_modulate = Color(1, 1, 1, 1)
-	#hotbar_items[active_hotbar_slot].self_modulate = Color(1, 1, 0.5, 1)
-	for i in range(hotbar_size):
-		hotbar_items[i].unactivate()
-	hotbar_items[active_hotbar_slot].activate()
+func add_initial_tools() -> void:
+	# Add starting tools
+	add_item(pickaxe_resource, 1)
+	add_item(sword_resource, 1)
+	print("Added initial tools: Pickaxe and Basic Sword")
 
-func setup_inventory():
-	# Очищаем и заново создаем инвентарь
-	for child in grid.get_children():
-		child.queue_free()
-	
-	items.clear()
-	
-	for i in range(columns * rows):
-		var slot = preload("res://Assets/Scripts/Inventory/InventorySlot.tscn").instantiate()
-		grid.add_child(slot)
-		items.append(slot)
-
-func setup_hotbar():
-	# Очищаем и заново создаем хотбар
-	for child in hotbar_grid.get_children():
-		child.queue_free()
-	
-	hotbar_items.clear()
-	
-	for i in range(hotbar_size):
-		var slot = preload("res://Assets/Scripts/Inventory/InventorySlot.tscn").instantiate()
-		hotbar_grid.add_child(slot)
-		hotbar_items.append(slot)
-
-func _input(event):
-	if event is InputEventKey and event.pressed:
-		if event.keycode >= KEY_1 and event.keycode <= KEY_5:
-			var index = event.keycode - KEY_1
-			if index < hotbar_size:
-				active_hotbar_slot = index
-				_update_hotbar_selection()
-				activate(index)
-
-	if Input.is_action_just_pressed("Inventory"):
-		$Panel.visible = !$Panel.visible
-
-func activate(slot_index: int):
-	if slot_index < 0 or slot_index >= hotbar_items.size():
+func add_item(item: ItemResource, amount: int) -> void:
+	if amount <= 0:
+		print("Error: Cannot add non-positive amount of items")
 		return
-	
-	var slot = hotbar_items[slot_index]
-	if not slot or not slot.item:
+
+	if item.stackable:
+		for entry in items:
+			if entry.item and entry.item.display_name == item.display_name:
+				var slot = entry.slot
+				var current_amount = slot.ammount
+				var space_left = item.max_count - current_amount
+				if space_left > 0:
+					var amount_to_add = min(amount, space_left)
+					slot.add_ammount(amount_to_add)
+					amount -= amount_to_add
+					slot.update_ui()
+					if amount == 0:
+						emit_signal("inventory_changed")
+						return
+
+	for entry in items:
+		if entry.item == null:
+			var slot = entry.slot
+			var new_item = item.duplicate()
+			new_item.count = min(amount, new_item.max_count)
+			slot.item = new_item
+			slot.set_ammount(new_item.count)
+			slot.update_ui()
+			entry.item = new_item
+			amount -= new_item.count
+			if amount == 0:
+				emit_signal("inventory_changed")
+				return
+			break
+
+	if amount > 0:
+		Notification.show_notification("Warning: Inventory full, cannot add " + str(amount) + " of "+ item.display_name,5.0,null)
+		print("Warning: Inventory full, cannot add ", amount, " of ", item.display_name)
+
+func remove_item(item: ItemResource, amount: int) -> void:
+	if amount <= 0:
+		print("Error: Cannot remove non-positive amount of items")
 		return
-	
-	print("Используем предмет:", slot.item.resource_path.get_file().get_basename())
 
-	if slot.item.has_method("equip"):
-		%weapon.update_wep(slot.item)
-	elif slot.item.has_method("eat"):
-		slot.item.eat(player)
-		slot.item.count -= 1
-		if slot.item.count <= 0:
-			slot.clear_slot()
-		else:
-			slot.update_slot()
-	#if slot.item.has_method("equip"):
-		#%weapon.update_wep(slot.item)
-	#elif slot.item.has_method("eat"):
-		#slot.item.eat(player)
-		#slot.remove_item()
-	##else slot.item.has_method("use"):
-		##slot.item.use()
-	##else:
-		##print("⚠ Ошибка! У предмета нет метода use()")
-
-func add_item(new_item: ItemResource, amount: int = 1) -> bool:
-	if not new_item or new_item.item_id.is_empty() or amount <= 0:
-		return false
-	
 	var remaining = amount
-	
-	# Добавляем к существующим стакам
-	if new_item.stackable:
-		for slot in get_all_slots():
-			if slot.item and slot.item.item_id == new_item.item_id:
-				var space = slot.item.max_count - slot.item.count
-				var to_add = min(space, remaining)
-				slot.item.count += to_add
-				slot.update_slot()
-				remaining -= to_add
-				if remaining <= 0:
-					return true
-	
-	# Добавляем в пустые слоты
-	for slot in get_all_slots():
-		if not slot.item:
-			var item_copy = new_item.duplicate()
-			item_copy.count = min(item_copy.max_count, remaining)
-			remaining -= item_copy.count
-			slot.set_item(item_copy)
-			if remaining <= 0:
-				return true
-	
-	return remaining == 0
-func find_item_by_id(item_id: String) -> ItemResource:
-	# Ищем в предзагруженных предметах
-	for item in initial_items:
-		if item.item_id == item_id:
-			return item
-	
-	# Ищем в загруженных ресурсах
-	var item = load("res://Assets/Scripts/Inventory/Items/%s.tres" % item_id)
-	if item:
-		return item
-	
-	printerr("⚠ Предмет с ID '%s' не найден" % item_id)
-	return null
-# Вспомогательные методы с уникальными именами параметров
-func get_all_slots() -> Array:
-	return items + hotbar_items
+	for entry in items:
+		if entry.item and entry.item.display_name == item.display_name:
+			var slot = entry.slot
+			var current_amount = slot.ammount
+			var amount_to_remove = min(remaining, current_amount)
+			slot.sub_ammount(amount_to_remove)
+			remaining -= amount_to_remove
+			if slot.ammount <= 0:
+				slot.item = null
+				entry.item = null
+			slot.update_ui()
+			if remaining == 0:
+				break
 
-func has_item(target_slot: InventorySlot) -> bool:
-	return target_slot and target_slot.item
+	if remaining > 0:
+		print("Warning: Not enough ", item.display_name, " to remove (missing ", remaining, ")")
+	emit_signal("inventory_changed")
 
-func add_to_existing_stack(target_slot: InventorySlot, add_amount: int) -> int:
-	var available_space = target_slot.item.max_count - target_slot.item.count
-	var to_add = min(available_space, add_amount)
-	target_slot.item.count += to_add
-	target_slot.update_slot()
-	return to_add
+func update() -> void:
+	for entry in items:
+		var slot = entry.slot
+		slot.update_ui()
 
-func create_new_item_stack(target_slot: InventorySlot, source_item: ItemResource, max_amount: int) -> int:
-	var new_item = source_item.duplicate()
-	new_item.count = min(new_item.max_count, max_amount)
-	target_slot.set_item(new_item)
-	return new_item.count
+func clear_inventory() -> void:
+	for entry in items:
+		var slot = entry.slot
+		slot.item = null
+		slot.set_ammount(0)
+		entry.item = null
+		slot.update_ui()
+	emit_signal("inventory_changed")
 
-func save_inventory():
-	var save_data = {
-		"version": 3,
-		"inventory": [],
-		"hotbar": [],
-		"active_slot": active_hotbar_slot
-	}
-	
-	# Сохраняем основной инвентарь
-	for slot in items:
-		var slot_data = null
-		if slot and slot.item:
-			slot_data = {
-				"item_id": slot.item.item_id,
-				"count": slot.item.count
+func get_item_count(item_name: String) -> int:
+	var total: int = 0
+	for entry in items:
+		if entry.item and entry.item.display_name == item_name:
+			total += entry.slot.ammount
+	return total
+
+func has_item(item: ItemResource, amount: int) -> bool:
+	return get_item_count(item.display_name) >= amount
+
+func save_inventory() -> void:
+	var save_data: Array = []
+	for entry in items:
+		var slot = entry.slot
+		var item_data = {}
+		if slot.item:
+			item_data = {
+				"display_name": slot.item.display_name,
+				"count": slot.ammount,
+				"max_count": slot.item.max_count,
+				"stackable": slot.item.stackable,
+				"category": slot.item.category,
+				"icon_path": slot.item.icon.resource_path if slot.item.icon else "",
+				"description": slot.item.description,
+				"type": "ItemResource"
 			}
-		save_data["inventory"].append(slot_data)
-	
-	# Сохраняем хотбар
-	for slot in hotbar_items:
-		var slot_data = null
-		if slot and slot.item:
-			slot_data = {
-				"item_id": slot.item.item_id,
-				"count": slot.item.count
-			}
-		save_data["hotbar"].append(slot_data)
-	
-	# Сохраняем в файл
+			if slot.item is WeaponResource:
+				item_data.type = "WeaponResource"
+				item_data.types = slot.item.types
+				item_data.damage_strength = slot.item.damage_strength
+				item_data.hit_distance = slot.item.hit_distance
+				item_data.projectile_path = slot.item.projectile.resource_path if slot.item.projectile else ""
+				item_data.hit_effect = []  # Simplified; extend if effects are serializable
+			elif slot.item is FoodResource:
+				item_data.type = "FoodResource"
+				item_data.effects = []  # Simplified; extend if effects are serializable
+		save_data.append(item_data)
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
-		file.store_string(JSON.stringify(save_data))
+		file.store_string(JSON.stringify(save_data, "\t"))
 		file.close()
-		print("💾 Инвентарь сохранен")
-		Notification.show_notification("inventory saved",3.0,null)
+		print("Inventory saved to user://inventory_save.json")
 	else:
-		printerr("⚠ Ошибка при сохранении инвентаря")
+		print("Error: Failed to save inventory")
 
-func load_inventory() -> bool:
+func load_inventory() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
-		return false
-	
+		print("No save file found")
+		return
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if not file:
-		return false
-	
-	var json = JSON.new()
-	var error = json.parse(file.get_as_text())
+		print("Error: Failed to open save file")
+		return
+
+	var json_text = file.get_as_text()
 	file.close()
-	
+	var json = JSON.new()
+	var error = json.parse(json_text)
 	if error != OK:
-		printerr("⚠ Ошибка при загрузке сохранения: ", json.get_error_message())
-		return false
-	
+		print("Error: Failed to parse JSON - ", json.get_error_message())
+		return
+
 	var save_data = json.get_data()
-	if not save_data or save_data.get("version", 0) != 3:
-		printerr("⚠ Несовместимая версия сохранения")
-		return false
-	
-	# Загружаем основной инвентарь
-	for i in range(min(save_data["inventory"].size(), items.size())):
-		var item_data = save_data["inventory"][i]
-		if item_data and item_data.has("item_id"):
-			var item = find_item_by_id(item_data["item_id"])
-			if item:
-				var item_copy = item.duplicate()
-				item_copy.count = item_data.get("count", 1)
-				items[i].set_item(item_copy)
-	
-	# Загружаем хотбар
-	for i in range(min(save_data["hotbar"].size(), hotbar_items.size())):
-		var item_data = save_data["hotbar"][i]
-		if item_data and item_data.has("item_id"):
-			var item = find_item_by_id(item_data["item_id"])
-			if item:
-				var item_copy = item.duplicate()
-				item_copy.count = item_data.get("count", 1)
-				hotbar_items[i].set_item(item_copy)
-	
-	# Восстанавливаем активный слот
-	var saved_slot = save_data.get("active_slot", 0)
-	if saved_slot >= 0 and saved_slot < hotbar_items.size():
-		set_active_slot(saved_slot)
-	
-	print("📂 Инвентарь успешно загружен")
-	return true
-func create_item_from_data(data: Dictionary) -> ItemResource:
-	if not data.has("resource_type"):
-		return null
-	
-	var item: ItemResource = null
-	
-	# Создаем предмет нужного типа
-	match data["resource_type"]:
-		"WeaponResource":
+	if not save_data is Array:
+		print("Error: Invalid save data format")
+		return
+
+	clear_inventory()  # Clear current inventory before loading
+	for i in range(min(save_data.size(), items.size())):
+		var item_data = save_data[i]
+		if item_data.is_empty():
+			continue
+
+		var item: ItemResource
+		if item_data.type == "WeaponResource":
 			item = WeaponResource.new()
-		"FoodResource":
+			item.types = item_data.types
+			item.damage_strength = item_data.damage_strength
+			item.hit_distance = item_data.hit_distance
+			if item_data.projectile_path:
+				item.projectile = load(item_data.projectile_path)
+		elif item_data.type == "FoodResource":
 			item = FoodResource.new()
-		_:
+			# Add effects loading if needed
+		else:
 			item = ItemResource.new()
-	
-	# Загружаем данные
-	item.load_save_data(data)
-	return item
-func set_active_slot(index: int):
-	for i in range(hotbar_size):
-			var slot = hotbar_grid.get_child(i)
-			slot.self_modulate = Color(1, 1, 1, 1) if i == index else Color(0.7, 0.7, 0.7, 1)
-			#slot.self_modulate = Color(1, 1, 1, 1) if i == index else Color(0.7, 0.7, 0.7, 1)
-	
-	# Сбрасываем выделение всех слотов
-	for slot in hotbar_items:
-		if is_instance_valid(slot):
-			slot.self_modulate = Color.WHITE
-	
-	# Устанавливаем новый активный слот
-	active_hotbar_slot = index
-	if is_instance_valid(hotbar_items[index]):
-		hotbar_items[index].activate()
-		#hotbar_items[index].self_modulate = Color(1, 1, 0.5)
-	
-	print("Активный слот установлен: ", index)
-	if not FileAccess.file_exists(SAVE_PATH):
-		print("ℹ️ Сохранение не найдено, создаем новый инвентарь")
-		add_initial_items()
-		return
-	
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var json = JSON.new()
-	var error = json.parse(file.get_as_text())
-	file.close()
-	
-	if error != OK:
-		printerr("⚠ Ошибка загрузки сохранения: ", json.get_error_message())
-		add_initial_items()
-		return
-	
-	var save_data = json.get_data()
-	
-	# Проверяем версию сохранения
-	if save_data.get("version", 0) != 1:
-		printerr("⚠ Несовместимая версия сохранения")
-		add_initial_items()
-		return
-	
-	# Загружаем основной инвентарь
-	for i in range(min(save_data["inventory"].size(), items.size())):
-		var item_data = save_data["inventory"][i]
-		if item_data:
-			var item = load(item_data["path"])
-			if item:
-				item = item.duplicate()
-				item.count = item_data["count"]
-				items[i].set_item(item)
-	
-	# Загружаем хотбар
-	for i in range(min(save_data["hotbar"].size(), hotbar_items.size())):
-		var item_data = save_data["hotbar"][i]
-		if item_data:
-			var item = load(item_data["path"])
-			if item:
-				item = item.duplicate()
-				item.count = item_data["count"]
-				hotbar_items[i].set_item(item)
-	
-	# Восстанавливаем активный слот
-	var saved_slot = save_data.get("active_slot", 0)
-	if saved_slot >= 0 and saved_slot < hotbar_items.size():
-		active_hotbar_slot = saved_slot
-		set_active_slot(active_hotbar_slot)
-	
-	print("📂 Инвентарь загружен")
-# 🗑️ Очищаем сохранение
-func clear_save():
-	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(SAVE_PATH)
-	print("🗑️ Сохранение инвентаря удалено")
 
+		item.display_name = item_data.display_name
+		item.count = item_data.count
+		item.max_count = item_data.max_count
+		item.stackable = item_data.stackable
+		item.category = item_data.category
+		item.description = item_data.description
+		if item_data.icon_path:
+			item.icon = load(item_data.icon_path)
 
-@export var autosave_interval: float = 60.0  # Автосохранение каждые 60 секунд
-var autosave_timer: float = 0.0
+		var slot = items[i].slot
+		slot.item = item
+		slot.set_ammount(item_data.count)
+		items[i].item = item
+		slot.update_ui()
 
-func _process(delta):
-	autosave_timer += delta
-	if autosave_timer >= autosave_interval:
-		save_inventory()
-		autosave_timer = 0.0
+	emit_signal("inventory_changed")
+	print("Inventory loaded from user://inventory_save.json")
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Inventory"):
+		$Panel.visible = !$Panel.visible
+		#$HotBar.visible = !$HotBar.visible

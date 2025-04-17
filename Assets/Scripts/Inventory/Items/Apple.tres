@@ -9,7 +9,7 @@
 script = ExtResource("2_nwb2h")
 name = "Effect"
 effect_value = 10
-duration = 0.0
+duration = 5.0
 metadata/_custom_type_script = "uid://ba74vmx5ciy0l"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwb2h"]
@@ -19,10 +19,10 @@ region = Rect2(32, 15, 16, 16)
 [resource]
 script = ExtResource("2_lg6rq")
 effects = Array[ExtResource("1_hryn4")]([SubResource("Resource_iou1d")])
-item_id = "Apple"
+icon = SubResource("AtlasTexture_nwb2h")
 display_name = "Apple"
 description = "looks delicious"
-icon = SubResource("AtlasTexture_nwb2h")
 max_count = 20
 stackable = true
+category = 1
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c60iwn3d4qvkn"]
+
+[ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://Assets/UI/theme.tres" id="1_47g0t"]
+[ext_resource type="Script" uid="uid://dr8ler12pj08g" path="res://Assets/Misc/Buttons/buttonBehavior.gd" id="2_4qvqa"]
+[ext_resource type="AudioStream" uid="uid://deord1e72ecbd" path="res://Assets/Misc/Buttons/Click.wav" id="3_xc2cv"]
+[ext_resource type="AudioStream" uid="uid://duxt0mkvaxdfv" path="res://Assets/Misc/Buttons/Hover.wav" id="4_wockj"]
+
+[node name="Button" type="Button"]
+theme = ExtResource("1_47g0t")
+text = "Start"
+script = ExtResource("2_4qvqa")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xc2cv")
+
+[node name="Decline" type="AudioStreamPlayer" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wockj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

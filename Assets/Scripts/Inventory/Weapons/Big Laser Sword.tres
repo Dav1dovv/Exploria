@@ -10,16 +10,16 @@ region = Rect2(48, 0, 15, 16)
 
 [resource]
 script = ExtResource("3_1cggv")
+types = 0
 damage_strength = 8
 hit_effect = Array[ExtResource("1_dj0mk")]([])
 hit_distance = 20.0
-is_wep = true
-item_id = "BigLaser"
+icon = SubResource("AtlasTexture_uadnr")
 display_name = "BigLaser"
 description = "a sword for every adventurer
 DMG : 8
 Distance : 20.0"
-icon = SubResource("AtlasTexture_uadnr")
 max_count = 1
 stackable = true
+category = 2
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

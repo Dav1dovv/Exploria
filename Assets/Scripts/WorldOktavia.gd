@@ -1,16 +1,24 @@
 extends Node2D
 
-@export_category("Biomes")
+
+@onready var player: Player = %Player
+
+@export var map_size: Vector2
+@export_group("Biomes")
 @export var Desert :Array[GenerationObject]
 @export var DeathDesert :Array[GenerationObject]
 @export var DarkLands :Array[GenerationObject]
 @export var Simple : Array[GenerationObject]
 
+
 var biomes = [Desert,DeathDesert,DarkLands, Simple]
 
 func _ready() -> void:
 	var rand_biom = randi() % biomes.size()
+	var randX = randf_range(-map_size.x,map_size.x)
+	var randY = randf_range(-map_size.y,map_size.y)
 	
+	player.position = Vector2(randX,randY)
 	
 	match rand_biom:
 		0:

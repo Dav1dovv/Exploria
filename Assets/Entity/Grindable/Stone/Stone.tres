@@ -9,10 +9,10 @@ region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_dgc5s")
-item_id = "Stone"
+icon = SubResource("AtlasTexture_mlamf")
 display_name = "Stone"
 description = "Mineral material"
-icon = SubResource("AtlasTexture_mlamf")
 max_count = 10
 stackable = true
+category = 0
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"
