@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bmjvsrl7b67cy"]
+[gd_resource type="Theme" format=3 uid="uid://bmjvsrl7b67cy"]
 
 [ext_resource type="FontFile" uid="uid://cb03qdh67fmky" path="res://Assets/UI/Fonts/fixedsys-ligatures.ttf" id="1_0qw6d"]
 [ext_resource type="Texture2D" uid="uid://chavhmblum66w" path="res://Assets/UI/UI.png" id="2_sk3jv"]

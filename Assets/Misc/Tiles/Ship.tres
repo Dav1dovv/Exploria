@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d3wwtp1krxihj"]
+[gd_resource type="TileSet" format=3 uid="uid://d3wwtp1krxihj"]
 
 [ext_resource type="Texture2D" uid="uid://bxmd36b0u3o7x" path="res://Assets/Misc/Tiles/Ship_sheet.png" id="1_xpgmv"]
 

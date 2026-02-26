@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://ydggjm06enpr"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ydggjm06enpr"]
 
 [ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="1_50w4x"]
 [ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="2_utmy5"]
@@ -13,6 +13,5 @@ icon = SubResource("AtlasTexture_iuyaa")
 display_name = "Wood"
 description = "just wood"
 max_count = 10
-stackable = true
 category = 4
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

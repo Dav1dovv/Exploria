@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://bmtpdoo0ekjf"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bmtpdoo0ekjf"]
 
 [ext_resource type="Texture2D" uid="uid://c2txy0kil34nr" path="res://Assets/Scripts/Inventory/Items/Items.png" id="1_r784q"]
 [ext_resource type="Script" uid="uid://dnxtka6wsg1c8" path="res://Assets/Scripts/Inventory/ItemResource.gd" id="2_m04xj"]
@@ -13,6 +13,5 @@ icon = SubResource("AtlasTexture_ixte4")
 display_name = "Mushroom"
 description = "little mushroom from big mushroom"
 max_count = 5
-stackable = true
 category = 1
 metadata/_custom_type_script = "uid://dnxtka6wsg1c8"

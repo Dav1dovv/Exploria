@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dddqybys2u2rb"]
+[gd_scene format=3 uid="uid://dddqybys2u2rb"]
 
 [ext_resource type="Script" uid="uid://ukyj0dy772im" path="res://Assets/Entity/Player/PlayerController.gd" id="1_jbefx"]
 [ext_resource type="Texture2D" uid="uid://bg5o6d26adavm" path="res://Assets/Entity/Player/astronautv4.png" id="3_3lqb0"]
@@ -982,7 +982,7 @@ scale_max = 3.0
 color = Color(0.942817, 0.126265, 3.85046e-07, 1)
 color_ramp = SubResource("GradientTexture1D_xwwyn")
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1008362132 groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 16
 script = ExtResource("1_jbefx")
@@ -991,36 +991,36 @@ max_hp = 100
 max_exp = 100
 knockback_modifier = 10
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=1179203731]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1553841953]
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_jh2bb")
 
-[node name="Skin" type="Node2D" parent="."]
+[node name="Skin" type="Node2D" parent="." unique_id=1282902008]
 position = Vector2(0, -5)
 
-[node name="Shadow" type="Sprite2D" parent="Skin"]
+[node name="Shadow" type="Sprite2D" parent="Skin" unique_id=1802968886]
 position = Vector2(-1, 1)
 scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_koen5")
 
-[node name="Body" type="Sprite2D" parent="Skin"]
+[node name="Body" type="Sprite2D" parent="Skin" unique_id=1837681138]
 texture = ExtResource("3_3lqb0")
 offset = Vector2(-2, -3)
 region_enabled = true
 region_rect = Rect2(10, 19, 10, 8)
 
-[node name="Left Leg" type="Sprite2D" parent="Skin/Body"]
+[node name="Left Leg" type="Sprite2D" parent="Skin/Body" unique_id=1128894991]
 position = Vector2(-3, 1)
 texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(12, 27, 4, 4)
 
-[node name="RightLeg" type="Sprite2D" parent="Skin/Body"]
+[node name="RightLeg" type="Sprite2D" parent="Skin/Body" unique_id=2034799964]
 z_index = -1
 position = Vector2(1, 1)
 texture = ExtResource("3_3lqb0")
@@ -1028,33 +1028,33 @@ offset = Vector2(0, 2)
 region_enabled = true
 region_rect = Rect2(16, 27, 4, 4)
 
-[node name="Hands" type="Node2D" parent="Skin/Body"]
+[node name="Hands" type="Node2D" parent="Skin/Body" unique_id=2002291946]
 y_sort_enabled = true
 
-[node name="AttackPoint" type="Node2D" parent="Skin/Body/Hands"]
+[node name="AttackPoint" type="Node2D" parent="Skin/Body/Hands" unique_id=1652272627]
 position = Vector2(0, -4)
 
-[node name="HitBox" parent="Skin/Body/Hands/AttackPoint" node_paths=PackedStringArray("attack_node", "player") instance=ExtResource("7_gfwb7")]
+[node name="HitBox" parent="Skin/Body/Hands/AttackPoint" unique_id=527138045 node_paths=PackedStringArray("attack_node", "player") instance=ExtResource("7_gfwb7")]
 collision_layer = 32
 collision_mask = 12
 attack_node = NodePath("../../../../../Equip")
 player = NodePath("../../../../..")
 
-[node name="HitZone" type="CollisionShape2D" parent="Skin/Body/Hands/AttackPoint/HitBox"]
+[node name="HitZone" type="CollisionShape2D" parent="Skin/Body/Hands/AttackPoint/HitBox" unique_id=1418891313]
 unique_name_in_owner = true
 position = Vector2(13, 1)
 scale = Vector2(14, 14)
 shape = SubResource("RectangleShape2D_72cvu")
 disabled = true
 
-[node name="LeftHand" type="Sprite2D" parent="Skin/Body/Hands"]
+[node name="LeftHand" type="Sprite2D" parent="Skin/Body/Hands" unique_id=876077433]
 position = Vector2(-5, -6)
 texture = ExtResource("3_3lqb0")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
 
-[node name="RightHand" type="Sprite2D" parent="Skin/Body/Hands"]
+[node name="RightHand" type="Sprite2D" parent="Skin/Body/Hands" unique_id=1129593166]
 z_index = -2
 position = Vector2(3, -6)
 texture = ExtResource("3_3lqb0")
@@ -1062,46 +1062,42 @@ offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(6, 20, 3, 6)
 
-[node name="Weapon" type="Sprite2D" parent="Skin/Body/Hands/RightHand"]
+[node name="Weapon" type="Sprite2D" parent="Skin/Body/Hands/RightHand" unique_id=2035645211]
 position = Vector2(0.400166, 5.44462)
 rotation = 1.57079
 texture = SubResource("AtlasTexture_3lqb0")
 offset = Vector2(-0.325, -5.593)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin/Body/Hands"]
-libraries = {
-&"": SubResource("AnimationLibrary_ob8aw")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin/Body/Hands" unique_id=113798974]
+libraries/ = SubResource("AnimationLibrary_ob8aw")
 speed_scale = 0.8
 
-[node name="Head" type="Sprite2D" parent="Skin"]
+[node name="Head" type="Sprite2D" parent="Skin" unique_id=1312848473]
 position = Vector2(0, -7)
 texture = ExtResource("3_3lqb0")
 offset = Vector2(0, -6)
 region_enabled = true
 region_rect = Rect2(7, 6, 18, 13)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin"]
-libraries = {
-&"": SubResource("AnimationLibrary_pq0o2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" unique_id=1304822375]
+libraries/ = SubResource("AnimationLibrary_pq0o2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1964309479]
 z_index = -1
 position = Vector2(-1, -5)
 shape = SubResource("CapsuleShape2D_jbefx")
 debug_color = Color(0.996052, 0, 0.194091, 0.42)
 
-[node name="Equip" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite") groups=["Equip"]]
+[node name="Equip" type="Node" parent="." unique_id=781731399 node_paths=PackedStringArray("weapon_sprite") groups=["Equip"]]
 unique_name_in_owner = true
 script = ExtResource("4_58md0")
 strenght = 3
 weapon_sprite = NodePath("../Skin/Body/Hands/RightHand/Weapon")
 metadata/_custom_type_script = "uid://dohhabx06hqfy"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1911105350]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1843905901]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1110,7 +1106,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DebugUI" type="Control" parent="CanvasLayer/HUD"]
+[node name="DebugUI" type="Control" parent="CanvasLayer/HUD" unique_id=1076030945]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1120,7 +1116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_xwwyn")
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/DebugUI"]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/DebugUI" unique_id=633426778]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1131,7 +1127,7 @@ grow_horizontal = 0
 text = "FPS 999"
 horizontal_alignment = 2
 
-[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/HUD" unique_id=1176006693]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1149,7 +1145,7 @@ texture_progress = SubResource("AtlasTexture_1f3li")
 texture_progress_offset = Vector2(2, 2)
 script = ExtResource("8_1aajc")
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/HealthBar"]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/HealthBar" unique_id=1846020523]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1167,7 +1163,7 @@ text = "55"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StaminaBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
+[node name="StaminaBar" type="TextureProgressBar" parent="CanvasLayer/HUD" unique_id=1222256010]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1185,7 +1181,7 @@ texture_progress = SubResource("AtlasTexture_nk4x0")
 texture_progress_offset = Vector2(2, 2)
 script = ExtResource("8_1aajc")
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/StaminaBar"]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/StaminaBar" unique_id=938692090]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1203,7 +1199,7 @@ text = "55"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=1251552549]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1220,7 +1216,7 @@ texture = SubResource("AtlasTexture_3gu1i")
 expand_mode = 1
 script = ExtResource("10_3gu1i")
 
-[node name="Label" type="Label" parent="CanvasLayer/HUD/TextureRect"]
+[node name="Label" type="Label" parent="CanvasLayer/HUD/TextureRect" unique_id=1126338295]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1235,16 +1231,16 @@ text = "999"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Inventory" parent="CanvasLayer" groups=["Inventory"] instance=ExtResource("7_72cvu")]
+[node name="Inventory" parent="CanvasLayer" unique_id=929669780 groups=["Inventory"] instance=ExtResource("7_72cvu")]
 unique_name_in_owner = true
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_ob8aw")]
+[node name="PauseMenu" parent="CanvasLayer" unique_id=386327233 instance=ExtResource("10_ob8aw")]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1307015507]
 wait_time = 2.0
 autostart = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1290525389]
 position = Vector2(2, -4)
 emitting = false
 amount = 20
@@ -1253,21 +1249,21 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3lqb0")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=976793171]
 current = true
 
-[node name="Laser" type="AudioStreamPlayer2D" parent="."]
+[node name="Laser" type="AudioStreamPlayer2D" parent="." unique_id=1503263023]
 volume_db = -8.194
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1896845405]
 bus = &"SFX"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1067734069]
 position = Vector2(0, -9)
 shadow_enabled = true
 texture = ExtResource("19_3lqb0")
 
-[node name="SkinChanger" type="Node" parent="." node_paths=PackedStringArray("skin_parts")]
+[node name="SkinChanger" type="Node" parent="." unique_id=1785729114 node_paths=PackedStringArray("skin_parts")]
 script = ExtResource("16_koen5")
 skin_parts = [NodePath("../Skin/Body"), NodePath("../Skin/Body/Left Leg"), NodePath("../Skin/Body/RightLeg"), NodePath("../Skin/Body/Hands/LeftHand"), NodePath("../Skin/Body/Hands/RightHand"), NodePath("../Skin/Head")]
 skin = ExtResource("17_qt0y1")

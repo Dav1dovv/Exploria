@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://p7auwku2y88o"]
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://p7auwku2y88o"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_l3mx1"]
 [ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_klayu"]
@@ -10,15 +10,11 @@ region = Rect2(79, 0, 16, 16)
 
 [resource]
 script = ExtResource("3_0t31e")
-types = 0
 damage_strength = 25
-hit_effect = Array[ExtResource("1_l3mx1")]([])
 hit_distance = 30.0
 icon = SubResource("AtlasTexture_2g1dq")
 display_name = "Dark Saber"
 description = "Dmg: 25
 Distance : 30"
-max_count = 1
-stackable = true
 category = 2
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

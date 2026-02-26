@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://ebko6adpxqvk"]
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://ebko6adpxqvk"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_lh1et"]
 [ext_resource type="Texture2D" uid="uid://c32rm3w2kwde8" path="res://Assets/Scripts/Inventory/Weapons/Sword-Sheet.png" id="2_2li1n"]
@@ -10,16 +10,12 @@ region = Rect2(16, 0, 15, 16)
 
 [resource]
 script = ExtResource("3_3vxt4")
-types = 0
 damage_strength = 3
-hit_effect = Array[ExtResource("1_lh1et")]([])
 hit_distance = 14.0
 icon = SubResource("AtlasTexture_uadnr")
 display_name = "Simple_Sword"
 description = "a sword for every adventurer
 DMG: 3
 Distance : 14.0"
-max_count = 1
-stackable = true
 category = 2
 metadata/_custom_type_script = "uid://ciow47xd5e58f"

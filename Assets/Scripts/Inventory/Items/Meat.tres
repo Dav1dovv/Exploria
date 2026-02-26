@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FoodResource" load_steps=7 format=3 uid="uid://b3tjvjywvicrp"]
+[gd_resource type="Resource" script_class="FoodResource" format=3 uid="uid://b3tjvjywvicrp"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_7v8sf"]
 [ext_resource type="Script" uid="uid://ba74vmx5ciy0l" path="res://Assets/Scripts/Effects/Heal.gd" id="2_4x5tx"]
@@ -8,7 +8,6 @@
 [sub_resource type="Resource" id="Resource_ktf5p"]
 script = ExtResource("2_4x5tx")
 name = "Heal"
-effect_value = 10
 duration = 60.0
 metadata/_custom_type_script = "uid://ba74vmx5ciy0l"
 
@@ -23,6 +22,5 @@ icon = SubResource("AtlasTexture_4x5tx")
 display_name = "Meat"
 description = "this is look's strange!"
 max_count = 10
-stackable = true
 category = 1
 metadata/_custom_type_script = "uid://cmviptt7oir8l"

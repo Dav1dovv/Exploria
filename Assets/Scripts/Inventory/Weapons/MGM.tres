@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://lyohe5gb0bx7"]
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://lyohe5gb0bx7"]
 
 [ext_resource type="Script" uid="uid://dq5mgpcf35n57" path="res://Assets/Scripts/Effects/Effects.gd" id="1_qq4d6"]
 [ext_resource type="Texture2D" uid="uid://cek74bm8i14fc" path="res://Assets/Scripts/Inventory/Weapons/Pickaxe-Sheet.png" id="2_r4v4s"]
@@ -12,14 +12,11 @@ region = Rect2(48, 2, 14, 13)
 script = ExtResource("3_wp1bo")
 types = 3
 damage_strength = 3
-hit_effect = Array[ExtResource("1_qq4d6")]([])
 hit_distance = 14.0
 icon = SubResource("AtlasTexture_veyed")
 display_name = "M.G.M."
 description = "molecular gatherer master
 DMG: 3
 Distance : 14.0"
-max_count = 1
-stackable = true
 category = 3
 metadata/_custom_type_script = "uid://ciow47xd5e58f"
